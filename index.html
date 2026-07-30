@@ -1,3 +1,5 @@
+cd ~/Desktop/apex-build
+cat << 'EOF' > index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,6 +95,11 @@
     .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 4px 14px var(--accent-glow); }
     .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
+    .btn-stripe {
+      background: #635bff; color: #ffffff; box-shadow: 0 4px 14px rgba(99, 91, 255, 0.3);
+    }
+    .btn-stripe:hover { background: #534be0; transform: translateY(-1px); }
+
     .btn-theme {
       background: rgba(255, 255, 255, 0.08); color: var(--text-main);
       border: 1px solid var(--bg-card-border); padding: 8px; width: 38px; height: 38px;
@@ -122,11 +129,47 @@
     .dot { width: 10px; height: 10px; border-radius: 50%; }
     .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
 
-    .widget-tabs { display: flex; gap: 8px; }
-    .w-tab { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; background: rgba(255,255,255,0.05); color: var(--text-muted); cursor: pointer; border: 1px solid transparent; transition: var(--transition); }
+    .widget-tabs { display: flex; gap: 6px; }
+    .w-tab { padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.05); color: var(--text-muted); cursor: pointer; border: 1px solid transparent; transition: var(--transition); }
     .w-tab.active { background: var(--accent); color: #fff; }
 
-    .preview-box { background: var(--bg-main); border-radius: 12px; padding: 20px; min-height: 240px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 1px dashed var(--bg-card-border); }
+    .preview-container { border-radius: 12px; transition: var(--transition); overflow: hidden; }
+
+    .preview-box.style-trade {
+      background: linear-gradient(145deg, #181308 0%, #0d0a04 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3); padding: 24px; text-align: left;
+    }
+    .style-trade .badge {
+      background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.3); display: inline-block; margin-bottom: 12px;
+    }
+    .style-trade h4 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .style-trade p { font-size: 0.85rem; color: #d1d5db; margin-bottom: 16px; }
+    .style-trade .demo-btn { background: #f59e0b; color: #000; font-weight: 700; border-radius: 6px; padding: 8px 16px; border: none; cursor: pointer; }
+
+    .preview-box.style-auto {
+      background: linear-gradient(145deg, #1f0b0d 0%, #0d0405 100%);
+      border: 1px solid rgba(239, 68, 68, 0.3); padding: 24px; text-align: left;
+    }
+    .style-auto .badge {
+      background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(239, 68, 68, 0.3); display: inline-block; margin-bottom: 12px;
+    }
+    .style-auto h4 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .style-auto p { font-size: 0.85rem; color: #e5e7eb; margin-bottom: 16px; }
+    .style-auto .demo-btn { background: #ef4444; color: #fff; font-weight: 700; border-radius: 6px; padding: 8px 16px; border: none; cursor: pointer; }
+
+    .preview-box.style-clean {
+      background: linear-gradient(145deg, #120b29 0%, #080414 100%);
+      border: 1px solid rgba(168, 85, 247, 0.3); padding: 24px; text-align: left;
+    }
+    .style-clean .badge {
+      background: rgba(168, 85, 247, 0.15); color: #a855f7; font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(168, 85, 247, 0.3); display: inline-block; margin-bottom: 12px;
+    }
+    .style-clean h4 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .style-clean p { font-size: 0.85rem; color: #c084fc; margin-bottom: 16px; }
+    .style-clean .demo-btn { background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%); color: #fff; font-weight: 700; border-radius: 999px; padding: 8px 18px; border: none; cursor: pointer; }
 
     .estimator-section { padding: 80px 0; }
     .section-head { text-align: center; max-width: 600px; margin: 0 auto 50px; }
@@ -183,6 +226,13 @@
     .form-control { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--bg-card-border); background: var(--bg-main); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: var(--transition); }
     .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
 
+    .direct-contact {
+      text-align: center; margin-top: 24px; padding-top: 20px;
+      border-top: 1px dashed var(--bg-card-border); font-size: 0.9rem; color: var(--text-muted);
+    }
+
+    .direct-contact a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
     footer { border-top: 1px solid var(--bg-card-border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
 
     @media (max-width: 900px) {
@@ -235,17 +285,19 @@
             <span class="dot dot-green"></span>
           </div>
           <div class="widget-tabs">
-            <button class="w-tab active" onclick="switchDemo('trade', event)">Trades Site</button>
-            <button class="w-tab" onclick="switchDemo('auto', event)">Auto Repair</button>
-            <button class="w-tab" onclick="switchDemo('clean', event)">Modern Dark</button>
+            <button class="w-tab active" onclick="switchDemoStyle('trade', event)">Trades Style</button>
+            <button class="w-tab" onclick="switchDemoStyle('auto', event)">Auto Repair</button>
+            <button class="w-tab" onclick="switchDemoStyle('clean', event)">Modern Dark</button>
           </div>
         </div>
-        <div class="preview-box" id="demoPreview">
-          <h4 id="demoTitle" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;">🔨 Apex Tower & Rigging</h4>
-          <p id="demoDesc" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-            "Fast, reliable structural rigging & safety solutions. Request a field quote today."
-          </p>
-          <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Request Service</button>
+
+        <div id="demoContainer" class="preview-container">
+          <div class="preview-box style-trade" id="demoBox">
+            <span class="badge" id="demoBadge">🔨 CERTIFIED TRADE CONTRACTOR</span>
+            <h4 id="demoTitle">Apex Tower & Structural Rigging</h4>
+            <p id="demoDesc">Heavy-duty structural rigging, antenna installation, and industrial safety compliance in Alberta.</p>
+            <button class="demo-btn" id="demoBtn">Request Field Quote →</button>
+          </div>
         </div>
       </div>
     </section>
@@ -332,8 +384,11 @@
               <div class="price-label">Estimated Total</div>
               <div class="price-num" id="totalPrice">$299</div>
             </div>
-            <a href="#order" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px;">
-              Lock In Estimate & Order
+            <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="stripeBtn" target="_blank" class="btn btn-stripe" style="width: 100%; justify-content: center; padding: 14px; font-size: 0.95rem; margin-bottom: 10px;">
+              💳 Pay $299 Base Online via Stripe
+            </a>
+            <a href="#order" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.85rem; background: rgba(255,255,255,0.08); color: var(--text-main); border: 1px solid var(--bg-card-border);">
+              Or Submit Order Details First ↓
             </a>
           </div>
         </div>
@@ -343,7 +398,7 @@
     <section class="contact-section" id="order">
       <div class="section-head">
         <h2>Start Your Website Project</h2>
-        <p style="color: var(--text-muted);">Fill out your details below and we will get back to you within 24 hours.</p>
+        <p style="color: var(--text-muted);">Fill out your details below or email us directly at <a href="mailto:apexbuild@buildwithapex.co" style="color: var(--accent);">apexbuild@buildwithapex.co</a>.</p>
       </div>
 
       <div class="form-box">
@@ -364,15 +419,20 @@
             <label for="projectDetails">Project Notes or Industry Details</label>
             <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your business, preferred colors, or required features..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
-            Submit Order Request
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem; margin-bottom: 12px;">
+            Submit Order Request via Email
           </button>
         </form>
+
+        <div class="direct-contact">
+          Prefer Credit Card or Apple Pay? <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="formStripeLink" target="_blank" style="color: #635bff; font-weight: 700;">Pay via Stripe Secure Checkout</a><br>
+          Or email us directly: <a href="mailto:apexbuild@buildwithapex.co">apexbuild@buildwithapex.co</a>
+        </div>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Apex Build • Custom Web Development • Okotoks & Calgary, AB</p>
+      <p>© 2026 Apex Build • Custom Web Development • <a href="mailto:apexbuild@buildwithapex.co" style="color: inherit; text-decoration: underline;">apexbuild@buildwithapex.co</a> • Okotoks & Calgary, AB</p>
     </footer>
   </div>
 
@@ -385,30 +445,46 @@
       themeBtn.textContent = target === 'light' ? '☀️' : '🌙';
     });
 
-    function switchDemo(type, e) {
+    function switchDemoStyle(type, e) {
       document.querySelectorAll('.w-tab').forEach(t => t.classList.remove('active'));
       if (e && e.target) e.target.classList.add('active');
 
+      const box = document.getElementById('demoBox');
+      const badge = document.getElementById('demoBadge');
       const title = document.getElementById('demoTitle');
       const desc = document.getElementById('demoDesc');
+      const btn = document.getElementById('demoBtn');
 
       if (type === 'trade') {
-        title.textContent = '🔨 Apex Tower & Rigging';
-        desc.textContent = '"Fast, reliable structural rigging & safety solutions. Request a field quote today."';
+        box.className = 'preview-box style-trade';
+        badge.textContent = '🔨 CERTIFIED TRADE CONTRACTOR';
+        title.textContent = 'Apex Tower & Structural Rigging';
+        desc.textContent = 'Heavy-duty structural rigging, antenna installation, and industrial safety compliance in Alberta.';
+        btn.textContent = 'Request Field Quote →';
       } else if (type === 'auto') {
-        title.textContent = '🏎️ Apex Auto & Performance';
-        desc.textContent = '"Specialized automotive service, RSX tuning, and maintenance. Book your inspection online."';
+        box.className = 'preview-box style-auto';
+        badge.textContent = '🏎️ AUTOMOTIVE & PERFORMANCE';
+        title.textContent = 'Apex Performance Auto & Tuning';
+        desc.textContent = 'Precision mechanical repairs, RSX performance alignment, coilovers, and preventative diagnostics.';
+        btn.textContent = 'Book Repair Service →';
       } else if (type === 'clean') {
-        title.textContent = '⚡ Modern Business Portfolio';
-        desc.textContent = '"High-converting agency layout with clean dark mode aesthetics and zero monthly bloat."';
+        box.className = 'preview-box style-clean';
+        badge.textContent = '⚡ DIGITAL AGENCY & PORTFOLIO';
+        title.textContent = 'Modern Tech & SaaS Studio';
+        desc.textContent = 'High-converting agency layouts with clean glassmorphism styling, dark mode, and zero monthly bloat.';
+        btn.textContent = 'Explore Live Demo →';
       }
     }
 
-    let currentTier = { name: 'Single Landing Page', price: 299 };
+    const STRIPE_299_LINK = 'https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400';
+    const STRIPE_599_LINK = 'https://buy.stripe.com/bJeeV640k8xff0j95v14401';
+
+    let currentTier = { name: 'Single Landing Page', price: 299, link: STRIPE_299_LINK };
     let activeAddons = {};
 
     function selectTier(id, price, name, e) {
-      currentTier = { name, price };
+      const link = price === 599 ? STRIPE_599_LINK : STRIPE_299_LINK;
+      currentTier = { name, price, link };
       document.querySelectorAll('[name="baseTier"]').forEach(r => r.closest('.selectable-card').classList.remove('selected'));
       if (e && e.currentTarget) e.currentTarget.classList.add('selected');
       updateSummary();
@@ -439,12 +515,33 @@
       list.innerHTML = html;
       document.getElementById('totalPrice').textContent = '$' + total;
       document.getElementById('selectedPackage').value = `${currentTier.name} + ${Object.keys(activeAddons).length} Addons ($${total} CAD)`;
+
+      const stripeBtn = document.getElementById('stripeBtn');
+      const formStripeLink = document.getElementById('formStripeLink');
+      if (stripeBtn) {
+        stripeBtn.href = currentTier.link;
+        stripeBtn.textContent = `💳 Pay $${currentTier.price} Base Online via Stripe`;
+      }
+      if (formStripeLink) {
+        formStripeLink.href = currentTier.link;
+      }
     }
 
     function handleFormSubmit(e) {
       e.preventDefault();
-      alert('Thank you! Your order request has been submitted. We will contact you shortly.');
+      const clientName = document.getElementById('clientName').value;
+      const clientEmail = document.getElementById('clientEmail').value;
+      const pkg = document.getElementById('selectedPackage').value;
+      const notes = document.getElementById('projectDetails').value;
+
+      const mailtoLink = `mailto:apexbuild@buildwithapex.co?subject=New Website Order Request from ${encodeURIComponent(clientName)}&body=${encodeURIComponent("Name: " + clientName + "\nEmail: " + clientEmail + "\nPackage: " + pkg + "\nNotes: " + notes)}`;
+      window.location.href = mailtoLink;
     }
   </script>
 </body>
 </html>
+EOF
+git add index.html
+git commit -m "Connect live Stripe links to calculator"
+git push
+<!--iteration-->
