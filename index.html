@@ -276,7 +276,7 @@
       .hero-title { font-size: 2.4rem; }
     }
   </style>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3CSVG xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'%3E%3Cpath d='M12 2L2 22h20L12 2zm0 4.5l6.5 13.5H5.5L12 6.5z'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3CSVG xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M22 14L4 84M22 14l20 50M22 28v56M22 28c36 0 36 24 18 24M40 52c22 0 22 32 2 32H22' stroke='%233b82f6' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
   <div class="glow-bg"></div>
@@ -284,12 +284,20 @@
   <div class="container">
     <header>
       <nav>
-        <a href="#" class="logo">
-          <!-- Stylized Apex Vector Brand Icon -->
-          <div class="logo-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5H5.5L12 6.5z"/></svg>
+        <a href="#" class="logo" title="Apex Build">
+          <div class="logo-icon" style="background: transparent; box-shadow: none; width: auto; height: 36px; padding: 0;">
+            <svg viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 36px; width: auto; color: var(--text-main); display: block;">
+              <g stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 22 14 L 4 84" />
+                <path d="M 22 14 L 42 64" />
+                <path d="M 22 28 L 22 84" />
+                <path d="M 22 28 C 58 28 58 52 40 52" />
+                <path d="M 40 52 C 62 52 62 84 42 84 L 22 84" />
+              </g>
+              <text x="80" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="34" fill="currentColor" letter-spacing="-1.5">apex</text>
+              <text x="80" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="34" fill="currentColor" letter-spacing="-1.5">build</text>
+            </svg>
           </div>
-          <span>Apex Build</span>
           <span class="logo-badge">Custom Web</span>
         </a>
         <ul class="nav-links">
@@ -299,7 +307,7 @@
         </ul>
         <div class="nav-actions">
           <button class="btn btn-theme" id="themeToggle" title="Toggle Theme">🌙</button>
-          <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="navStripeBtn" target="_blank" class="btn btn-stripe">💳 Pay Online via Stripe</a>
+          <a href="#estimator" id="navOrderBtn" class="btn btn-primary">🚀 Select Package & Estimate</a>
         </div>
       </nav>
     </header>
@@ -345,23 +353,17 @@
 
     <section class="features-grid" id="features">
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg style="width:24px;height:24px;fill:var(--accent);" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5H5.5L12 6.5z"/></svg>
-        </div>
+        <div class="feature-icon" style="font-size: 1.8rem;">⚡</div>
         <h3>Ultra-Fast Performance</h3>
         <p>Built with lightweight HTML/CSS for instant loading, giving your site top Google search rankings.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg style="width:24px;height:24px;fill:var(--accent);" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
+        <div class="feature-icon" style="font-size: 1.8rem;">💎</div>
         <h3>Zero Monthly Subscriptions</h3>
         <p>Say goodbye to $30/month builder fees. Your site is hosted on free, secure enterprise cloud servers.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">
-          <svg style="width:24px;height:24px;fill:var(--accent);" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        </div>
+        <div class="feature-icon" style="font-size: 1.8rem;">🎯</div>
         <h3>Built To Convert Leads</h3>
         <p>Tailored copywriting, clear call-to-actions, and mobile-friendly contact forms engineered for business growth.</p>
       </div>
@@ -490,10 +492,17 @@
 
     <footer>
       <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px;">
-        <div class="logo-icon" style="width: 28px; height: 28px;">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5H5.5L12 6.5z"/></svg>
-        </div>
-        <span style="font-weight: 800; font-size: 1.1rem; color: var(--text-main); letter-spacing: -0.5px;">Apex Build</span>
+        <svg viewBox="0 0 240 90" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 32px; width: auto; color: var(--text-main);">
+          <g stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 22 14 L 4 84" />
+            <path d="M 22 14 L 42 64" />
+            <path d="M 22 28 L 22 84" />
+            <path d="M 22 28 C 58 28 58 52 40 52" />
+            <path d="M 40 52 C 62 52 62 84 42 84 L 22 84" />
+          </g>
+          <text x="80" y="42" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="34" fill="currentColor" letter-spacing="-1.5">apex</text>
+          <text x="80" y="76" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="34" fill="currentColor" letter-spacing="-1.5">build</text>
+        </svg>
       </div>
       <p>© 2026 Apex Build • Custom Web Development • <a href="mailto:timothyqsommers@gmail.com" style="color: inherit; text-decoration: underline;">timothyqsommers@gmail.com</a> • Okotoks & Calgary, AB</p>
     </footer>
@@ -532,7 +541,7 @@
         btn.textContent = 'Book Repair Service →';
       } else if (type === 'clean') {
         box.className = 'preview-box style-clean';
-        badge.textContent = 'APEX BUILD AGENCY & PORTFOLIO';
+        badge.textContent = '⚡ DIGITAL AGENCY & PORTFOLIO';
         title.textContent = 'Modern Tech & SaaS Studio';
         desc.textContent = 'High-converting agency layouts with clean glassmorphism styling, dark mode, and zero monthly bloat.';
         btn.textContent = 'Explore Live Demo →';
@@ -587,7 +596,6 @@
         stripeBtn.href = currentTier.link;
         stripeBtn.textContent = `💳 Proceed to Stripe Checkout ($${currentTier.price})`;
       }
-      if (navStripeBtn) navStripeBtn.href = currentTier.link;
       if (heroStripeBtn) heroStripeBtn.href = currentTier.link;
     }
 
