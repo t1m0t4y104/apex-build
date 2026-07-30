@@ -1,73 +1,450 @@
-⚡ Apex Build Custom Web
-Estimate Price
-Why Us
-Order Site
-🌙 Build My Site
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Build | Premium Custom Web Design & Development</title>
+  <meta name="description" content="Custom, high-converting websites for local businesses and trades. Zero monthly builder fees, 100% code ownership, and ultra-fast performance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0b0f17;
+      --bg-card: rgba(22, 31, 47, 0.7);
+      --bg-card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --accent-glow: rgba(59, 130, 246, 0.25);
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-🚀 Zero Monthly Platform Fees • 100% Code Ownership
-Custom Websites Built For Real Growth
-We design and build ultra-fast, responsive websites for local trades and businesses. High-converting layouts, zero builder markups, and live deployment in days.
-Calculate Instant Estimate →
+    [data-theme="light"] {
+      --bg-main: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.85);
+      --bg-card-border: rgba(0, 0, 0, 0.08);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-glow: rgba(37, 99, 235, 0.15);
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-Trades Site Auto Repair Modern Dark
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: var(--transition);
+      overflow-x: hidden;
+    }
 
-🔨 Apex Tower & Rigging
-"Fast, reliable structural rigging & safety solutions. Request a field quote today."
-Request Service
+    .glow-bg {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none; z-index: -1;
+      background: 
+        radial-gradient(circle at 15% 20%, var(--accent-glow) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.15) 0%, transparent 40%);
+    }
 
-⚡
-Ultra-Fast Performance
-Built with lightweight HTML/CSS for instant loading, giving your site top Google search rankings.
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-💎
-Zero Monthly Subscriptions
-Say goodbye to $30/month builder fees. Your site is hosted on free, secure enterprise cloud servers.
+    header { position: sticky; top: 16px; z-index: 100; margin-bottom: 40px; }
 
-🎯
-Built To Convert Leads
-Tailored copywriting, clear call-to-actions, and mobile-friendly contact forms engineered for business growth.
+    nav {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 999px;
+      padding: 12px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
 
-Interactive Package Estimator
-Configure your exact requirements to see an instant transparent quote.
+    .logo {
+      font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px;
+      color: var(--text-main); display: flex; align-items: center; gap: 8px; text-decoration: none;
+    }
 
+    .logo-badge {
+      background: var(--accent); color: #fff; font-size: 0.7rem;
+      padding: 2px 8px; border-radius: 12px; font-weight: 700; text-transform: uppercase;
+    }
 
+    .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
+    .nav-links a:hover { color: var(--text-main); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-1. Select Website Type
+    .btn {
+      padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; cursor: pointer; border: none; transition: var(--transition);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
 
-Landing Page
-$299 CAD
-1 High-converting page
-Business Site
-$599 CAD
-Up to 5 custom pages
+    .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 4px 14px var(--accent-glow); }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
 
-2. Choose Optional Add-Ons
+    .btn-theme {
+      background: rgba(255, 255, 255, 0.08); color: var(--text-main);
+      border: 1px solid var(--bg-card-border); padding: 8px; width: 38px; height: 38px;
+      justify-content: center; border-radius: 50%;
+    }
 
-SEO Setup
-+$75 CAD
-Meta tags & Google index
-Contact Form
-+$50 CAD
-Direct email lead delivery
-Cloud Deployment
-+$50 CAD
-Vercel/Netlify SSL setup
+    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; padding: 60px 0 80px; }
 
-Order Breakdown
-Base: Single Landing Page $299 CAD
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--emerald); border-radius: 999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
+    }
 
+    .hero-title { font-size: 3.2rem; line-height: 1.15; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 20px; }
+    .hero-title span { background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; max-width: 520px; }
+    .hero-ctas { display: flex; gap: 16px; align-items: center; }
 
-Estimated Total
-$299
-Lock In Estimate & Order
+    .demo-widget {
+      background: var(--bg-card); border: 1px solid var(--bg-card-border);
+      border-radius: var(--radius); padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
 
-Start Your Website Project
-Fill out your details below and we will get back to you within 24 hours.
+    .widget-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--bg-card-border); margin-bottom: 16px; }
+    .window-dots { display: flex; gap: 6px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
 
-Your Name / Business Name
-Email Address
-Selected Package & Estimate
-Project Notes or Industry Details
-Submit Order Request
-© 2026 Apex Build • Custom Web Development • Okotoks & Calgary, AB
+    .widget-tabs { display: flex; gap: 8px; }
+    .w-tab { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; background: rgba(255,255,255,0.05); color: var(--text-muted); cursor: pointer; border: 1px solid transparent; transition: var(--transition); }
+    .w-tab.active { background: var(--accent); color: #fff; }
+
+    .preview-box { background: var(--bg-main); border-radius: 12px; padding: 20px; min-height: 240px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 1px dashed var(--bg-card-border); }
+
+    .estimator-section { padding: 80px 0; }
+    .section-head { text-align: center; max-width: 600px; margin: 0 auto 50px; }
+    .section-head h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 12px; }
+
+    .estimator-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px;
+      background: var(--bg-card); border: 1px solid var(--bg-card-border);
+      border-radius: 24px; padding: 36px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .option-group { margin-bottom: 28px; }
+    .option-group-title { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+
+    .card-select-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+
+    .selectable-card {
+      border: 1px solid var(--bg-card-border); background: rgba(255,255,255,0.03);
+      padding: 16px; border-radius: 12px; cursor: pointer; transition: var(--transition); position: relative;
+    }
+    .selectable-card:hover { border-color: var(--accent); background: rgba(59, 130, 246, 0.05); }
+    .selectable-card.selected { border-color: var(--accent); background: rgba(59, 130, 246, 0.12); box-shadow: 0 0 0 2px var(--accent); }
+    .selectable-card input { display: none; }
+
+    .card-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .card-price { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
+    .card-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+
+    .estimator-summary {
+      background: var(--bg-main); border-radius: 16px; padding: 28px;
+      display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--bg-card-border);
+    }
+
+    .summary-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--bg-card-border); }
+    .summary-list { list-style: none; margin-bottom: 24px; }
+    .summary-item { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 10px; color: var(--text-muted); }
+    .summary-item span.val { font-weight: 600; color: var(--text-main); }
+
+    .price-display { text-align: center; padding: 20px 0; background: rgba(16, 185, 129, 0.08); border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 20px; }
+    .price-num { font-size: 2.8rem; font-weight: 800; color: var(--emerald); letter-spacing: -1px; }
+    .price-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 60px 0; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--bg-card-border); border-radius: var(--radius); padding: 28px; transition: var(--transition); }
+    .feature-card:hover { transform: translateY(-4px); }
+    .feature-icon { width: 44px; height: 44px; background: rgba(59, 130, 246, 0.1); color: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; font-weight: 700; }
+    .feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.9rem; color: var(--text-muted); }
+
+    .contact-section { padding: 60px 0 100px; }
+    .form-box { background: var(--bg-card); border: 1px solid var(--bg-card-border); border-radius: 24px; padding: 40px; max-width: 650px; margin: 0 auto; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 8px; }
+    .form-control { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--bg-card-border); background: var(--bg-main); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: var(--transition); }
+    .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
+
+    footer { border-top: 1px solid var(--bg-card-border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .hero, .estimator-grid, .features-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-bg"></div>
+
+  <div class="container">
+    <header>
+      <nav>
+        <a href="#" class="logo">
+          <span>⚡ Apex Build</span>
+          <span class="logo-badge">Custom Web</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#estimator">Estimate Price</a></li>
+          <li><a href="#features">Why Us</a></li>
+          <li><a href="#order">Order Site</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="btn btn-theme" id="themeToggle" title="Toggle Theme">🌙</button>
+          <a href="#estimator" class="btn btn-primary">Build My Site</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-badge">🚀 Zero Monthly Platform Fees • 100% Code Ownership</div>
+        <h1 class="hero-title">Custom Websites Built For <span>Real Growth</span></h1>
+        <p class="hero-subtitle">
+          We design and build ultra-fast, responsive websites for local trades and businesses. High-converting layouts, zero builder markups, and live deployment in days.
+        </p>
+        <div class="hero-ctas">
+          <a href="#estimator" class="btn btn-primary" style="padding: 14px 28px; font-size: 1rem;">
+            Calculate Instant Estimate →
+          </a>
+        </div>
+      </div>
+
+      <div class="demo-widget">
+        <div class="widget-header">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="widget-tabs">
+            <button class="w-tab active" onclick="switchDemo('trade', event)">Trades Site</button>
+            <button class="w-tab" onclick="switchDemo('auto', event)">Auto Repair</button>
+            <button class="w-tab" onclick="switchDemo('clean', event)">Modern Dark</button>
+          </div>
+        </div>
+        <div class="preview-box" id="demoPreview">
+          <h4 id="demoTitle" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;">🔨 Apex Tower & Rigging</h4>
+          <p id="demoDesc" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            "Fast, reliable structural rigging & safety solutions. Request a field quote today."
+          </p>
+          <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.8rem;">Request Service</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-grid" id="features">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Ultra-Fast Performance</h3>
+        <p>Built with lightweight HTML/CSS for instant loading, giving your site top Google search rankings.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💎</div>
+        <h3>Zero Monthly Subscriptions</h3>
+        <p>Say goodbye to $30/month builder fees. Your site is hosted on free, secure enterprise cloud servers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Built To Convert Leads</h3>
+        <p>Tailored copywriting, clear call-to-actions, and mobile-friendly contact forms engineered for business growth.</p>
+      </div>
+    </section>
+
+    <section class="estimator-section" id="estimator">
+      <div class="section-head">
+        <h2>Interactive Package Estimator</h2>
+        <p style="color: var(--text-muted);">Configure your exact requirements to see an instant transparent quote.</p>
+      </div>
+
+      <div class="estimator-grid">
+        <div class="estimator-options">
+          <div class="option-group">
+            <div class="option-group-title">1. Select Website Type</div>
+            <div class="card-select-grid">
+              <label class="selectable-card selected" onclick="selectTier('landing', 299, 'Single Landing Page', event)">
+                <input type="radio" name="baseTier" checked>
+                <div class="card-title">Landing Page</div>
+                <div class="card-price">$299 CAD</div>
+                <div class="card-desc">1 High-converting page</div>
+              </label>
+              <label class="selectable-card" onclick="selectTier('business', 599, 'Multi-Page Business Site', event)">
+                <input type="radio" name="baseTier">
+                <div class="card-title">Business Site</div>
+                <div class="card-price">$599 CAD</div>
+                <div class="card-desc">Up to 5 custom pages</div>
+              </label>
+            </div>
+          </div>
+
+          <div class="option-group">
+            <div class="option-group-title">2. Choose Optional Add-Ons</div>
+            <div class="card-select-grid">
+              <label class="selectable-card" id="addon-seo" onclick="toggleAddon('seo', 75, 'SEO & Search Setup')">
+                <div class="card-title">SEO Setup</div>
+                <div class="card-price">+$75 CAD</div>
+                <div class="card-desc">Meta tags & Google index</div>
+              </label>
+              <label class="selectable-card" id="addon-form" onclick="toggleAddon('form', 50, 'Custom Contact Form')">
+                <div class="card-title">Contact Form</div>
+                <div class="card-price">+$50 CAD</div>
+                <div class="card-desc">Direct email lead delivery</div>
+              </label>
+              <label class="selectable-card" id="addon-domain" onclick="toggleAddon('domain', 50, 'Free Cloud Hosting Setup')">
+                <div class="card-title">Cloud Deployment</div>
+                <div class="card-price">+$50 CAD</div>
+                <div class="card-desc">Vercel/Netlify SSL setup</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="estimator-summary">
+          <div>
+            <div class="summary-title">Order Breakdown</div>
+            <ul class="summary-list" id="summaryList">
+              <li class="summary-item">
+                <span>Base: Single Landing Page</span>
+                <span class="val">$299 CAD</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="price-display">
+              <div class="price-label">Estimated Total</div>
+              <div class="price-num" id="totalPrice">$299</div>
+            </div>
+            <a href="#order" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px;">
+              Lock In Estimate & Order
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="order">
+      <div class="section-head">
+        <h2>Start Your Website Project</h2>
+        <p style="color: var(--text-muted);">Fill out your details below and we will get back to you within 24 hours.</p>
+      </div>
+
+      <div class="form-box">
+        <form id="orderForm" onsubmit="handleFormSubmit(event)">
+          <div class="form-group">
+            <label for="clientName">Your Name / Business Name</label>
+            <input type="text" id="clientName" class="form-control" placeholder="e.g. Tim / Okotoks Rigging Co." required>
+          </div>
+          <div class="form-group">
+            <label for="clientEmail">Email Address</label>
+            <input type="email" id="clientEmail" class="form-control" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="selectedPackage">Selected Package & Estimate</label>
+            <input type="text" id="selectedPackage" class="form-control" value="Single Landing Page ($299 CAD)" readonly>
+          </div>
+          <div class="form-group">
+            <label for="projectDetails">Project Notes or Industry Details</label>
+            <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your business, preferred colors, or required features..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem;">
+            Submit Order Request
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Apex Build • Custom Web Development • Okotoks & Calgary, AB</p>
+    </footer>
+  </div>
+
+  <script>
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const target = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', target);
+      themeBtn.textContent = target === 'light' ? '☀️' : '🌙';
+    });
+
+    function switchDemo(type, e) {
+      document.querySelectorAll('.w-tab').forEach(t => t.classList.remove('active'));
+      if (e && e.target) e.target.classList.add('active');
+
+      const title = document.getElementById('demoTitle');
+      const desc = document.getElementById('demoDesc');
+
+      if (type === 'trade') {
+        title.textContent = '🔨 Apex Tower & Rigging';
+        desc.textContent = '"Fast, reliable structural rigging & safety solutions. Request a field quote today."';
+      } else if (type === 'auto') {
+        title.textContent = '🏎️ Apex Auto & Performance';
+        desc.textContent = '"Specialized automotive service, RSX tuning, and maintenance. Book your inspection online."';
+      } else if (type === 'clean') {
+        title.textContent = '⚡ Modern Business Portfolio';
+        desc.textContent = '"High-converting agency layout with clean dark mode aesthetics and zero monthly bloat."';
+      }
+    }
+
+    let currentTier = { name: 'Single Landing Page', price: 299 };
+    let activeAddons = {};
+
+    function selectTier(id, price, name, e) {
+      currentTier = { name, price };
+      document.querySelectorAll('[name="baseTier"]').forEach(r => r.closest('.selectable-card').classList.remove('selected'));
+      if (e && e.currentTarget) e.currentTarget.classList.add('selected');
+      updateSummary();
+    }
+
+    function toggleAddon(id, price, name) {
+      const card = document.getElementById('addon-' + id);
+      if (activeAddons[id]) {
+        delete activeAddons[id];
+        card.classList.remove('selected');
+      } else {
+        activeAddons[id] = { name, price };
+        card.classList.add('selected');
+      }
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const list = document.getElementById('summaryList');
+      let total = currentTier.price;
+      let html = `<li class="summary-item"><span>${currentTier.name}</span><span class="val">$${currentTier.price} CAD</span></li>`;
+
+      for (let key in activeAddons) {
+        total += activeAddons[key].price;
+        html += `<li class="summary-item"><span>+ ${activeAddons[key].name}</span><span class="val">+$${activeAddons[key].price} CAD</span></li>`;
+      }
+
+      list.innerHTML = html;
+      document.getElementById('totalPrice').textContent = '$' + total;
+      document.getElementById('selectedPackage').value = `${currentTier.name} + ${Object.keys(activeAddons).length} Addons ($${total} CAD)`;
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      alert('Thank you! Your order request has been submitted. We will contact you shortly.');
+    }
+  </script>
+</body>
+</html>
