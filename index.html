@@ -1,5 +1,3 @@
-cd ~/Desktop/apex-build
-cat << 'EOF' > index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +71,33 @@ cat << 'EOF' > index.html
 
     .logo {
       font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px;
-      color: var(--text-main); display: flex; align-items: center; gap: 8px; text-decoration: none;
+      color: var(--text-main); display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+
+    /* Vector SVG Logo styling */
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px var(--accent-glow);
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #ffffff;
+    }
+
+    .logo-img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     .logo-badge {
@@ -226,6 +250,18 @@ cat << 'EOF' > index.html
     .form-control { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--bg-card-border); background: var(--bg-main); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: var(--transition); }
     .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
 
+    .success-alert {
+      display: none;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--emerald);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .success-alert h4 { font-size: 1.2rem; color: var(--emerald); margin-bottom: 8px; font-weight: 800; }
+
     .direct-contact {
       text-align: center; margin-top: 24px; padding-top: 20px;
       border-top: 1px dashed var(--bg-card-border); font-size: 0.9rem; color: var(--text-muted);
@@ -240,6 +276,7 @@ cat << 'EOF' > index.html
       .hero-title { font-size: 2.4rem; }
     }
   </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3CSVG xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none'%3E%3Cpath d='M28 12L8 82M28 12l16 48M28 28v54M28 28c30 0 30 22 14 22M42 50c22 0 22 32 4 32H28' stroke='%233b82f6' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
   <div class="glow-bg"></div>
@@ -247,8 +284,19 @@ cat << 'EOF' > index.html
   <div class="container">
     <header>
       <nav>
-        <a href="#" class="logo">
-          <span>⚡ Apex Build</span>
+        <a href="#" class="logo" title="Apex Build">
+          <div class="logo-icon">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 28 12 L 8 82" />
+                <path d="M 28 12 L 44 60" />
+                <path d="M 28 28 L 28 82" />
+                <path d="M 28 28 C 58 28 58 50 42 50" />
+                <path d="M 42 50 C 64 50 64 82 46 82 L 28 82" />
+              </g>
+            </svg>
+          </div>
+          <span>Apex Build</span>
           <span class="logo-badge">Custom Web</span>
         </a>
         <ul class="nav-links">
@@ -258,7 +306,7 @@ cat << 'EOF' > index.html
         </ul>
         <div class="nav-actions">
           <button class="btn btn-theme" id="themeToggle" title="Toggle Theme">🌙</button>
-          <a href="#estimator" class="btn btn-primary">Build My Site</a>
+          <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="navStripeBtn" target="_blank" class="btn btn-stripe">💳 Pay Online via Stripe</a>
         </div>
       </nav>
     </header>
@@ -271,8 +319,8 @@ cat << 'EOF' > index.html
           We design and build ultra-fast, responsive websites for local trades and businesses. High-converting layouts, zero builder markups, and live deployment in days.
         </p>
         <div class="hero-ctas">
-          <a href="#estimator" class="btn btn-primary" style="padding: 14px 28px; font-size: 1rem;">
-            Calculate Instant Estimate →
+          <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="heroStripeBtn" target="_blank" class="btn btn-stripe" style="padding: 14px 28px; font-size: 1rem;">
+            💳 Order Now via Stripe →
           </a>
         </div>
       </div>
@@ -304,17 +352,31 @@ cat << 'EOF' > index.html
 
     <section class="features-grid" id="features">
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
+        <div class="feature-icon">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:26px;height:26px;color:var(--accent);">
+            <g stroke="currentColor" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 28 12 L 8 82" />
+              <path d="M 28 12 L 44 60" />
+              <path d="M 28 28 L 28 82" />
+              <path d="M 28 28 C 58 28 58 50 42 50" />
+              <path d="M 42 50 C 64 50 64 82 46 82 L 28 82" />
+            </g>
+          </svg>
+        </div>
         <h3>Ultra-Fast Performance</h3>
         <p>Built with lightweight HTML/CSS for instant loading, giving your site top Google search rankings.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">💎</div>
+        <div class="feature-icon">
+          <svg style="width:24px;height:24px;fill:var(--accent);" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
         <h3>Zero Monthly Subscriptions</h3>
         <p>Say goodbye to $30/month builder fees. Your site is hosted on free, secure enterprise cloud servers.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎯</div>
+        <div class="feature-icon">
+          <svg style="width:24px;height:24px;fill:var(--accent);" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
         <h3>Built To Convert Leads</h3>
         <p>Tailored copywriting, clear call-to-actions, and mobile-friendly contact forms engineered for business growth.</p>
       </div>
@@ -388,7 +450,7 @@ cat << 'EOF' > index.html
               💳 Pay $299 Base Online via Stripe
             </a>
             <a href="#order" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.85rem; background: rgba(255,255,255,0.08); color: var(--text-main); border: 1px solid var(--bg-card-border);">
-              Or Submit Order Details First ↓
+              Or Submit Custom Notes First ↓
             </a>
           </div>
         </div>
@@ -398,10 +460,20 @@ cat << 'EOF' > index.html
     <section class="contact-section" id="order">
       <div class="section-head">
         <h2>Start Your Website Project</h2>
-        <p style="color: var(--text-muted);">Fill out your details below or email us directly at <a href="mailto:apexbuild@buildwithapex.co" style="color: var(--accent);">apexbuild@buildwithapex.co</a>.</p>
+        <p style="color: var(--text-muted);">Fill out your details below or email us directly at <a href="mailto:timothyqsommers@gmail.com" style="color: var(--accent);">timothyqsommers@gmail.com</a>.</p>
       </div>
 
       <div class="form-box">
+        <div class="success-alert" id="successBanner">
+          <h4>✓ Project Notes Received!</h4>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">
+            Your project details have been sent to <strong>timothyqsommers@gmail.com</strong>. We will review your notes and reach out within 24 hours.
+          </p>
+          <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="successStripeLink" target="_blank" class="btn btn-stripe" style="width: 100%; justify-content: center; padding: 14px; font-weight: 700;">
+            💳 Pay Deposit via Stripe Checkout Now
+          </a>
+        </div>
+
         <form id="orderForm" onsubmit="handleFormSubmit(event)">
           <div class="form-group">
             <label for="clientName">Your Name / Business Name</label>
@@ -419,20 +491,34 @@ cat << 'EOF' > index.html
             <label for="projectDetails">Project Notes or Industry Details</label>
             <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your business, preferred colors, or required features..."></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem; margin-bottom: 12px;">
-            Submit Order Request via Email
+          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem; margin-bottom: 12px;">
+            Submit Project Details (In-Page)
           </button>
         </form>
 
         <div class="direct-contact">
           Prefer Credit Card or Apple Pay? <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="formStripeLink" target="_blank" style="color: #635bff; font-weight: 700;">Pay via Stripe Secure Checkout</a><br>
-          Or email us directly: <a href="mailto:apexbuild@buildwithapex.co">apexbuild@buildwithapex.co</a>
+          Or email us directly: <a href="mailto:timothyqsommers@gmail.com">timothyqsommers@gmail.com</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Apex Build • Custom Web Development • <a href="mailto:apexbuild@buildwithapex.co" style="color: inherit; text-decoration: underline;">apexbuild@buildwithapex.co</a> • Okotoks & Calgary, AB</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px;">
+        <div class="logo-icon" style="width: 28px; height: 28px;">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M 28 12 L 8 82" />
+              <path d="M 28 12 L 44 60" />
+              <path d="M 28 28 L 28 82" />
+              <path d="M 28 28 C 58 28 58 50 42 50" />
+              <path d="M 42 50 C 64 50 64 82 46 82 L 28 82" />
+            </g>
+          </svg>
+        </div>
+        <span style="font-weight: 800; font-size: 1.1rem; color: var(--text-main); letter-spacing: -0.5px;">Apex Build</span>
+      </div>
+      <p>© 2026 Apex Build • Custom Web Development • <a href="mailto:timothyqsommers@gmail.com" style="color: inherit; text-decoration: underline;">timothyqsommers@gmail.com</a> • Okotoks & Calgary, AB</p>
     </footer>
   </div>
 
@@ -469,7 +555,7 @@ cat << 'EOF' > index.html
         btn.textContent = 'Book Repair Service →';
       } else if (type === 'clean') {
         box.className = 'preview-box style-clean';
-        badge.textContent = '⚡ DIGITAL AGENCY & PORTFOLIO';
+        badge.textContent = 'APEX BUILD AGENCY & PORTFOLIO';
         title.textContent = 'Modern Tech & SaaS Studio';
         desc.textContent = 'High-converting agency layouts with clean glassmorphism styling, dark mode, and zero monthly bloat.';
         btn.textContent = 'Explore Live Demo →';
@@ -517,31 +603,52 @@ cat << 'EOF' > index.html
       document.getElementById('selectedPackage').value = `${currentTier.name} + ${Object.keys(activeAddons).length} Addons ($${total} CAD)`;
 
       const stripeBtn = document.getElementById('stripeBtn');
-      const formStripeLink = document.getElementById('formStripeLink');
+      const navStripeBtn = document.getElementById('navStripeBtn');
+      const heroStripeBtn = document.getElementById('heroStripeBtn');
+
       if (stripeBtn) {
         stripeBtn.href = currentTier.link;
-        stripeBtn.textContent = `💳 Pay $${currentTier.price} Base Online via Stripe`;
+        stripeBtn.textContent = `💳 Proceed to Stripe Checkout ($${currentTier.price})`;
       }
-      if (formStripeLink) {
-        formStripeLink.href = currentTier.link;
-      }
+      if (navStripeBtn) navStripeBtn.href = currentTier.link;
+      if (heroStripeBtn) heroStripeBtn.href = currentTier.link;
     }
 
     function handleFormSubmit(e) {
       e.preventDefault();
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.textContent = 'Sending Details...';
+      submitBtn.disabled = true;
+
       const clientName = document.getElementById('clientName').value;
       const clientEmail = document.getElementById('clientEmail').value;
       const pkg = document.getElementById('selectedPackage').value;
       const notes = document.getElementById('projectDetails').value;
 
-      const mailtoLink = `mailto:apexbuild@buildwithapex.co?subject=New Website Order Request from ${encodeURIComponent(clientName)}&body=${encodeURIComponent("Name: " + clientName + "\nEmail: " + clientEmail + "\nPackage: " + pkg + "\nNotes: " + notes)}`;
-      window.location.href = mailtoLink;
+      fetch('https://formsubmit.co/ajax/timothyqsommers@gmail.com', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: clientName,
+          email: clientEmail,
+          package_estimate: pkg,
+          project_notes: notes,
+          _subject: `New Website Inquiry from ${clientName} (${pkg})`
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('successBanner').style.display = 'block';
+      })
+      .catch(error => {
+        document.getElementById('orderForm').style.display = 'none';
+        document.getElementById('successBanner').style.display = 'block';
+      });
     }
   </script>
 </body>
 </html>
-EOF
-git add index.html
-git commit -m "Connect live Stripe links to calculator"
-git push
-<!--iteration-->
