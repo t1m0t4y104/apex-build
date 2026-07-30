@@ -285,7 +285,7 @@
     <header>
       <nav>
         <a href="#" class="logo" title="Apex Build">
-          <img src="apex-logo-transparent.png" alt="Apex Build Logo" class="logo-img">
+          <img src="apex-logo-transparent.png" alt="Apex Build Logo" class="logo-img" style="height: 38px; width: auto; display: block;">
           <span class="logo-badge">Custom Web</span>
         </a>
         <ul class="nav-links">
@@ -574,6 +574,7 @@
         stripeBtn.href = currentTier.link;
         stripeBtn.textContent = `💳 Proceed to Stripe Checkout ($${currentTier.price})`;
       }
+      // navStripeBtn removed
       if (heroStripeBtn) heroStripeBtn.href = currentTier.link;
     }
 
