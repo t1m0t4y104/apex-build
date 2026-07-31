@@ -295,7 +295,7 @@
         </ul>
         <div class="nav-actions">
           <button class="btn btn-theme" id="themeToggle" title="Toggle Theme">🌙</button>
-          <a href="#estimator" id="navOrderBtn" class="btn btn-primary">🚀 Select Package & Estimate</a>
+          <a href="#estimator" id="navOrderBtn" class="btn btn-primary">Get an Estimate</a>
         </div>
       </nav>
     </header>
@@ -422,7 +422,7 @@
               <div class="price-num" id="totalPrice">$299</div>
             </div>
             <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="stripeBtn" target="_blank" class="btn btn-stripe" style="width: 100%; justify-content: center; padding: 14px; font-size: 0.95rem; margin-bottom: 10px;">
-              💳 Pay $299 Base Online via Stripe
+              Checkout ($299)
             </a>
             <a href="#order" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.85rem; background: rgba(255,255,255,0.08); color: var(--text-main); border: 1px solid var(--bg-card-border);">
               Or Submit Custom Notes First ↓
@@ -445,7 +445,7 @@
             Your project details have been sent to <strong>timothyqsommers@gmail.com</strong>. We will review your notes and reach out within 24 hours.
           </p>
           <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="successStripeLink" target="_blank" class="btn btn-stripe" style="width: 100%; justify-content: center; padding: 14px; font-weight: 700;">
-            💳 Pay Deposit via Stripe Checkout Now
+            Pay Deposit via Stripe Checkout Now
           </a>
         </div>
 
@@ -572,7 +572,7 @@
 
       if (stripeBtn) {
         stripeBtn.href = currentTier.link;
-        stripeBtn.textContent = `💳 Proceed to Stripe Checkout ($${currentTier.price})`;
+        stripeBtn.textContent = `Proceed to Stripe Checkout ($${currentTier.price})`;
       }
       // navStripeBtn removed
       if (heroStripeBtn) heroStripeBtn.href = currentTier.link;
