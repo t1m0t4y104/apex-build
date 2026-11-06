@@ -3,618 +3,690 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apex Build | Premium Custom Web Design & Development</title>
-  <meta name="description" content="Custom, high-converting websites for local businesses and trades. Zero monthly builder fees, 100% code ownership, and ultra-fast performance.">
+  <title>Apex Build | Websites That Get Trades Businesses More Calls</title>
+  <meta name="description" content="Fast, mobile-first websites for contractors and local service businesses in Okotoks and Calgary. Free homepage mockup, live in about a week, no monthly builder fees.">
+  <meta property="og:title" content="Apex Build | Websites for Trades & Local Businesses">
+  <meta property="og:description" content="Get a free homepage mockup. Live in about a week. You own it.">
+  <meta property="og:image" content="Icons/apex-logo.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="Icons/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="Icons/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #0b0f17;
-      --bg-card: rgba(22, 31, 47, 0.7);
-      --bg-card-border: rgba(255, 255, 255, 0.1);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --accent: #3b82f6;
-      --accent-hover: #2563eb;
-      --accent-glow: rgba(59, 130, 246, 0.25);
-      --emerald: #10b981;
-      --amber: #f59e0b;
-      --radius: 16px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --bg: #f4f1ea;
+      --bg-2: #ebe6db;
+      --card: #ffffff;
+      --ink: #14161a;
+      --ink-2: #1f2228;
+      --line: rgba(20,22,26,0.12);
+      --line-2: rgba(20,22,26,0.22);
+      --text: #14161a;
+      --muted: #5c5f66;
+      --orange: #ff5a1f;
+      --orange-soft: #ffd2bd;
+      --grad: #ff5a1f;
+      --green: #16a34a;
+      --radius: 10px;
+      --ease: cubic-bezier(.2,.7,.2,1);
+      --grid: linear-gradient(rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px;
     }
-
-    [data-theme="light"] {
-      --bg-main: #f8fafc;
-      --bg-card: rgba(255, 255, 255, 0.85);
-      --bg-card-border: rgba(0, 0, 0, 0.08);
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --accent: #2563eb;
-      --accent-hover: #1d4ed8;
-      --accent-glow: rgba(37, 99, 235, 0.15);
-    }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    h1, h2, h3, .price, summary, .demo-thumb strong { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 125%; font-variation-settings: "wdth" 125; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .grad-text { background: linear-gradient(transparent 60%, var(--orange-soft) 60%, var(--orange-soft) 92%, transparent 92%); padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .78rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .eyebrow::before { content: "// "; color: var(--muted); }
+    h2 { font-size: clamp(1.7rem, 3.8vw, 2.5rem); line-height: 1.1; letter-spacing: -.02em; font-weight: 800; }
+    section { padding: 96px 0; }
+    .section-head { max-width: 660px; margin-bottom: 48px; }
+    .section-head p { color: var(--muted); font-size: 1.06rem; margin-top: 14px; }
+    .center { text-align: center; margin-left: auto; margin-right: auto; }
 
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-main);
-      line-height: 1.6;
-      transition: var(--transition);
-      overflow-x: hidden;
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 24px; border-radius: 8px; font-weight: 700; font-size: .98rem; text-decoration: none; border: 2px solid var(--ink); cursor: pointer; font-family: inherit; transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .15s; }
+    .btn-primary { background: var(--orange); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); }
+    .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+    .btn-primary:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
+    .btn-ghost { background: transparent; color: var(--ink); }
+    .btn-ghost:hover { background: var(--ink); color: var(--bg); }
+    .btn-sm { padding: 10px 16px; font-size: .9rem; box-shadow: 3px 3px 0 var(--ink); }
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(244,241,234,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 2px solid var(--ink); }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: inline-flex; text-decoration: none; border: 2px solid var(--ink); background: #fff; padding: 5px 9px; box-shadow: 3px 3px 0 var(--ink); transition: transform .15s var(--ease), box-shadow .15s var(--ease); }
+    .logo:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 var(--ink); }
+    .lock { display: flex; align-items: center; gap: .32em; font-size: 22px; color: var(--ink); text-decoration: none; }
+    .lock img { height: 1.25em; width: auto; display: block; flex-shrink: 0; }
+    .lock .words { display: flex; flex-direction: column; line-height: .86; }
+    .lock .w1 { font-family: 'Archivo', sans-serif; font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 900; font-size: .68em; text-transform: uppercase; letter-spacing: -.005em; border-bottom: .05em solid var(--ink); padding-bottom: .12em; margin-bottom: .02em; }
+    .lock .w2 { font-family: 'JetBrains Mono', monospace; font-stretch: normal; font-variation-settings: normal; font-weight: 500; font-size: .33em; letter-spacing: .42em; text-transform: uppercase; margin-top: .28em; color: var(--orange); }
+    .badge .lock { font-size: 34px; }
+    .badge { display: inline-flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .badge .box { border: 2.5px solid var(--bg); background: #fff; padding: 8px 12px; box-shadow: 4px 4px 0 var(--orange); }
+    .badge .tag { font-family: 'JetBrains Mono', monospace; font-size: .62rem; letter-spacing: .14em; color: #a9acb3; }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--ink); font-weight: 600; font-size: .95rem; background: linear-gradient(var(--orange), var(--orange)) 0 100% / 0 2px no-repeat; transition: background-size .25s; padding-bottom: 2px; }
+    .nav-links a:hover { background-size: 100% 2px; }
+
+    .hero { position: relative; padding: 80px 0 96px; overflow: hidden; background: var(--grid), var(--bg); border-bottom: 2px solid var(--ink); }
+    .hero::after { content: ""; position: absolute; right: -120px; bottom: -120px; width: 420px; height: 420px; border: 2px dashed rgba(20,22,26,.18); border-radius: 50%; pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+    .pill { display: inline-flex; align-items: center; gap: 9px; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1.5px solid var(--ink); color: var(--ink); font-size: .85rem; font-weight: 600; margin-bottom: 24px; }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(22,163,74,.5); animation: pulse 2s infinite; }
+    @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(22,163,74,0); } 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); } }
+    .hero h1 { font-size: clamp(2.2rem, 5.2vw, 3.8rem); line-height: 1.02; letter-spacing: -.025em; font-weight: 800; margin-bottom: 24px; }
+    .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 540px; margin-bottom: 34px; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+    .checks { display: flex; flex-wrap: wrap; gap: 10px 24px; list-style: none; color: var(--ink); font-size: .93rem; font-weight: 600; }
+    .checks li::before { content: "✓"; color: var(--orange); font-weight: 900; margin-right: 8px; }
+
+    .phone-stage { display: flex; justify-content: center; position: relative; }
+    .phone-stage::before { content: "MOBILE · 390 × 844"; position: absolute; top: -28px; left: 50%; transform: translateX(-50%); font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--muted); letter-spacing: .08em; }
+    .phone { width: 290px; border-radius: 42px; padding: 11px; background: var(--ink); box-shadow: 14px 14px 0 rgba(20,22,26,.12); transform: rotate(2.5deg); animation: float 6s ease-in-out infinite; }
+    @keyframes float { 50% { transform: rotate(2.5deg) translateY(-10px); } }
+    .screen { border-radius: 32px; overflow: hidden; background: #f7f5f0; color: #1b1b1b; height: 560px; position: relative; }
+    .m-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 18px 12px; background: #1d2633; color: #fff; }
+    .m-brand { font-weight: 800; font-size: .9rem; letter-spacing: -.01em; }
+    .m-brand span { color: #f59e0b; }
+    .m-burger { width: 18px; height: 2px; background: #fff; box-shadow: 0 5px 0 #fff, 0 -5px 0 #fff; }
+    .m-hero { padding: 26px 18px 22px; background: linear-gradient(180deg, #1d2633, #2a3646); color: #fff; }
+    .m-tag { display: inline-block; font-size: .62rem; font-weight: 700; background: rgba(245,158,11,.18); color: #fbbf24; padding: 4px 8px; border-radius: 4px; margin-bottom: 10px; letter-spacing: .04em; }
+    .m-hero h3 { font-size: 1.35rem; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 8px; }
+    .m-hero p { font-size: .76rem; color: #cbd5e1; margin-bottom: 16px; }
+    .m-call { display: flex; align-items: center; justify-content: center; gap: 6px; background: #f59e0b; color: #111; font-weight: 800; font-size: .85rem; padding: 12px; border-radius: 10px; }
+    .m-quote { margin-top: 8px; text-align: center; font-size: .74rem; font-weight: 700; padding: 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 10px; }
+    .m-stars { display: flex; align-items: center; gap: 8px; padding: 14px 18px; font-size: .74rem; font-weight: 600; border-bottom: 1px solid #e7e2d8; }
+    .m-stars b { color: #f59e0b; letter-spacing: 1px; }
+    .m-services { padding: 14px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .m-svc { background: #fff; border: 1px solid #e7e2d8; border-radius: 10px; padding: 10px; font-size: .7rem; font-weight: 700; }
+    .m-svc i { display: block; font-style: normal; font-size: 1rem; margin-bottom: 4px; }
+    .m-notif { position: absolute; left: 12px; right: 12px; bottom: 14px; background: #fff; border-radius: 14px; padding: 10px 12px; display: flex; gap: 10px; align-items: center; box-shadow: 0 10px 30px -8px rgba(0,0,0,.35); font-size: .7rem; animation: notif 6s var(--ease) infinite; }
+    .m-notif .ic { width: 28px; height: 28px; border-radius: 8px; background: var(--orange); flex-shrink: 0; display: grid; place-items: center; color: #fff; font-size: .8rem; }
+    .m-notif b { display: block; font-size: .74rem; }
+    @keyframes notif { 0%, 15% { opacity: 0; transform: translateY(20px); } 25%, 85% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(20px); } }
+
+    .strip { background: var(--ink); color: var(--bg); padding: 64px 0; }
+    .strip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+    .strip-item { border-top: 2px solid var(--orange); padding-top: 18px; }
+    .strip-item h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .strip-item p { color: #a9acb3; font-size: .96rem; }
+    .strip-item .num { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--orange); margin-bottom: 10px; }
+
+    .ba { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid var(--ink); aspect-ratio: 16 / 9; background: #fff; user-select: none; box-shadow: 10px 10px 0 var(--ink); }
+    .ba-pane { position: absolute; inset: 0; }
+    .ba-new { clip-path: inset(0 0 0 var(--pos, 50%)); }
+    .ba-label { position: absolute; top: 14px; padding: 5px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 500; letter-spacing: .06em; z-index: 3; border: 1.5px solid var(--ink); }
+    .ba-label.old { left: 14px; background: #fff; color: var(--ink); }
+    .ba-label.new { right: 14px; background: var(--orange); color: var(--ink); }
+    .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--ink); transform: translateX(-50%); z-index: 2; pointer-events: none; }
+    .ba-knob { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: var(--orange); color: var(--ink); border: 2px solid var(--ink); display: flex; align-items: center; justify-content: center; }
+    .ba-knob svg { width: 26px; height: 26px; display: block; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+    .ba input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; z-index: 4; }
+    .old-site { background: #d8d8d8; font-family: "Times New Roman", serif; color: #000; height: 100%; padding: 2.2% 3%; font-size: clamp(8px, 1.3vw, 14px); }
+    .old-site .o-head { background: #003399; color: #ffff66; text-align: center; padding: 1.2% 0; font-size: 2.1em; font-weight: bold; border: 3px ridge #999; }
+    .old-site .o-marquee { background: #ffffcc; border: 1px solid #999; padding: .5% 1%; margin: 1.5% 0; color: red; font-weight: bold; overflow: hidden; white-space: nowrap; }
+    .old-site .o-marquee span { display: inline-block; animation: marq 12s linear infinite; }
+    @keyframes marq { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+    .old-site .o-cols { display: grid; grid-template-columns: 1fr 3fr; gap: 2%; }
+    .old-site .o-side { background: #c0c0c0; border: 2px outset #eee; padding: 4%; line-height: 1.9; }
+    .old-site .o-side a { color: #0000ee; text-decoration: underline; display: block; }
+    .old-site .o-main { background: #fff; border: 1px solid #999; padding: 2.5%; }
+    .old-site .o-main h4 { font-size: 1.3em; margin-bottom: 1.5%; }
+    .old-site .o-main p { margin-bottom: 2%; line-height: 1.35; }
+    .old-site .o-foot { margin-top: 2%; text-align: center; font-size: .85em; color: #333; }
+    .new-site { height: 100%; background: #f7f5f0; color: #1b1b1b; display: flex; flex-direction: column; font-size: clamp(8px, 1.3vw, 14px); font-family: 'Inter', sans-serif; }
+    .n-bar { display: flex; justify-content: space-between; align-items: center; padding: 2% 4%; background: #1d2633; color: #fff; }
+    .n-bar b span { color: #f59e0b; }
+    .n-bar .n-links { display: flex; gap: 2.4em; font-size: .9em; color: #cbd5e1; }
+    .n-bar .n-cta { background: #f59e0b; color: #111; font-weight: 800; padding: .6em 1.2em; border-radius: .5em; font-size: .9em; }
+    .n-hero { flex: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4%; padding: 5% 4%; background: linear-gradient(120deg, #1d2633 0%, #2d3b4f 100%); color: #fff; align-items: center; }
+    .n-hero h4 { font-size: 2.6em; line-height: 1.05; letter-spacing: -.02em; margin-bottom: .4em; }
+    .n-hero p { color: #cbd5e1; margin-bottom: 1.2em; }
+    .n-btns { display: flex; gap: .8em; }
+    .n-btns span { padding: .8em 1.3em; border-radius: .5em; font-weight: 800; font-size: .95em; }
+    .n-btns .a { background: #f59e0b; color: #111; }
+    .n-btns .b { border: 1px solid rgba(255,255,255,.35); }
+    .n-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 1em; padding: 1.4em; }
+    .n-card .s { color: #f59e0b; letter-spacing: 2px; margin-bottom: .4em; }
+    .n-card p { font-size: .9em; margin-bottom: .6em; }
+    .n-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2%; padding: 2.5% 4%; }
+    .n-row div { background: #fff; border: 1px solid #e7e2d8; border-radius: .7em; padding: .9em; font-weight: 700; font-size: .9em; }
+    .ba-caption { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 26px; }
+
+    .demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .demo { background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius); overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: transform .15s var(--ease), box-shadow .15s var(--ease); }
+    .demo:hover { transform: translate(-3px,-3px); box-shadow: 6px 6px 0 var(--ink); }
+    .demo-thumb { height: 190px; position: relative; padding: 22px; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; border-bottom: 2px solid var(--ink); }
+    .demo-thumb small { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+    .demo-thumb strong { font-family: 'Archivo', sans-serif; font-size: 1.45rem; line-height: 1.15; letter-spacing: -.02em; }
+    .demo-thumb .chip { position: absolute; top: 16px; right: 16px; font-family: 'JetBrains Mono', monospace; font-size: .68rem; padding: 4px 9px; border-radius: 4px; background: var(--orange); color: var(--ink); }
+    .t-roof { background: #12161c; background-image: repeating-linear-gradient(-35deg, transparent 0 18px, rgba(255,255,255,.03) 18px 20px); }
+    .t-roof strong { font-family: 'Archivo', sans-serif; font-stretch: 62%; font-variation-settings: "wdth" 62; font-weight: 900; text-transform: uppercase; font-size: 2.2rem; line-height: .9; color: #fff; }
+    .t-roof small { color: #f5a524; }
+    .t-plumb { background: linear-gradient(160deg, #eaf2ff, #d6e6ff); color: #0f2340; }
+    .t-plumb strong { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2.1rem; letter-spacing: -.04em; color: #1f6feb; }
+    .t-plumb small { color: #0f2340; }
+    .t-plumb .chip { background: #ffd23f; }
+    .t-reno { background: #f3eee4; color: #1d1d1b; }
+    .t-reno strong { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 400; font-size: 2.3rem; letter-spacing: -.02em; color: #1f3a2e; }
+    .t-reno small { color: #a8834c; }
+    .t-reno .chip { background: #1f3a2e; color: #f3eee4; }
+    .demo-thumb em { font-style: normal; font-size: .8rem; opacity: .75; margin-top: 6px; }
+    .t-plumb em, .t-reno em { color: inherit; }
+    .yours { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 24px; padding: 20px 24px; border: 2px dashed var(--ink); border-radius: var(--radius); text-decoration: none; background: var(--grid), var(--bg-2); transition: background .2s; }
+    .yours:hover { background: #fff; }
+    .yours span:first-child { color: var(--muted); }
+    .yours b { color: var(--ink); }
+    .yours .go { font-weight: 700; border-bottom: 2px solid var(--orange); }
+    .demo-body { padding: 20px 22px 24px; }
+    .demo-body p { color: var(--muted); font-size: .94rem; margin-bottom: 14px; }
+    .demo-body .go { font-weight: 700; color: var(--ink); font-size: .94rem; border-bottom: 2px solid var(--orange); }
+
+    #how { background: var(--grid), var(--bg-2) !important; border-top: 2px solid var(--ink) !important; border-bottom: 2px solid var(--ink) !important; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; counter-reset: s; }
+    .step { background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius); padding: 30px; position: relative; }
+    .step::before { counter-increment: s; content: "0" counter(s); font-family: 'JetBrains Mono', monospace; display: inline-block; padding: 4px 10px; border-radius: 4px; background: var(--ink); color: var(--orange); font-size: .85rem; margin-bottom: 18px; }
+    .step h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: .95rem; }
+
+    .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); }
+    .why-item { display: block; padding: 28px; background: var(--card); border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); transition: background .2s; }
+    .why-item:hover { background: #fff7f2; }
+    .why-item .ic { font-size: 1.4rem; width: 48px; height: 48px; border-radius: 8px; display: grid; place-items: center; background: var(--bg); border: 1.5px solid var(--ink); margin-bottom: 16px; }
+    .why-item h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .why-item p { color: var(--muted); font-size: .93rem; }
+
+    #pricing { background: var(--bg-2) !important; border-top: 2px solid var(--ink) !important; border-bottom: 2px solid var(--ink) !important; }
+    .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+    .plan { background: var(--card); border: 2px solid var(--ink); border-radius: var(--radius); padding: 32px 28px; display: flex; flex-direction: column; position: relative; }
+    .plan.featured { background: var(--ink); color: var(--bg); box-shadow: 8px 8px 0 var(--orange); }
+    .plan.featured .tag { position: absolute; top: -14px; left: 26px; background: var(--orange); color: var(--ink); border: 2px solid var(--ink); font-family: 'JetBrains Mono', monospace; font-size: .7rem; padding: 3px 10px; border-radius: 4px; letter-spacing: .05em; }
+    .plan h3 { font-size: 1.2rem; margin-bottom: 6px; }
+    .plan .desc { color: var(--muted); font-size: .93rem; min-height: 44px; }
+    .plan.featured .desc, .plan.featured .once, .plan.featured .price small { color: #a9acb3; }
+    .price { font-size: 2.7rem; font-weight: 800; letter-spacing: -.03em; margin: 18px 0 2px; }
+    .price small { font-family: 'Inter', sans-serif; font-size: .95rem; color: var(--muted); font-weight: 600; letter-spacing: 0; }
+    .once { color: var(--muted); font-size: .85rem; margin-bottom: 22px; }
+    .plan ul { list-style: none; margin-bottom: 28px; flex: 1; border-top: 1px dashed var(--line-2); padding-top: 16px; }
+    .plan.featured ul { border-top-color: rgba(255,255,255,.2); }
+    .plan li { padding: 6px 0 6px 26px; position: relative; font-size: .95rem; }
+    .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--orange); font-weight: 900; }
+    .plan .btn { width: 100%; }
+    .plan.featured .btn-primary { box-shadow: 4px 4px 0 var(--bg); border-color: var(--bg); }
+    .price-note { text-align: center; color: var(--muted); font-size: .93rem; margin-top: 30px; }
+
+    .faq { max-width: 800px; margin: 0 auto; border-top: 2px solid var(--ink); }
+    details { border-bottom: 1px solid var(--line-2); }
+    summary { list-style: none; cursor: pointer; padding: 22px 44px 22px 0; font-weight: 700; font-size: 1.1rem; position: relative; letter-spacing: -.01em; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border: 1.5px solid var(--ink); border-radius: 6px; display: grid; place-items: center; font-family: 'Inter'; font-size: 1.1rem; transition: transform .25s, background .2s; }
+    details[open] summary::after { transform: translateY(-50%) rotate(45deg); background: var(--orange); }
+    details p { color: var(--muted); padding: 0 0 22px; max-width: 690px; }
+
+    .contact-card { display: grid; grid-template-columns: .9fr 1.1fr; background: var(--card); border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; box-shadow: 10px 10px 0 var(--ink); }
+    .contact-info { padding: 44px; background: var(--ink); color: var(--bg); position: relative; }
+    .contact-info h2 { color: var(--bg); }
+    .contact-info p { color: #a9acb3; margin: 14px 0 26px; }
+    .contact-info ul { list-style: none; display: grid; gap: 14px; margin-bottom: 30px; }
+    .contact-info li { display: flex; gap: 12px; align-items: center; font-size: .96rem; }
+    .contact-info li b { width: 28px; height: 28px; flex-shrink: 0; border-radius: 6px; background: var(--orange); color: var(--ink); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: .8rem; }
+    .contact-info .mail { font-weight: 700; color: var(--orange); text-decoration: none; word-break: break-all; }
+    .contact-info span[style] { color: #a9acb3 !important; }
+    form { padding: 44px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { margin-bottom: 16px; }
+    label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 7px; color: var(--ink); }
+    label .opt { color: var(--muted); font-weight: 500; }
+    input, select, textarea { width: 100%; padding: 13px 15px; border-radius: 8px; border: 1.5px solid var(--line-2); background: var(--bg); color: var(--ink); font: inherit; font-size: .95rem; outline: none; transition: border-color .2s, box-shadow .2s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--ink); box-shadow: 3px 3px 0 var(--orange); }
+    textarea { resize: vertical; min-height: 96px; }
+    .form-btn { width: 100%; margin-top: 6px; }
+    .form-small { color: var(--muted); font-size: .8rem; margin-top: 14px; text-align: center; }
+    .form-msg { display: none; padding: 18px; border-radius: 8px; margin-bottom: 16px; font-size: .95rem; border: 1.5px solid; }
+    .form-msg.ok { display: block; background: #ecfdf3; border-color: var(--green); color: #14532d; }
+    .form-msg.err { display: block; background: #fef2f2; border-color: #dc2626; color: #7f1d1d; }
+    .form-msg.err a { color: #7f1d1d !important; }
+    .hp { position: absolute; left: -9999px; }
+
+    footer { background: var(--ink); color: #a9acb3; padding: 36px 0; margin-top: 96px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; font-size: .88rem; }
+    .foot a { color: var(--bg); }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
     }
 
-    .glow-bg {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-      pointer-events: none; z-index: -1;
-      background: 
-        radial-gradient(circle at 15% 20%, var(--accent-glow) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.15) 0%, transparent 40%);
+    .i{width:1em;height:1em;display:inline-block;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .m-ic { display: block; font-size: 1.1rem; margin-bottom: 4px; color: #b45309; }
+    .why-item .ic .i { font-size: 1.35rem; }
+    .why-item .ic { color: var(--ink); transition: background .2s; }
+    .why-item:hover .ic { background: var(--orange); }
+    .n-row .i { color: #b45309; margin-right: .25em; }
+    .mbar { display: none; }
+
+    @media (max-width: 960px) {
+      .hero-grid, .contact-card { grid-template-columns: 1fr; }
+      .phone-stage { margin-top: 40px; }
+      .strip-grid, .demo-grid, .steps, .pricing { grid-template-columns: 1fr; }
+      .why { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      section { padding: 72px 0; }
+      .pricing { max-width: 460px; margin: 0 auto; }
+      .plan.featured { order: -1; margin-bottom: 8px; }
     }
-
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-    header { position: sticky; top: 16px; z-index: 100; margin-bottom: 40px; }
-
-    nav {
-      background: var(--bg-card);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--bg-card-border);
-      border-radius: 999px;
-      padding: 12px 28px;
-      display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    .logo {
-      font-weight: 800; font-size: 1.25rem; letter-spacing: -0.5px;
-      color: var(--text-main); display: flex; align-items: center; gap: 10px; text-decoration: none;
-    }
-
-    /* Vector SVG Logo styling */
-    .logo-icon {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px var(--accent-glow);
-      flex-shrink: 0;
-    }
-
-    .logo-icon svg {
-      width: 18px;
-      height: 18px;
-      fill: #ffffff;
-    }
-
-    .logo-img {
-      height: 32px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    .logo-badge {
-      background: var(--accent); color: #fff; font-size: 0.7rem;
-      padding: 2px 8px; border-radius: 12px; font-weight: 700; text-transform: uppercase;
-    }
-
-    .nav-links { display: flex; gap: 24px; align-items: center; list-style: none; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
-    .nav-links a:hover { color: var(--text-main); }
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-
-    .btn {
-      padding: 10px 20px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
-      text-decoration: none; cursor: pointer; border: none; transition: var(--transition);
-      display: inline-flex; align-items: center; gap: 8px;
-    }
-
-    .btn-primary { background: var(--accent); color: #ffffff; box-shadow: 0 4px 14px var(--accent-glow); }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
-
-    .btn-stripe {
-      background: #635bff; color: #ffffff; box-shadow: 0 4px 14px rgba(99, 91, 255, 0.3);
-    }
-    .btn-stripe:hover { background: #534be0; transform: translateY(-1px); }
-
-    .btn-theme {
-      background: rgba(255, 255, 255, 0.08); color: var(--text-main);
-      border: 1px solid var(--bg-card-border); padding: 8px; width: 38px; height: 38px;
-      justify-content: center; border-radius: 50%;
-    }
-
-    .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; padding: 60px 0 80px; }
-
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
-      background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3);
-      color: var(--emerald); border-radius: 999px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px;
-    }
-
-    .hero-title { font-size: 3.2rem; line-height: 1.15; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 20px; }
-    .hero-title span { background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 32px; max-width: 520px; }
-    .hero-ctas { display: flex; gap: 16px; align-items: center; }
-
-    .demo-widget {
-      background: var(--bg-card); border: 1px solid var(--bg-card-border);
-      border-radius: var(--radius); padding: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-
-    .widget-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid var(--bg-card-border); margin-bottom: 16px; }
-    .window-dots { display: flex; gap: 6px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
-
-    .widget-tabs { display: flex; gap: 6px; }
-    .w-tab { padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; background: rgba(255,255,255,0.05); color: var(--text-muted); cursor: pointer; border: 1px solid transparent; transition: var(--transition); }
-    .w-tab.active { background: var(--accent); color: #fff; }
-
-    .preview-container { border-radius: 12px; transition: var(--transition); overflow: hidden; }
-
-    .preview-box.style-trade {
-      background: linear-gradient(145deg, #181308 0%, #0d0a04 100%);
-      border: 1px solid rgba(245, 158, 11, 0.3); padding: 24px; text-align: left;
-    }
-    .style-trade .badge {
-      background: rgba(245, 158, 11, 0.15); color: #f59e0b; font-size: 0.7rem; font-weight: 700;
-      padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.3); display: inline-block; margin-bottom: 12px;
-    }
-    .style-trade h4 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .style-trade p { font-size: 0.85rem; color: #d1d5db; margin-bottom: 16px; }
-    .style-trade .demo-btn { background: #f59e0b; color: #000; font-weight: 700; border-radius: 6px; padding: 8px 16px; border: none; cursor: pointer; }
-
-    .preview-box.style-auto {
-      background: linear-gradient(145deg, #1f0b0d 0%, #0d0405 100%);
-      border: 1px solid rgba(239, 68, 68, 0.3); padding: 24px; text-align: left;
-    }
-    .style-auto .badge {
-      background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 0.7rem; font-weight: 700;
-      padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(239, 68, 68, 0.3); display: inline-block; margin-bottom: 12px;
-    }
-    .style-auto h4 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .style-auto p { font-size: 0.85rem; color: #e5e7eb; margin-bottom: 16px; }
-    .style-auto .demo-btn { background: #ef4444; color: #fff; font-weight: 700; border-radius: 6px; padding: 8px 16px; border: none; cursor: pointer; }
-
-    .preview-box.style-clean {
-      background: linear-gradient(145deg, #120b29 0%, #080414 100%);
-      border: 1px solid rgba(168, 85, 247, 0.3); padding: 24px; text-align: left;
-    }
-    .style-clean .badge {
-      background: rgba(168, 85, 247, 0.15); color: #a855f7; font-size: 0.7rem; font-weight: 700;
-      padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(168, 85, 247, 0.3); display: inline-block; margin-bottom: 12px;
-    }
-    .style-clean h4 { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
-    .style-clean p { font-size: 0.85rem; color: #c084fc; margin-bottom: 16px; }
-    .style-clean .demo-btn { background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%); color: #fff; font-weight: 700; border-radius: 999px; padding: 8px 18px; border: none; cursor: pointer; }
-
-    .estimator-section { padding: 80px 0; }
-    .section-head { text-align: center; max-width: 600px; margin: 0 auto 50px; }
-    .section-head h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 12px; }
-
-    .estimator-grid {
-      display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px;
-      background: var(--bg-card); border: 1px solid var(--bg-card-border);
-      border-radius: 24px; padding: 36px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    }
-
-    .option-group { margin-bottom: 28px; }
-    .option-group-title { font-size: 1rem; font-weight: 700; margin-bottom: 14px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
-
-    .card-select-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-
-    .selectable-card {
-      border: 1px solid var(--bg-card-border); background: rgba(255,255,255,0.03);
-      padding: 16px; border-radius: 12px; cursor: pointer; transition: var(--transition); position: relative;
-    }
-    .selectable-card:hover { border-color: var(--accent); background: rgba(59, 130, 246, 0.05); }
-    .selectable-card.selected { border-color: var(--accent); background: rgba(59, 130, 246, 0.12); box-shadow: 0 0 0 2px var(--accent); }
-    .selectable-card input { display: none; }
-
-    .card-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-    .card-price { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
-    .card-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
-
-    .estimator-summary {
-      background: var(--bg-main); border-radius: 16px; padding: 28px;
-      display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--bg-card-border);
-    }
-
-    .summary-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--bg-card-border); }
-    .summary-list { list-style: none; margin-bottom: 24px; }
-    .summary-item { display: flex; justify-content: space-between; font-size: 0.88rem; margin-bottom: 10px; color: var(--text-muted); }
-    .summary-item span.val { font-weight: 600; color: var(--text-main); }
-
-    .price-display { text-align: center; padding: 20px 0; background: rgba(16, 185, 129, 0.08); border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.2); margin-bottom: 20px; }
-    .price-num { font-size: 2.8rem; font-weight: 800; color: var(--emerald); letter-spacing: -1px; }
-    .price-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 60px 0; }
-    .feature-card { background: var(--bg-card); border: 1px solid var(--bg-card-border); border-radius: var(--radius); padding: 28px; transition: var(--transition); }
-    .feature-card:hover { transform: translateY(-4px); }
-    .feature-icon { width: 44px; height: 44px; background: rgba(59, 130, 246, 0.1); color: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 16px; font-weight: 700; }
-    .feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { font-size: 0.9rem; color: var(--text-muted); }
-
-    .contact-section { padding: 60px 0 100px; }
-    .form-box { background: var(--bg-card); border: 1px solid var(--bg-card-border); border-radius: 24px; padding: 40px; max-width: 650px; margin: 0 auto; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 8px; }
-    .form-control { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--bg-card-border); background: var(--bg-main); color: var(--text-main); font-family: inherit; font-size: 0.95rem; outline: none; transition: var(--transition); }
-    .form-control:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
-
-    .success-alert {
-      display: none;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid var(--emerald);
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #fff;
-    }
-    .success-alert h4 { font-size: 1.2rem; color: var(--emerald); margin-bottom: 8px; font-weight: 800; }
-
-    .direct-contact {
-      text-align: center; margin-top: 24px; padding-top: 20px;
-      border-top: 1px dashed var(--bg-card-border); font-size: 0.9rem; color: var(--text-muted);
-    }
-
-    .direct-contact a { color: var(--accent); text-decoration: none; font-weight: 600; }
-
-    footer { border-top: 1px solid var(--bg-card-border); padding: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
-
-    @media (max-width: 900px) {
-      .hero, .estimator-grid, .features-grid { grid-template-columns: 1fr; }
-      .hero-title { font-size: 2.4rem; }
+    @media (max-width: 640px) {
+      .why { grid-template-columns: 1fr; }
+      .ba { aspect-ratio: 4 / 3; box-shadow: 6px 6px 0 var(--ink); }
+      .n-bar .n-links { display: none; }
+      .n-hero { grid-template-columns: 1fr; }
+      .n-card { display: none; }
+      .n-row { grid-template-columns: 1fr 1fr; }
+      .old-site .o-cols { grid-template-columns: 1fr 2fr; }
+      .row { grid-template-columns: 1fr; }
+      form, .contact-info { padding: 28px 22px; }
+      .contact-card { box-shadow: 6px 6px 0 var(--ink); }
+      .hero { padding: 48px 0 80px; }
+      .phone { width: 260px; }
+      .screen { height: 500px; }
+      nav .btn-sm { padding: 9px 13px; font-size: .85rem; }
+      body { padding-bottom: 76px; }
+      footer { margin-top: 72px; }
+      .mbar { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60; }
+      .mbar .btn { width: 100%; }
     }
   </style>
-  <link rel="icon" type="image/png" href="Icons/apex-header-logo.png">
 </head>
 <body>
-  <div class="glow-bg"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.6-2.4 1.5a12 12 0 0 0 5.5 5.5l1.5-2.4 4.6 1.8V18a2.5 2.5 0 0 1-2.5 2.5C10.2 20.5 3.5 13.8 3.5 6A2.5 2.5 0 0 1 5 3.5z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3.5 21 11"/><path d="M5.5 9v11.5h13V9"/><path d="M10 20.5V15h4v5.5"/></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 5.5a4.5 4.5 0 0 0-5.8 5.8L3.5 16.5l4 4 5.2-5.2a4.5 4.5 0 0 0 5.8-5.8l-2.8 2.8-2.8-.7-.7-2.8z"/></symbol><symbol id="i-hail" viewBox="0 0 24 24"><path d="M7 15.5a4 4 0 1 1 1-7.9A6 6 0 0 1 19.5 10a3 3 0 0 1-.5 5.5z"/><circle cx="8.5" cy="19.5" r=".9"/><circle cx="12.5" cy="20.5" r=".9"/><circle cx="16.5" cy="19.5" r=".9"/></symbol><symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 3s6.5 6.6 6.5 11.2a6.5 6.5 0 0 1-13 0C5.5 9.6 12 3 12 3z"/></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8.5h11a3 3 0 1 0-3-3"/><path d="M3 12.5h15a3 3 0 1 1-3 3"/><path d="M3 16.5h7"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20.5 20.5-4.8-4.8"/></symbol><symbol id="i-smartphone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2.5 4.5 13.5h6.5l-1 8 8.5-11H12z"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4.5"/><path d="m11.2 12.3 9.3-9.3"/><path d="m17 6.5 3 3"/><path d="m14.5 9 2 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.2a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 19.5 6v5.5c0 4.8-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.7-7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21a6 6 0 0 0 6-6c0-4.5-3.5-6.5-4.5-11-2 2.5-2.5 4.5-2.5 6-1-.8-1.8-1.8-2-3-1.5 2-3 4.2-3 8a6 6 0 0 0 6 6z"/></symbol><symbol id="i-thermo" viewBox="0 0 24 24"><path d="M10 13.5V5a2 2 0 0 1 4 0v8.5a4 4 0 1 1-4 0z"/><path d="M12 17v-4"/></symbol><symbol id="i-bath" viewBox="0 0 24 24"><path d="M3.5 12h17v2.5a5 5 0 0 1-5 5h-7a5 5 0 0 1-5-5z"/><path d="M6 12V6a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19.5 6 21M17 19.5l1 1.5"/></symbol><symbol id="i-hammer" viewBox="0 0 24 24"><path d="M13.5 6.5 16 4l4 4-2.5 2.5"/><path d="m11 9 4 4"/><path d="M13 7 4 16a2.1 2.1 0 0 0 3 3l9-9"/></symbol><symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3.5 16.5 16.5 3.5l4 4-13 13z"/><path d="m7.5 12.5 1.8 1.8M10.5 9.5l1.8 1.8M13.5 6.5l1.8 1.8"/></symbol><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19.5C5 10.5 10.5 5 20 4c-.8 9.5-6.5 15.5-15 15.5z"/><path d="m5 19.5 8-8"/></symbol><symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="m8.5 7 1.5-3h4l1.5 3"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol><symbol id="i-pipe" viewBox="0 0 24 24"><path d="M3 8h8a3 3 0 0 1 3 3v9.5"/><path d="M3 12h7v8.5"/><path d="M1.5 6.5v7M8.5 18.5h7"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol><symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 7.5C6.5 8.5 5 10.5 5 13.5V17h4.5v-4.5H7c0-2 .9-3.2 2.5-3.8zM19 7.5c-3 1-4.5 3-4.5 6V17H19v-4.5h-2.5c0-2 .9-3.2 2.5-3.8z"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 21.5 20h-19z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6"/></symbol></defs></svg>
 
-  <div class="container">
-    <header>
-      <nav>
-        <a href="#" class="logo" title="Apex Build">
-          <img src="Icons/apex-build-logo-gradient.png" alt="Apex Build Logo" class="logo-img" style="height: 40px; width: auto; display: block;">
-          <span class="logo-badge">Custom Web</span>
-        </a>
-        <ul class="nav-links">
-          <li><a href="#estimator">Estimate Price</a></li>
-          <li><a href="#features">Why Us</a></li>
-          <li><a href="#order">Order Site</a></li>
-        </ul>
-        <div class="nav-actions">
-          <button class="btn btn-theme" id="themeToggle" title="Toggle Theme">🌙</button>
-          <a href="#estimator" id="navOrderBtn" class="btn btn-primary">Get an Estimate</a>
-        </div>
-      </nav>
-    </header>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo" aria-label="Apex Build home"><span class="lock"><img src="Icons/apex-mark-orange.png" alt="" width="35" height="30"><span class="words"><span class="w1">Apex</span><span class="w2">Build</span></span></span></a>
+      <ul class="nav-links">
+        <li><a href="#work">Examples</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary btn-sm">Free mockup</a>
+    </nav>
+  </div>
+</header>
 
-    <section class="hero">
-      <div class="hero-left">
-        <div class="hero-badge">🚀 Zero Monthly Platform Fees • 100% Code Ownership</div>
-        <h1 class="hero-title">Custom Websites Built For <span>Real Growth</span></h1>
-        <p class="hero-subtitle">
-          We design and build ultra-fast, responsive websites for local trades and businesses. High-converting layouts, zero builder markups, and live deployment in days.
-        </p>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="pill"><span class="dot"></span>Now taking projects in Okotoks &amp; Calgary</div>
+        <h1>Websites that get <span class="grad-text">trades businesses</span> more calls.</h1>
+        <p class="hero-sub">Fast, mobile-first websites for contractors and local service businesses. See your new homepage before you spend a dollar. If you don't love it, you walk away.</p>
         <div class="hero-ctas">
-          <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="heroStripeBtn" target="_blank" class="btn btn-stripe" style="padding: 14px 28px; font-size: 1rem;">
-            Order Now via Stripe →
-          </a>
+          <a href="#contact" class="btn btn-primary">Get my free mockup →</a>
+          <a href="#work" class="btn btn-ghost">See examples</a>
         </div>
+        <ul class="checks">
+          <li>Live in about a week</li>
+          <li>No monthly builder fees</li>
+          <li>You own everything</li>
+        </ul>
       </div>
-
-      <div class="demo-widget">
-        <div class="widget-header">
-          <div class="window-dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-          </div>
-          <div class="widget-tabs">
-            <button class="w-tab active" onclick="switchDemoStyle('trade', event)">Trades Style</button>
-            <button class="w-tab" onclick="switchDemoStyle('auto', event)">Auto Repair</button>
-            <button class="w-tab" onclick="switchDemoStyle('clean', event)">Modern Dark</button>
-          </div>
-        </div>
-
-        <div id="demoContainer" class="preview-container">
-          <div class="preview-box style-trade" id="demoBox">
-            <span class="badge" id="demoBadge">🔨 CERTIFIED TRADE CONTRACTOR</span>
-            <h4 id="demoTitle">Apex Tower & Structural Rigging</h4>
-            <p id="demoDesc">Heavy-duty structural rigging, antenna installation, and industrial safety compliance in Alberta.</p>
-            <button class="demo-btn" id="demoBtn">Request Field Quote →</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="features-grid" id="features">
-      <div class="feature-card">
-        <div class="feature-icon" style="font-size: 1.8rem;">⚡</div>
-        <h3>Ultra-Fast Performance</h3>
-        <p>Built with lightweight HTML/CSS for instant loading, giving your site top Google search rankings.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="font-size: 1.8rem;">💎</div>
-        <h3>Zero Monthly Subscriptions</h3>
-        <p>Say goodbye to $30/month builder fees. Your site is hosted on free, secure enterprise cloud servers.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="font-size: 1.8rem;">🎯</div>
-        <h3>Built To Convert Leads</h3>
-        <p>Tailored copywriting, clear call-to-actions, and mobile-friendly contact forms engineered for business growth.</p>
-      </div>
-    </section>
-
-    <section class="estimator-section" id="estimator">
-      <div class="section-head">
-        <h2>Interactive Package Estimator</h2>
-        <p style="color: var(--text-muted);">Configure your exact requirements to see an instant transparent quote.</p>
-      </div>
-
-      <div class="estimator-grid">
-        <div class="estimator-options">
-          <div class="option-group">
-            <div class="option-group-title">1. Select Website Type</div>
-            <div class="card-select-grid">
-              <label class="selectable-card selected" onclick="selectTier('landing', 299, 'Single Landing Page', event)">
-                <input type="radio" name="baseTier" checked>
-                <div class="card-title">Landing Page</div>
-                <div class="card-price">$299 CAD</div>
-                <div class="card-desc">1 High-converting page</div>
-              </label>
-              <label class="selectable-card" onclick="selectTier('business', 599, 'Multi-Page Business Site', event)">
-                <input type="radio" name="baseTier">
-                <div class="card-title">Business Site</div>
-                <div class="card-price">$599 CAD</div>
-                <div class="card-desc">Up to 5 custom pages</div>
-              </label>
+      <div class="phone-stage" aria-hidden="true">
+        <div class="phone">
+          <div class="screen">
+            <div class="m-bar"><span class="m-brand">RIDGELINE <span>ROOFING</span></span><span class="m-burger"></span></div>
+            <div class="m-hero">
+              <span class="m-tag">24/7 EMERGENCY REPAIRS</span>
+              <h3>Roof leaking? We'll be there today.</h3>
+              <p>Repairs, re-roofs and hail claims across Calgary and area.</p>
+              <div class="m-call"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Call now</div>
+              <div class="m-quote">Get a free quote</div>
             </div>
-          </div>
-
-          <div class="option-group">
-            <div class="option-group-title">2. Choose Optional Add-Ons</div>
-            <div class="card-select-grid">
-              <label class="selectable-card" id="addon-seo" onclick="toggleAddon('seo', 75, 'SEO & Search Setup')">
-                <div class="card-title">SEO Setup</div>
-                <div class="card-price">+$75 CAD</div>
-                <div class="card-desc">Meta tags & Google index</div>
-              </label>
-              <label class="selectable-card" id="addon-form" onclick="toggleAddon('form', 50, 'Custom Contact Form')">
-                <div class="card-title">Contact Form</div>
-                <div class="card-price">+$50 CAD</div>
-                <div class="card-desc">Direct email lead delivery</div>
-              </label>
-              <label class="selectable-card" id="addon-domain" onclick="toggleAddon('domain', 50, 'Free Cloud Hosting Setup')">
-                <div class="card-title">Cloud Deployment</div>
-                <div class="card-price">+$50 CAD</div>
-                <div class="card-desc">Vercel/Netlify SSL setup</div>
-              </label>
+            <div class="m-stars"><b>★★★★★</b> Top-rated local roofer</div>
+            <div class="m-services">
+              <div class="m-svc"><svg class="i m-ic" aria-hidden="true"><use href="#i-home"/></svg>Re-roofing</div>
+              <div class="m-svc"><svg class="i m-ic" aria-hidden="true"><use href="#i-wrench"/></svg>Leak repair</div>
+              <div class="m-svc"><svg class="i m-ic" aria-hidden="true"><use href="#i-hail"/></svg>Hail damage</div>
+              <div class="m-svc"><svg class="i m-ic" aria-hidden="true"><use href="#i-droplet"/></svg>Eavestroughs</div>
             </div>
-          </div>
-        </div>
-
-        <div class="estimator-summary">
-          <div>
-            <div class="summary-title">Order Breakdown</div>
-            <ul class="summary-list" id="summaryList">
-              <li class="summary-item">
-                <span>Base: Single Landing Page</span>
-                <span class="val">$299 CAD</span>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="price-display">
-              <div class="price-label">Estimated Total</div>
-              <div class="price-num" id="totalPrice">$299</div>
-            </div>
-            <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="stripeBtn" target="_blank" class="btn btn-stripe" style="width: 100%; justify-content: center; padding: 14px; font-size: 0.95rem; margin-bottom: 10px;">
-              Proceed to Stripe Checkout ($299)
-            </a>
-            <a href="#order" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.85rem; background: rgba(255,255,255,0.08); color: var(--text-main); border: 1px solid var(--bg-card-border);">
-              Or Submit Custom Notes First ↓
-            </a>
+            <div class="m-notif"><span class="ic"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span><div><b>New quote request</b>"Hail damage on the north side, can you come Thursday?"</div></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="contact-section" id="order">
-      <div class="section-head">
-        <h2>Start Your Website Project</h2>
-        <p style="color: var(--text-muted);">Fill out your details below or email us directly at <a href="mailto:timothyqsommers@gmail.com" style="color: var(--accent);">timothyqsommers@gmail.com</a>.</p>
+  <!-- PROBLEM -->
+  <div class="strip">
+    <div class="wrap strip-grid">
+      <div class="strip-item reveal">
+        <div class="num">01</div>
+        <h3>Customers judge you in seconds</h3>
+        <p>An outdated site, or no site at all, makes a solid business look like a risk. They just call the next name on Google.</p>
       </div>
-
-      <div class="form-box">
-        <div class="success-alert" id="successBanner">
-          <h4>✓ Project Notes Received!</h4>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;">
-            Your project details have been sent to <strong>timothyqsommers@gmail.com</strong>. We will review your notes and reach out within 24 hours.
-          </p>
-          <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="successStripeLink" target="_blank" class="btn btn-stripe" style="width: 100%; justify-content: center; padding: 14px; font-weight: 700;">
-            Pay Deposit via Stripe Checkout Now
-          </a>
-        </div>
-
-        <form id="orderForm" onsubmit="handleFormSubmit(event)">
-          <div class="form-group">
-            <label for="clientName">Your Name / Business Name</label>
-            <input type="text" id="clientName" class="form-control" placeholder="e.g. Tim / Okotoks Rigging Co." required>
-          </div>
-          <div class="form-group">
-            <label for="clientEmail">Email Address</label>
-            <input type="email" id="clientEmail" class="form-control" placeholder="you@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="selectedPackage">Selected Package & Estimate</label>
-            <input type="text" id="selectedPackage" class="form-control" value="Single Landing Page ($299 CAD)" readonly>
-          </div>
-          <div class="form-group">
-            <label for="projectDetails">Project Notes or Industry Details</label>
-            <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your business, preferred colors, or required features..."></textarea>
-          </div>
-          <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 14px; font-size: 1rem; margin-bottom: 12px;">
-            Submit Project Details (In-Page)
-          </button>
-        </form>
-
-        <div class="direct-contact">
-          Prefer Credit Card or Apple Pay? <a href="https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400" id="formStripeLink" target="_blank" style="color: #635bff; font-weight: 700;">Pay via Stripe Secure Checkout</a><br>
-          Or email us directly: <a href="mailto:timothyqsommers@gmail.com">timothyqsommers@gmail.com</a>
-        </div>
+      <div class="strip-item reveal">
+        <div class="num">02</div>
+        <h3>Most searches happen on a phone</h3>
+        <p>If your site is slow or tiny on mobile, people leave before they find your number. Tap-to-call should be one thumb away.</p>
       </div>
-    </section>
-
-    <footer>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px;">
-        <img src="Icons/apex-build-logo-gradient.png" alt="Apex Build Logo" style="height: 30px; width: auto; display: block;">
-      
-      <p>© 2026 Apex Build • Custom Web Development • <a href="mailto:timothyqsommers@gmail.com" style="color: inherit; text-decoration: underline;">timothyqsommers@gmail.com</a> • Okotoks & Calgary, AB</p>
-    </footer>
+      <div class="strip-item reveal">
+        <div class="num">03</div>
+        <h3>Builders nickel-and-dime you</h3>
+        <p>DIY site builders charge every month, forever, and the site still isn't really yours. We build it once and hand you the keys.</p>
+      </div>
+    </div>
   </div>
 
-  <script>
-    const themeBtn = document.getElementById('themeToggle');
-    themeBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const target = current === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', target);
-      themeBtn.textContent = target === 'light' ? '☀️' : '🌙';
-    });
+  <!-- BEFORE / AFTER -->
+  <section id="before-after">
+    <div class="wrap">
+      <div class="section-head center" style="text-align:center">
+        <div class="eyebrow">Before &amp; after</div>
+        <h2>Same business. <span class="grad-text">Very different first impression.</span></h2>
+        <p>Drag the slider. Which one would you call?</p>
+      </div>
+      <div class="ba reveal" id="ba">
+        <div class="ba-pane">
+          <div class="old-site">
+            <div class="o-head">*** Ridgeline Roofing ***</div>
+            <div class="o-marquee"><span>!!! WELCOME TO OUR WEB SITE !!! Call for a FREE estimate !!! Best viewed in Internet Explorer 6.0 !!!</span></div>
+            <div class="o-cols">
+              <div class="o-side"><a>Home</a><a>About Us</a><a>Services</a><a>Photo Gallery</a><a>Guestbook</a><a>Contact</a></div>
+              <div class="o-main">
+                <h4>Welcome!!</h4>
+                <p>Ridgeline Roofing has been serving the area for many years. We do all types of roofing. Shingles, repairs, and more. Please call us for more information about our services and prices.</p>
+                <p>Office hours are Monday to Friday. Please leave a message. Page under construction, check back soon!</p>
+                <p style="color:#666">You are visitor #000417</p>
+              </div>
+            </div>
+            <div class="o-foot">Copyright 2009. All Rights Reserved. Webmaster</div>
+          </div>
+        </div>
+        <div class="ba-pane ba-new">
+          <div class="new-site">
+            <div class="n-bar"><b>RIDGELINE <span>ROOFING</span></b><div class="n-links"><span>Services</span><span>Our work</span><span>Reviews</span><span>Areas</span></div><span class="n-cta"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Call now</span></div>
+            <div class="n-hero">
+              <div>
+                <h4>Roof leaking? We'll be there today.</h4>
+                <p>Re-roofs, leak repair and hail claims across Calgary and area. Licensed, insured, and warrantied.</p>
+                <div class="n-btns"><span class="a">Get a free quote</span><span class="b">See our work</span></div>
+              </div>
+              <div class="n-card"><div class="s">★★★★★</div><p>Your best Google reviews, front and centre, where customers see them first.</p><p style="opacity:.7">Real reviews pulled from your profile</p></div>
+            </div>
+            <div class="n-row"><div><svg class="i" aria-hidden="true"><use href="#i-home"/></svg> Re-roofing</div><div><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg> Leak repair</div><div><svg class="i" aria-hidden="true"><use href="#i-hail"/></svg> Hail damage</div><div><svg class="i" aria-hidden="true"><use href="#i-droplet"/></svg> Eavestroughs</div></div>
+          </div>
+        </div>
+        <span class="ba-label old">BEFORE</span>
+        <span class="ba-label new">AFTER</span>
+        <div class="ba-handle"><span class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5"/><path d="m15 7 5 5-5 5"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+      </div>
+      <p class="ba-caption">Example business. Your redesign is built around your real services, photos and reviews.</p>
+    </div>
+  </section>
 
-    function switchDemoStyle(type, e) {
-      document.querySelectorAll('.w-tab').forEach(t => t.classList.remove('active'));
-      if (e && e.target) e.target.classList.add('active');
+  <!-- WORK -->
+  <section id="work" style="padding-top:20px">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Examples</div>
+        <h2>Click around a finished site.</h2>
+        <p>These are full demo sites for example businesses, built the same way we'd build yours. Open them on your phone too.</p>
+      </div>
+      <div class="demo-grid">
+        <a class="demo reveal" href="demos/roofing.html">
+          <div class="demo-thumb t-roof"><span class="chip">LIVE DEMO</span><small>Roofing · Rugged</small><strong>Ridgeline Roofing</strong><em>Storm alerts, hail-claim steps, material compare</em></div>
+          <div class="demo-body"><p>Dark and bold for an emergency trade. Big tap-to-call, a storm-alert banner, and a tool to compare roofing materials.</p><span class="go">Open demo →</span></div>
+        </a>
+        <a class="demo reveal" href="demos/plumbing.html">
+          <div class="demo-thumb t-plumb"><span class="chip">LIVE DEMO</span><small>Plumbing · Friendly</small><strong>bowcrest</strong><em>"What's wrong?" tool, online booking, price menu</em></div>
+          <div class="demo-body"><p>Bright and approachable. Customers tap their problem to see the likely fix and price, then pick a time to book.</p><span class="go">Open demo →</span></div>
+        </a>
+        <a class="demo reveal" href="demos/renovations.html">
+          <div class="demo-thumb t-reno"><span class="chip">LIVE DEMO</span><small>Renovations · Premium</small><strong>Northwood</strong><em>Case studies, process timeline, project planner</em></div>
+          <div class="demo-body"><p>Calm and high-end for big-ticket work. Project case studies, a clear process, and a step-by-step project planner.</p><span class="go">Open demo →</span></div>
+        </a>
+      </div>
+      <a class="yours reveal" href="#contact"><span><b>Your trade isn't here?</b> Electricians, HVAC, landscaping, concrete, auto, cleaning. We'll mock up your homepage for free.</span><span class="go">Get my free mockup →</span></a>
+    </div>
+  </section>
 
-      const box = document.getElementById('demoBox');
-      const badge = document.getElementById('demoBadge');
-      const title = document.getElementById('demoTitle');
-      const desc = document.getElementById('demoDesc');
-      const btn = document.getElementById('demoBtn');
+  <!-- HOW -->
+  <section id="how" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">How it works</div>
+        <h2>From first call to live site in about a week.</h2>
+        <p>No long meetings and no tech homework. You run your business; we handle the website.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><h3>Free homepage mockup</h3><p>Tell us about your business. Within a couple of days you'll see a real mockup of your new homepage. No cost, no obligation.</p></div>
+        <div class="step reveal"><h3>Approve and send details</h3><p>Like it? Send your logo, a few job photos and your services. Want changes? We revise until it's right.</p></div>
+        <div class="step reveal"><h3>Go live</h3><p>We launch it on your domain, connect your contact form, set up Google basics, and hand you full ownership.</p></div>
+      </div>
+    </div>
+  </section>
 
-      if (type === 'trade') {
-        box.className = 'preview-box style-trade';
-        badge.textContent = '🔨 CERTIFIED TRADE CONTRACTOR';
-        title.textContent = 'Apex Tower & Structural Rigging';
-        desc.textContent = 'Heavy-duty structural rigging, antenna installation, and industrial safety compliance in Alberta.';
-        btn.textContent = 'Request Field Quote →';
-      } else if (type === 'auto') {
-        box.className = 'preview-box style-auto';
-        badge.textContent = '🏎️ AUTOMOTIVE & PERFORMANCE';
-        title.textContent = 'Apex Performance Auto & Tuning';
-        desc.textContent = 'Precision mechanical repairs, RSX performance alignment, coilovers, and preventative diagnostics.';
-        btn.textContent = 'Book Repair Service →';
-      } else if (type === 'clean') {
-        box.className = 'preview-box style-clean';
-        badge.textContent = '⚡ DIGITAL AGENCY & PORTFOLIO';
-        title.textContent = 'Modern Tech & SaaS Studio';
-        desc.textContent = 'High-converting agency layouts with clean glassmorphism styling, dark mode, and zero monthly bloat.';
-        btn.textContent = 'Explore Live Demo →';
+  <!-- WHY -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Why Apex Build</div>
+        <h2>Built for people who'd rather be on the job site.</h2>
+      </div>
+      <div class="why">
+        <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-smartphone"/></svg></div><div><h3>Phone-first design</h3><p>Big tap-to-call buttons, fast loading on job-site data, and quote forms that are easy to fill out with one thumb.</p></div></div>
+        <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></div><div><h3>Seriously fast</h3><p>Hand-built code, no bloated page builder. Fast sites keep visitors around, and Google rewards them.</p></div></div>
+        <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg></div><div><h3>You own it</h3><p>Your domain, your code, your site. No contracts that hold your website hostage.</p></div></div>
+        <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></div><div><h3>Show up locally</h3><p>Every site includes basic search setup: page titles, service-area pages and Google Business Profile tips.</p></div></div>
+        <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></div><div><h3>Leads straight to you</h3><p>Quote requests go straight to your email, with the customer's name, number and job details.</p></div></div>
+        <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-user"/></svg></div><div><h3>A real local contact</h3><p>One person to email or call, not a support ticket queue. Need a change? Just ask.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="section-head center" style="text-align:center">
+        <div class="eyebrow">Pricing</div>
+        <h2>Simple pricing. No surprises.</h2>
+        <p>You only pay once you've seen and approved your mockup.</p>
+      </div>
+      <div class="pricing">
+        <div class="plan reveal">
+          <h3>Starter</h3>
+          <p class="desc">One sharp page that gets the phone ringing.</p>
+          <div class="price">$299 <small>CAD</small></div>
+          <p class="once">One-time</p>
+          <ul>
+            <li>1-page website</li>
+            <li>Tap-to-call &amp; quote form</li>
+            <li>Mobile-first design</li>
+            <li>Basic Google setup</li>
+            <li>Launch on your domain</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-plan="Starter ($299)">Start with a free mockup</a>
+        </div>
+        <div class="plan featured reveal">
+          <span class="tag">MOST POPULAR</span>
+          <h3>Business</h3>
+          <p class="desc">A full site that shows off your work and your services.</p>
+          <div class="price">$599 <small>CAD</small></div>
+          <p class="once">One-time</p>
+          <ul>
+            <li>Up to 5 pages</li>
+            <li>Service &amp; service-area pages</li>
+            <li>Project photo gallery</li>
+            <li>Reviews section</li>
+            <li>Everything in Starter</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" data-plan="Business ($599)">Start with a free mockup</a>
+        </div>
+        <div class="plan reveal">
+          <h3>Care Plan</h3>
+          <p class="desc">Optional. We keep it running so you never have to think about it.</p>
+          <div class="price">$39 <small>/month</small></div>
+          <p class="once">Cancel anytime</p>
+          <ul>
+            <li>Hosting &amp; SSL handled</li>
+            <li>Up to 1 hour of edits a month</li>
+            <li>New photos, prices, hours</li>
+            <li>Uptime &amp; form monitoring</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" data-plan="Care Plan ($39/mo)">Ask about the Care Plan</a>
+        </div>
+      </div>
+      <p class="price-note">Your domain name is about $15–25/year, paid directly to the registrar so it's always in your name.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head center" style="text-align:center">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions we hear a lot.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>Is the mockup really free?</summary><p>Yes. We'll design your homepage and show it to you. If it's not for you, no hard feelings and nothing owed.</p></details>
+        <details><summary>What do you need from me?</summary><p>Your logo (if you have one), a few photos of your work, your list of services and the areas you cover. If you're missing something, we'll help you sort it out.</p></details>
+        <details><summary>Do I have to pay monthly?</summary><p>No. The website is a one-time cost. The Care Plan is optional. Without it, your site is hosted for free and you pay only for your domain.</p></details>
+        <details><summary>I already have a website. Can you redo it?</summary><p>Absolutely. Most of our work is rebuilding old or slow sites. We can keep your domain and email exactly as they are.</p></details>
+        <details><summary>Will I show up on Google?</summary><p>Every site gets the technical basics Google looks for: fast loading, proper titles and descriptions, and pages for your services and areas. Ranking also depends on your Google Business Profile and reviews, and we'll show you how to strengthen both. Nobody can honestly guarantee a #1 spot.</p></details>
+        <details><summary>What if I need changes later?</summary><p>Care Plan clients just email us. Without the plan, small changes are billed at a simple flat rate. Either way, you're never locked out of your own site.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="padding-top:20px">
+    <div class="wrap">
+      <div class="contact-card">
+        <div class="contact-info">
+          <div class="eyebrow">Free homepage mockup</div>
+          <h2>See your new site before you pay a dime.</h2>
+          <p>Fill this out and you'll get a mockup of your new homepage, usually within 1–2 business days.</p>
+          <ul>
+            <li><b>1</b><span>No cost and no obligation</span></li>
+            <li><b>2</b><span>Built around your real business</span></li>
+            <li><b>3</b><span>Only pay if you love it</span></li>
+          </ul>
+          <span style="color:var(--muted);font-size:.9rem">Prefer email?</span><br>
+          <a class="mail" href="mailto:timothyqsommers@gmail.com">timothyqsommers@gmail.com</a>
+        </div>
+        <form id="leadForm" novalidate>
+          <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+          <div class="row">
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" autocomplete="organization" required></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="f-trade">What do you do?</label>
+              <select id="f-trade" name="trade">
+                <option>Roofing</option><option>Plumbing / Heating</option><option>Electrical</option><option>HVAC</option><option>General contracting / Renos</option><option>Landscaping</option><option>Concrete / Paving</option><option>Auto repair</option><option>Cleaning</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="f-plan">Interested in</label>
+              <select id="f-plan" name="plan">
+                <option>Not sure yet</option><option>Starter ($299)</option><option>Business ($599)</option><option>Care Plan ($39/mo)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="f-site">Current website <span class="opt">(if you have one)</span></label><input id="f-site" name="current_website" placeholder="www.example.com"></div>
+          <div class="field"><label for="f-notes">Anything we should know? <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" placeholder="Services you offer, areas you cover, colours you like…"></textarea></div>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+          <button type="submit" class="btn btn-primary form-btn" id="f-submit">Get my free mockup →</button>
+          <p class="form-small">We'll only use your info to send your mockup. No spam.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="badge"><span class="box" aria-label="Apex Build"><span class="lock"><img src="Icons/apex-mark-orange.png" alt="" width="35" height="30"><span class="words"><span class="w1">Apex</span><span class="w2">Build</span></span></span></span><span class="tag">WEB · ALBERTA</span></span>
+    <span>© <span id="yr">2026</span> Apex Build · Websites for trades &amp; local businesses · Okotoks &amp; Calgary, AB</span>
+    <a href="mailto:timothyqsommers@gmail.com">timothyqsommers@gmail.com</a>
+  </div>
+</footer>
+
+<div class="mbar"><a href="#contact" class="btn btn-primary">Get my free mockup →</a></div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Before/after slider
+  const ba = document.getElementById('ba');
+  const range = ba.querySelector('input');
+  const setPos = v => ba.style.setProperty('--pos', v + '%');
+  range.addEventListener('input', e => setPos(e.target.value));
+  setPos(range.value);
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Pricing buttons preselect plan
+  document.querySelectorAll('[data-plan]').forEach(btn => {
+    btn.addEventListener('click', () => { document.getElementById('f-plan').value = btn.dataset.plan; });
+  });
+
+  // Lead form
+  const form = document.getElementById('leadForm');
+  const msg = document.getElementById('formMsg');
+  const btn = document.getElementById('f-submit');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    msg.className = 'form-msg';
+    const required = ['f-name', 'f-biz', 'f-email'];
+    for (const id of required) {
+      const el = document.getElementById(id);
+      if (!el.value.trim() || (el.type === 'email' && !el.checkValidity())) {
+        msg.textContent = 'Please fill in your name, business name and a valid email.';
+        msg.classList.add('err'); el.focus(); return;
       }
     }
-
-    const STRIPE_299_LINK = 'https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400';
-    const STRIPE_599_LINK = 'https://buy.stripe.com/3cI9AM40k4gZ6tN6Xn14400';
-
-    let currentTier = { name: 'Single Landing Page', price: 299, link: STRIPE_299_LINK };
-    let activeAddons = {};
-
-    function selectTier(id, price, name, e) {
-      const link = price === 599 ? STRIPE_599_LINK : STRIPE_299_LINK;
-      currentTier = { name, price, link };
-      document.querySelectorAll('[name="baseTier"]').forEach(r => r.closest('.selectable-card').classList.remove('selected'));
-      if (e && e.currentTarget) e.currentTarget.classList.add('selected');
-      updateSummary();
-    }
-
-    function toggleAddon(id, price, name) {
-      const card = document.getElementById('addon-' + id);
-      if (activeAddons[id]) {
-        delete activeAddons[id];
-        card.classList.remove('selected');
-      } else {
-        activeAddons[id] = { name, price };
-        card.classList.add('selected');
-      }
-      updateSummary();
-    }
-
-    function updateSummary() {
-      const list = document.getElementById('summaryList');
-      let total = currentTier.price;
-      let html = `<li class="summary-item"><span>${currentTier.name}</span><span class="val">$${currentTier.price} CAD</span></li>`;
-
-      for (let key in activeAddons) {
-        total += activeAddons[key].price;
-        html += `<li class="summary-item"><span>+ ${activeAddons[key].name}</span><span class="val">+$${activeAddons[key].price} CAD</span></li>`;
-      }
-
-      list.innerHTML = html;
-      document.getElementById('totalPrice').textContent = '$' + total;
-      document.getElementById('selectedPackage').value = `${currentTier.name} + ${Object.keys(activeAddons).length} Addons ($${total} CAD)`;
-
-      const stripeBtn = document.getElementById('stripeBtn');
-      const navStripeBtn = document.getElementById('navStripeBtn');
-      const heroStripeBtn = document.getElementById('heroStripeBtn');
-
-      if (stripeBtn) {
-        stripeBtn.href = currentTier.link;
-        stripeBtn.textContent = `Proceed to Stripe Checkout ($${currentTier.price})`;
-      }
-      // navStripeBtn removed
-      if (heroStripeBtn) heroStripeBtn.href = currentTier.link;
-    }
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const submitBtn = document.getElementById('submitBtn');
-      submitBtn.textContent = 'Sending Details...';
-      submitBtn.disabled = true;
-
-      const clientName = document.getElementById('clientName').value;
-      const clientEmail = document.getElementById('clientEmail').value;
-      const pkg = document.getElementById('selectedPackage').value;
-      const notes = document.getElementById('projectDetails').value;
-
-      fetch('https://formsubmit.co/ajax/timothyqsommers@gmail.com', {
+    const data = Object.fromEntries(new FormData(form));
+    if (data._honey) return;
+    data._subject = `New mockup request: ${data.business} (${data.trade})`;
+    data._template = 'table';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/timothyqsommers@gmail.com', {
         method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: clientName,
-          email: clientEmail,
-          package_estimate: pkg,
-          project_notes: notes,
-          _subject: `New Website Inquiry from ${clientName} (${pkg})`
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById('orderForm').style.display = 'none';
-        document.getElementById('successBanner').style.display = 'block';
-      })
-      .catch(error => {
-        document.getElementById('orderForm').style.display = 'none';
-        document.getElementById('successBanner').style.display = 'block';
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
       });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || String(out.success) !== 'true') { console.warn('Form service response:', res.status, out); throw new Error(out.message || 'send failed'); }
+      form.querySelectorAll('.field, .row, .form-btn, .form-small').forEach(el => el.style.display = 'none');
+      msg.innerHTML = `<strong>Got it, thanks ${data.name.split(' ')[0]}!</strong><br>Your mockup request is in. You'll hear back within 1–2 business days.`;
+      msg.classList.add('ok');
+    } catch (err) {
+      msg.innerHTML = 'Something went wrong sending that. Please email <a href="mailto:timothyqsommers@gmail.com" >timothyqsommers@gmail.com</a> instead, and sorry about that.';
+      msg.classList.add('err');
+      btn.disabled = false; btn.textContent = 'Get my free mockup →';
     }
-  </script>
+  });
+</script>
 </body>
 </html>
-
-<!--this is a""" comment-->

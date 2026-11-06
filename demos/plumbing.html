@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowcrest Plumbing & Heating | Demo site by Apex Build</title>
+<meta name="description" content="Demo website for a fictional plumbing and heating company, built by Apex Build.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1f6feb">
+<link rel="icon" type="image/png" sizes="64x64" href="../Icons/favicon.png">
+<link rel="apple-touch-icon" href="../Icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0f2340;--blue:#1f6feb;--blue2:#1557c0;--sky:#eaf2ff;--sky2:#d6e6ff;--yellow:#ffd23f;--text:#0f2340;--mute:#5a6b85;--line:#e3eaf5;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Figtree',system-ui,sans-serif;background:#fff;color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.i{width:1em;height:1em;display:inline-block;vertical-align:-.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.demo-bar{background:var(--navy);color:#b9c6da;font-size:.8rem;text-align:center;padding:8px 14px}
+.demo-bar a{color:#ff7a45;font-weight:700;text-decoration:none;margin-left:8px}
+header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-dot{width:40px;height:40px;border-radius:50%;background:var(--blue);display:grid;place-items:center;box-shadow:inset 0 -6px 0 rgba(0,0,0,.12)}
+.logo-dot svg{width:20px;height:20px;fill:#fff}
+.brand-t{font-weight:800;font-size:1.45rem;letter-spacing:-.03em;line-height:.95}
+.brand-t small{display:block;font-size:.7rem;font-weight:600;color:var(--mute);letter-spacing:0}
+.links{display:flex;gap:26px}
+.links a{text-decoration:none;font-weight:600;color:var(--mute);font-size:.95rem}
+.links a:hover{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font-family:inherit;font-size:.98rem;transition:transform .15s,box-shadow .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 8px 20px -8px rgba(31,111,235,.7)}
+.btn-blue:hover{background:var(--blue2)}
+.btn-soft{background:var(--sky);color:var(--blue)}
+.btn-yellow{background:var(--yellow);color:var(--navy)}
+.btn-white{background:#fff;color:var(--navy)}
+.btn-lg{padding:15px 26px;font-size:1.05rem}
+.btn-block{width:100%}
+.show-sm{display:none}
+.hero{background:linear-gradient(180deg,var(--sky) 0%,#fff 100%);padding:64px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:var(--sky2);right:-160px;top:-160px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:7px 14px;border-radius:999px;font-weight:600;font-size:.88rem;margin-bottom:22px;box-shadow:0 4px 14px -6px rgba(15,35,64,.15)}
+.live{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.2)}
+h1{font-size:clamp(2.4rem,5.4vw,3.9rem);line-height:1.04;letter-spacing:-.035em;font-weight:800;margin-bottom:20px}
+.hl{background:linear-gradient(transparent 62%,var(--yellow) 62%)}
+.lead{font-size:1.15rem;color:var(--mute);max-width:520px;margin-bottom:30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+.mini-proof{display:flex;align-items:center;gap:14px;font-size:.95rem}
+.mini-proof small{color:var(--mute)}
+.faces{display:flex}
+.faces span{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:.72rem;font-weight:800;color:#fff;background:var(--blue);border:3px solid #fff;margin-left:-10px}
+.faces span:first-child{margin-left:0;background:#f97316}.faces span:nth-child(2){background:#10b981}.faces span:last-child{background:var(--navy)}
+.book-card{background:#fff;border-radius:24px;padding:26px;box-shadow:0 30px 60px -24px rgba(15,35,64,.35),0 0 0 1px var(--line)}
+.bc-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.bc-head b{font-size:1.25rem;letter-spacing:-.02em}
+.bc-head span{font-size:.82rem;color:var(--mute)}
+.bc-l{display:block;font-size:.82rem;font-weight:700;color:var(--mute);margin:14px 0 8px;text-transform:uppercase;letter-spacing:.06em}
+.pills,.slots{display:flex;flex-wrap:wrap;gap:8px}
+.pills button,.slots button,.days button{font-family:inherit;font-weight:600;font-size:.9rem;border:1.5px solid var(--line);background:#fff;color:var(--text);border-radius:999px;padding:8px 14px;cursor:pointer;transition:all .15s}
+.pills button:hover,.slots button:hover,.days button:hover{border-color:var(--blue)}
+.pills button.on,.slots button.on,.days button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.slots button.full{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.days button{border-radius:14px;padding:8px 0;display:grid;line-height:1.2}
+.days button small{font-size:.7rem;font-weight:600;opacity:.75}
+.days button b{font-size:1.1rem}
+.book-card .btn-block{margin-top:20px}
+.bc-msg{display:none;margin-top:12px;font-size:.88rem;background:var(--sky);color:var(--blue2);padding:10px 12px;border-radius:12px}
+section{padding:88px 0}
+.sec-head{max-width:620px;margin-bottom:40px}
+.sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
+.eyebrow{display:inline-block;background:var(--sky);color:var(--blue);font-weight:700;font-size:.82rem;padding:5px 12px;border-radius:999px;margin-bottom:14px}
+h2{font-size:clamp(2rem,4vw,2.8rem);line-height:1.08;letter-spacing:-.03em;font-weight:800}
+.sec-head p,.area p{color:var(--mute);font-size:1.08rem;margin-top:12px}
+.help{background:#fff}
+.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.symptoms{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.symptoms button{display:flex;align-items:center;gap:12px;text-align:left;font-family:inherit;font-size:1rem;font-weight:700;color:var(--text);background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;transition:all .15s}
+.symptoms button .i{font-size:1.5rem;color:var(--blue);background:var(--sky);border-radius:12px;padding:8px;width:2.4rem;height:2.4rem}
+.symptoms button:hover{border-color:var(--blue);transform:translateY(-2px)}
+.symptoms button.on{border-color:var(--blue);background:var(--sky);box-shadow:0 0 0 3px rgba(31,111,235,.15)}
+.symptoms button.on .i{background:var(--blue);color:#fff}
+.answer{background:var(--navy);color:#fff;border-radius:24px;padding:30px;position:sticky;top:96px;transition:opacity .2s}
+.answer.fade{opacity:.4}
+.ans-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.urg{background:var(--yellow);color:var(--navy);font-weight:800;font-size:.78rem;padding:5px 11px;border-radius:999px}
+.urg.calm{background:#2b4a75;color:#d6e6ff}
+.ans-p{color:#b9c6da}.ans-p b{color:#fff;font-size:1.5rem}
+.answer h3{font-size:1.7rem;letter-spacing:-.02em;margin-bottom:16px}
+.answer dl{display:grid;gap:12px;margin-bottom:22px}
+.answer dt{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:#8fa5c4;font-weight:700}
+.answer dd{color:#e6edf7}
+.prices{background:var(--sky)}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.menu-col{background:#fff;border-radius:24px;padding:30px}
+.menu-col h3{display:flex;align-items:center;gap:10px;font-size:1.3rem;margin-bottom:16px}
+.menu-col h3 .i{color:var(--blue)}
+.item{display:flex;align-items:baseline;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item i{flex:1;border-bottom:2px dotted #c7d3e6;transform:translateY(-4px)}
+.item b{color:var(--blue2);white-space:nowrap}
+.promise{padding:70px 0}
+.promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.p-card{border-radius:24px;padding:28px;background:#fff;border:1.5px solid var(--line)}
+.p-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:var(--yellow);font-size:1.5rem;margin-bottom:16px}
+.p-card h3{font-size:1.2rem;margin-bottom:6px}
+.p-card p{color:var(--mute)}
+.area{background:#fff;padding-top:20px}
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.towns{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.towns span{background:var(--sky);color:var(--navy);font-weight:600;padding:8px 14px;border-radius:999px;font-size:.92rem}
+.map{background:var(--sky);border-radius:28px;padding:20px}
+.map svg{width:100%;height:auto;display:block}
+.ring{fill:none;stroke:var(--blue);stroke-dasharray:4 6}
+.r1{fill:rgba(31,111,235,.12)}.r2{opacity:.6}.r3{opacity:.3}
+.river{fill:none;stroke:#9cc0f5;stroke-width:6;stroke-linecap:round}
+.town circle{fill:#fff;stroke:var(--navy);stroke-width:3}
+.town.hub circle{fill:var(--blue);stroke:#fff}
+.town text{font-family:Figtree;font-size:13px;font-weight:700;fill:var(--navy);text-anchor:middle}
+.reviews{background:var(--sky)}
+.rev-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev-row figure{background:#fff;border-radius:24px;padding:26px}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.who small{display:block;color:var(--mute);font-size:.82rem}
+.av{width:42px;height:42px;border-radius:50%;background:#f97316;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.av.b{background:#10b981}.av.c{background:var(--blue)}
+.stars{color:#f5b301;letter-spacing:2px;margin-bottom:8px}
+.fine{color:var(--mute);font-size:.86rem;margin-top:20px;text-align:center}
+.cta{padding:70px 0}
+.cta-box{background:var(--blue);background-image:radial-gradient(circle at 90% 10%,rgba(255,255,255,.18),transparent 40%);color:#fff;border-radius:32px;padding:48px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.cta-box p{color:#d6e6ff;font-size:1.1rem;margin-top:6px}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:28px 0;font-size:.88rem;color:var(--mute)}
+.foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+footer a{color:var(--blue);font-weight:700}
+.callbar{display:none}
+@media(max-width:960px){.hero-grid,.help-grid,.area-grid,.menu{grid-template-columns:1fr}.links{display:none}.promise-grid,.rev-row{grid-template-columns:1fr}.answer{position:static}}
+@media(max-width:600px){.hide-sm{display:none}.show-sm{display:inline}.symptoms{grid-template-columns:1fr}.cta-box{padding:30px 22px}.days{grid-template-columns:repeat(5,1fr);gap:5px}.days button{font-size:.8rem}body{padding-bottom:74px}.callbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:10px;right:10px;bottom:10px;z-index:40}.callbar .btn{box-shadow:0 10px 24px -6px rgba(15,35,64,.4)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.ab-fab{position:fixed;left:16px;bottom:var(--fab-bottom,16px);z-index:9999;display:flex;align-items:center;gap:4px;padding:4px 5px 4px 4px;background:#14161a;color:#f4f1ea;border-radius:999px;box-shadow:0 10px 30px -8px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08);font:500 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .25s,transform .25s}
+.ab-fab.show{opacity:1;transform:none;pointer-events:auto}
+.ab-icon{width:34px;height:34px;border:0;padding:0;background:none;border-radius:50%;display:block;cursor:default;flex-shrink:0}
+.ab-icon img{width:100%;height:100%;display:block}
+.ab-label{padding:0 8px 0 6px;color:#a9acb3;white-space:nowrap}
+.ab-label b{color:#f4f1ea;font-weight:700}
+.ab-link{color:#f4f1ea;text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap;font-weight:600}
+.ab-link:hover{background:rgba(255,255,255,.1)}
+.ab-cta{background:#ff5a1f;color:#14161a}
+.ab-cta:hover{background:#ff7a45}
+@media(max-width:700px){
+ .ab-fab{padding:4px;gap:0;flex-direction:column-reverse;align-items:flex-start;border-radius:999px}
+ .ab-icon{cursor:pointer;width:40px;height:40px}
+ .ab-label,.ab-link{display:none}
+ .ab-fab.open{padding:8px;gap:6px;border-radius:22px}
+ .ab-fab.open .ab-link{display:block;width:100%;text-align:left}
+ .ab-fab.open .ab-label{display:block;padding:4px 8px 2px}
+}
+
+@media(max-width:600px){:root{--fab-bottom:84px}}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-bath" viewBox="0 0 24 24"><path d="M3.5 12h17v2.5a5 5 0 0 1-5 5h-7a5 5 0 0 1-5-5z"/><path d="M6 12V6a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19.5 6 21M17 19.5l1 1.5"/></symbol><symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 3s6.5 6.6 6.5 11.2a6.5 6.5 0 0 1-13 0C5.5 9.6 12 3 12 3z"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21a6 6 0 0 0 6-6c0-4.5-3.5-6.5-4.5-11-2 2.5-2.5 4.5-2.5 6-1-.8-1.8-1.8-2-3-1.5 2-3 4.2-3 8a6 6 0 0 0 6 6z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3.5 21 11"/><path d="M5.5 9v11.5h13V9"/><path d="M10 20.5V15h4v5.5"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.6-2.4 1.5a12 12 0 0 0 5.5 5.5l1.5-2.4 4.6 1.8V18a2.5 2.5 0 0 1-2.5 2.5C10.2 20.5 3.5 13.8 3.5 6A2.5 2.5 0 0 1 5 3.5z"/></symbol><symbol id="i-pipe" viewBox="0 0 24 24"><path d="M3 8h8a3 3 0 0 1 3 3v9.5"/><path d="M3 12h7v8.5"/><path d="M1.5 6.5v7M8.5 18.5h7"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 19.5 6v5.5c0 4.8-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.7-7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></symbol><symbol id="i-thermo" viewBox="0 0 24 24"><path d="M10 13.5V5a2 2 0 0 1 4 0v8.5a4 4 0 1 1-4 0z"/><path d="M12 17v-4"/></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8.5h11a3 3 0 1 0-3-3"/><path d="M3 12.5h15a3 3 0 1 1-3 3"/><path d="M3 16.5h7"/></symbol></defs></svg>
+<div class="demo-bar">Demo site for a fictional business, built by Apex Build.<a href="../index.html#contact">Get a free mockup for your business →</a></div>
+<header><div class="wrap nav">
+  <a class="brand" href="#"><span class="logo-dot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6.5 6.6 6.5 11.2a6.5 6.5 0 0 1-13 0C5.5 9.6 12 3 12 3z"/></svg></span><span class="brand-t">bowcrest<small>plumbing &amp; heating</small></span></a>
+  <nav class="links"><a href="#help">What's wrong?</a><a href="#prices">Prices</a><a href="#area">Service area</a><a href="#reviews">Reviews</a></nav>
+  <a class="btn btn-blue" href="tel:+14035550187"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> <span class="hide-sm">(403) 555-0187</span><span class="show-sm">Call</span></a>
+</div></header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="status"><span class="live"></span>Open now · Technicians available today</span>
+      <h1>Plumbing &amp; heating, <span class="hl">priced before</span> we start.</h1>
+      <p class="lead">Furnaces, water heaters, drains and leaks for homes across Calgary. You approve a flat price first, so there's no running meter and no surprise bill.</p>
+      <div class="hero-ctas"><a class="btn btn-blue btn-lg" href="#book">Book a visit</a><a class="btn btn-soft btn-lg" href="#help">What's wrong? <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+      <div class="mini-proof"><div class="faces"><span>JM</span><span>RK</span><span>AS</span><span>+</span></div><div><b>4.9 ★</b> from 300+ local homeowners <small>(sample)</small></div></div>
+    </div>
+    <div class="book-card" id="book">
+      <div class="bc-head"><b>Book a visit</b><span>Takes 30 seconds</span></div>
+      <label class="bc-l">What do you need?</label>
+      <div class="pills" id="svcPills"><button class="on">Furnace</button><button>Water heater</button><button>Drain</button><button>Leak</button><button>Other</button></div>
+      <label class="bc-l">Pick a day</label>
+      <div class="days" id="days"></div>
+      <label class="bc-l">Pick a time</label>
+      <div class="slots" id="slots"><button class="on">8–10 am</button><button>10–12</button><button class="full" disabled>12–2 pm</button><button>2–4 pm</button><button>4–6 pm</button></div>
+      <button class="btn btn-blue btn-block" id="bookBtn">Request this time</button>
+      <p class="bc-msg" id="bcMsg">This is a demo, so nothing was booked. On a real site, the owner gets this request instantly.</p>
+    </div>
+  </div>
+</section>
+
+<section id="help" class="help">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">What's wrong?</span><h2>Tap what's happening.</h2><p>We'll tell you the likely cause, what we'd do, and where the price starts.</p></div>
+    <div class="help-grid">
+      <div class="symptoms" id="symptoms">
+        <button class="on" data-k="0"><svg class="i" aria-hidden="true"><use href="#i-thermo"/></svg><span>No heat</span></button>
+        <button data-k="1"><svg class="i" aria-hidden="true"><use href="#i-flame"/></svg><span>No hot water</span></button>
+        <button data-k="2"><svg class="i" aria-hidden="true"><use href="#i-pipe"/></svg><span>Slow or clogged drain</span></button>
+        <button data-k="3"><svg class="i" aria-hidden="true"><use href="#i-droplet"/></svg><span>Leak or drip</span></button>
+        <button data-k="4"><svg class="i" aria-hidden="true"><use href="#i-bath"/></svg><span>Toilet keeps running</span></button>
+        <button data-k="5"><svg class="i" aria-hidden="true"><use href="#i-wind"/></svg><span>Furnace is noisy</span></button>
+      </div>
+      <div class="answer" id="answer">
+        <div class="ans-top"><span class="urg" id="aUrg">Same-day priority</span><span class="ans-p">From <b id="aPrice">$129</b></span></div>
+        <h3 id="aTitle">No heat</h3>
+        <dl>
+          <dt>Most likely</dt><dd id="aCause">A failed igniter, flame sensor or blocked filter.</dd>
+          <dt>What we do</dt><dd id="aFix">Diagnose on the spot, show you the problem, and give a flat price before fixing it.</dd>
+          <dt>Try first</dt><dd id="aTry">Check the thermostat batteries and make sure the furnace switch is on.</dd>
+        </dl>
+        <a class="btn btn-blue" href="#book">Book this fix</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prices" class="prices">
+  <div class="wrap">
+    <div class="sec-head center"><span class="eyebrow">Flat-rate menu</span><h2>Prices, right on the website.</h2><p>Starting prices for common jobs. You'll always get a firm quote before we begin.</p></div>
+    <div class="menu">
+      <div class="menu-col"><h3><svg class="i" aria-hidden="true"><use href="#i-thermo"/></svg> Heating</h3>
+        <div class="item"><span>Service call &amp; diagnosis</span><i></i><b>$129</b></div>
+        <div class="item"><span>Furnace tune-up</span><i></i><b>$149</b></div>
+        <div class="item"><span>Igniter replacement</span><i></i><b>$289</b></div>
+        <div class="item"><span>New high-efficiency furnace</span><i></i><b>from $5,200</b></div>
+      </div>
+      <div class="menu-col"><h3><svg class="i" aria-hidden="true"><use href="#i-droplet"/></svg> Plumbing</h3>
+        <div class="item"><span>Drain cleaning</span><i></i><b>$179</b></div>
+        <div class="item"><span>Toilet repair</span><i></i><b>$149</b></div>
+        <div class="item"><span>Faucet install</span><i></i><b>$199</b></div>
+        <div class="item"><span>40-gal water heater, installed</span><i></i><b>from $1,650</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promise">
+  <div class="wrap promise-grid">
+    <div class="p-card"><span class="p-ic"><svg class="i" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Price first, always</h3><p>You see and approve the price before any work starts.</p></div>
+    <div class="p-card"><span class="p-ic"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>1-year guarantee</h3><p>If our repair fails within a year, we come back and fix it free.</p></div>
+    <div class="p-card"><span class="p-ic"><svg class="i" aria-hidden="true"><use href="#i-home"/></svg></span><h3>Clean, every time</h3><p>Boot covers, drop sheets, and we haul away the old parts.</p></div>
+  </div>
+</section>
+
+<section id="area" class="area">
+  <div class="wrap area-grid">
+    <div><span class="eyebrow">Service area</span><h2>Calgary &amp; nearby towns.</h2><p>Most visits are same or next day inside the city. Outside the city? Call and we'll tell you honestly how soon we can get there.</p>
+      <div class="towns"><span>Calgary NW</span><span>Calgary NE</span><span>Calgary SW</span><span>Calgary SE</span><span>Airdrie</span><span>Cochrane</span><span>Chestermere</span><span>Okotoks</span></div>
+    </div>
+    <div class="map" aria-hidden="true">
+      <svg viewBox="0 0 400 320">
+        <circle cx="200" cy="160" r="140" class="ring r3"/><circle cx="200" cy="160" r="95" class="ring r2"/><circle cx="200" cy="160" r="50" class="ring r1"/>
+        <path d="M60 120c60-10 90 20 140 18s90-40 150-30" class="river"/>
+        <g class="town hub"><circle cx="200" cy="160" r="9"/><text x="200" y="190">CALGARY</text></g>
+        <g class="town"><circle cx="205" cy="45" r="6"/><text x="205" y="33">Airdrie</text></g>
+        <g class="town"><circle cx="85" cy="135" r="6"/><text x="85" y="160">Cochrane</text></g>
+        <g class="town"><circle cx="300" cy="170" r="6"/><text x="300" y="195">Chestermere</text></g>
+        <g class="town"><circle cx="215" cy="285" r="6"/><text x="215" y="310">Okotoks</text></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="reviews">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Reviews</span><h2>Neighbours say it best.</h2></div>
+    <div class="rev-row">
+      <figure><div class="who"><span class="av">JM</span><div><b>Sample review</b><small>Calgary SW</small></div></div><div class="stars">★★★★★</div><blockquote>No heat at −25 and a tech was here within three hours. The price matched the quote exactly.</blockquote></figure>
+      <figure><div class="who"><span class="av b">RK</span><div><b>Sample review</b><small>Okotoks</small></div></div><div class="stars">★★★★★</div><blockquote>New water heater the same day we called. Super tidy, and they hauled the old one away.</blockquote></figure>
+      <figure><div class="who"><span class="av c">AS</span><div><b>Sample review</b><small>Cochrane</small></div></div><div class="stars">★★★★★</div><blockquote>Finally, a plumber who tells you the price before starting. We'll definitely call again.</blockquote></figure>
+    </div>
+    <p class="fine">Sample reviews for this demo. On a real site, these come from your Google reviews.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap"><div class="cta-box">
+    <div><h2>Something not working?</h2><p>Real people answer, 7 days a week.</p></div>
+    <div class="cta-btns"><a class="btn btn-yellow btn-lg" href="tel:+14035550187"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> (403) 555-0187</a><a class="btn btn-white btn-lg" href="#book">Book online</a></div>
+  </div></div>
+</section>
+
+<footer><div class="wrap foot"><span>© 2026 Bowcrest Plumbing &amp; Heating · Fictional demo business</span><span>Website by <a href="../index.html">Apex Build</a></span></div></footer>
+<div class="callbar"><a class="btn btn-blue" href="tel:+14035550187"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Call</a><a class="btn btn-yellow" href="#book">Book a visit</a></div>
+
+<div class="ab-fab" id="abFab" aria-label="Apex Build">
+  <button class="ab-icon" id="abToggle" aria-expanded="false" aria-label="Demo by Apex Build. Show options"><img src="../Icons/apex-icon-round.png" alt="" width="34" height="34"></button>
+  <span class="ab-label">Demo by <b>Apex Build</b></span>
+  <a class="ab-link" href="../index.html#work">← Examples</a>
+  <a class="ab-link ab-cta" href="../index.html#contact">Get one like this</a>
+</div>
+<script>
+// booking card
+const days=document.getElementById('days'); const D=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+for(let k=0;k<5;k++){const d=new Date();d.setDate(d.getDate()+k);const b=document.createElement('button');b.innerHTML=`<small>${k===0?'Today':D[d.getDay()]}</small><b>${d.getDate()}</b>`;if(k===0)b.classList.add('on');days.appendChild(b);}
+function single(group){group.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;group.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');});}
+[svcPills,days,slots].forEach(single);
+bookBtn.addEventListener('click',()=>{bcMsg.style.display='block';});
+// troubleshooter
+const A=[
+ {t:'No heat',u:'Same-day priority',p:'$129',c:'A failed igniter, flame sensor or blocked filter.',f:'Diagnose on the spot, show you the problem, and give a flat price before fixing it.',y:'Check the thermostat batteries and make sure the furnace switch is on.'},
+ {t:'No hot water',u:'Same-day priority',p:'$129',c:'A pilot or igniter problem, or a tank that has reached the end of its life.',f:'Repair it if it makes sense. If the tank is done, we can usually replace it the same day.',y:"Check that the gas valve is on and the pilot is lit (if your tank has one)."},
+ {t:'Slow or clogged drain',u:'Next-day OK',calm:1,p:'$179',c:'A build-up of hair, grease or soap, or roots in the main line.',f:'Clear it with a professional snake, and camera-inspect the line if it keeps coming back.',y:'Skip chemical cleaners. They can damage pipes and make our job harder.'},
+ {t:'Leak or drip',u:'Call now if water is spreading',p:'$129',c:'A worn washer or cartridge, a loose fitting, or a cracked pipe.',f:'Find the source, fix it properly, and check for hidden damage nearby.',y:'Shut off the nearest valve, or the main valve, and put a towel down.'},
+ {t:'Toilet keeps running',u:'Next-day OK',calm:1,p:'$149',c:'A worn flapper or fill valve. It can waste hundreds of litres a day.',f:'Replace the worn parts and adjust it so it stops for good.',y:'Lift the tank lid and see whether the flapper is sealing.'},
+ {t:'Furnace is noisy',u:'Book soon',calm:1,p:'$129',c:'A dirty blower, worn motor bearing, or delayed ignition.',f:'Inspect and clean it, and tell you honestly whether it needs a repair or just a tune-up.',y:'Change the filter. A clogged one is the most common cause of strange noises.'}];
+document.getElementById('symptoms').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ document.querySelectorAll('#symptoms button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+ const a=A[b.dataset.k], ans=document.getElementById('answer'); ans.classList.add('fade');
+ setTimeout(()=>{aTitle.textContent=a.t;aUrg.textContent=a.u;aUrg.className='urg'+(a.calm?' calm':'');aPrice.textContent=a.p;aCause.textContent=a.c;aFix.textContent=a.f;aTry.textContent=a.y;ans.classList.remove('fade');
+  if(window.innerWidth<960)ans.scrollIntoView({behavior:'smooth',block:'nearest'});},150);});
+
+(function(){const f=document.getElementById('abFab'),t=document.getElementById('abToggle');
+ const upd=()=>f.classList.toggle('show',window.scrollY>260);upd();addEventListener('scroll',upd,{passive:true});
+ t.addEventListener('click',()=>{if(innerWidth>700)return;const o=f.classList.toggle('open');t.setAttribute('aria-expanded',o);});
+ document.addEventListener('click',e=>{if(!f.contains(e.target)){f.classList.remove('open');t.setAttribute('aria-expanded','false');}});})();
+
+</script>
+</body>
+</html>
