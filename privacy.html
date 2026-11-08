@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Apex Build</title>
+  <meta name="description" content="How Apex Build collects, uses and protects your information.">
+  <link rel="canonical" href="https://apexbuildweb.ca/privacy.html">
+  <link rel="icon" type="image/png" sizes="64x64" href="Icons/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="Icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f4f1ea; --ink: #14161a; --muted: #5c5f66; --orange: #ff5a1f; --orange-soft: #ffd2bd; --ease: cubic-bezier(.2,.7,.2,1);
+      --grid: linear-gradient(rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -.02em; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; font-weight: 700; text-decoration: none; border: 2px solid var(--ink); font-family: inherit; transition: transform .15s var(--ease), box-shadow .15s var(--ease); }
+    .btn-primary { background: var(--orange); color: var(--ink); }
+    .btn-sm { padding: 10px 16px; font-size: .9rem; box-shadow: 3px 3px 0 var(--ink); }
+    .btn-sm:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(244,241,234,.9); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 2px solid var(--ink); }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .logo { display: inline-flex; text-decoration: none; border: 2px solid var(--ink); background: #fff; padding: 5px 9px; box-shadow: 3px 3px 0 var(--ink); }
+    .lock { display: flex; align-items: center; gap: .32em; font-size: 22px; color: var(--ink); }
+    .lock img { height: 1.25em; width: auto; display: block; }
+    .lock .words { display: flex; flex-direction: column; line-height: .86; }
+    .lock .w1 { font-family: 'Archivo', sans-serif; font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 900; font-size: .68em; text-transform: uppercase; border-bottom: .05em solid var(--ink); padding-bottom: .12em; margin-bottom: .02em; }
+    .lock .w2 { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: .33em; letter-spacing: .42em; text-transform: uppercase; margin-top: .28em; color: var(--orange); }
+    .page-head { background: var(--grid), var(--bg); border-bottom: 2px solid var(--ink); padding: 64px 0 48px; }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .78rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .eyebrow::before { content: "// "; color: var(--muted); }
+    h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; font-weight: 800; margin-bottom: 14px; }
+    .updated { color: var(--muted); font-size: .95rem; }
+    .policy { padding-top: 48px; }
+    .policy > * { max-width: 720px; }
+    .policy .lead { font-size: 1.12rem; margin-bottom: 8px; }
+    .policy h2 { font-size: 1.25rem; font-weight: 800; margin: 40px 0 10px; padding-top: 14px; border-top: 2px solid var(--ink); }
+    .policy p { margin-bottom: 12px; color: #2b2e34; }
+    .policy ul { margin: 0 0 12px 20px; color: #2b2e34; }
+    .policy li { margin-bottom: 6px; }
+    .policy li::marker { color: var(--orange); }
+    .policy a { color: var(--ink); text-decoration-color: var(--orange); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    footer { background: var(--ink); color: #a9acb3; padding: 36px 0; margin-top: 96px; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; font-size: .88rem; }
+    .foot a { color: var(--bg); }
+    @media (max-width: 600px) { .page-head { padding: 44px 0 36px; } footer { margin-top: 72px; } }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="/" class="logo" aria-label="Apex Build home"><span class="lock"><img src="Icons/apex-mark-orange.png" alt="" width="35" height="30"><span class="words"><span class="w1">Apex</span><span class="w2">Build</span></span></span></a>
+      <a href="/#contact" class="btn btn-primary btn-sm">Free mockup</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">Privacy</div>
+    <h1>Privacy policy</h1>
+    <p class="updated">Last updated November 7, 2026</p>
+  </div>
+</section>
+
+<main class="wrap policy">
+  <p class="lead">The short version: we only collect what we need to build and support your website, we never sell it, and we don't send marketing emails.</p>
+  <p>Apex Build is run by Tim Sommers in Okotoks, Alberta. If you have any questions about your information, email <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a>.</p>
+
+  <h2>What we collect</h2>
+  <ul>
+    <li><b>Mockup requests:</b> your name, business name, email, and anything else you choose to fill in, like your phone number, trade, current website and notes.</li>
+    <li><b>Emails, calls and texts:</b> whatever you send us when you get in touch.</li>
+    <li><b>Client projects:</b> the content you send for your website, like your logo, photos, services and business details.</li>
+    <li><b>Payments:</b> card payments are handled by Stripe, so we never see or store your full card number. For e-transfers, we see your name and the amount, like any bank transfer.</li>
+  </ul>
+
+  <h2>How we use it</h2>
+  <ul>
+    <li>To make your free mockup and reply to your questions.</li>
+    <li>To build, launch and support your website.</li>
+    <li>To send invoices and keep the business records the law requires.</li>
+  </ul>
+  <p>That's it. We don't sell, rent or trade your information, and we won't add you to a mailing list.</p>
+
+  <h2>Services we use</h2>
+  <p>A few trusted companies help us run things, and they handle your information only to do that job:</p>
+  <ul>
+    <li><b>Web3Forms</b> delivers mockup requests from this site to our inbox.</li>
+    <li><b>Google</b> runs our email, and <b>Cloudflare</b> routes it and hosts websites.</li>
+    <li><b>GitHub</b> hosts this website.</li>
+    <li><b>Stripe</b> processes card payments.</li>
+  </ul>
+  <p>We also use a few other software tools to help write and build websites, and the content you send for your site may pass through them.</p>
+  <p>Some of these companies store information outside Canada, including in the United States, where it is protected by their own security and privacy practices.</p>
+
+  <h2>Cookies and tracking</h2>
+  <p>This site doesn't use tracking cookies, ads or analytics. Our fonts load from Google Fonts, which receives basic technical details like your IP address so it can deliver them.</p>
+
+  <h2>How long we keep it</h2>
+  <p>We keep your information only as long as we need it. Client records, like invoices and payments, are kept for six years because Canadian tax law requires it.</p>
+
+  <h2>Keeping it safe</h2>
+  <p>Our accounts are protected with strong passwords and two-step verification, and only Apex Build and the services listed above handle your information.</p>
+
+  <h2>Your choices</h2>
+  <p>You can ask to see the information we have about you, correct it, or have it deleted (except records we're required to keep). Just email <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a> and we'll reply within 30 days.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, we'll update it here and change the date at the top.</p>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr">2026</span> Apex Build · Okotoks &amp; Calgary, AB</span>
+    <span><a href="/">Home</a> · <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a></span>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
