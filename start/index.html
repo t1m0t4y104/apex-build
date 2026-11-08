@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Your Website Questionnaire | Apex Build</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="../Icons/favicon.png">
+  <link rel="apple-touch-icon" href="../Icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #f4f1ea; --ink: #14161a; --muted: #5c5f66; --line: rgba(20,22,26,.14); --orange: #ff5a1f; --orange-soft: #ffd2bd; --green: #16a34a; --ease: cubic-bezier(.2,.7,.2,1);
+      --grid: linear-gradient(rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; -webkit-font-smoothing: antialiased; }
+    h1, h2 { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 125%; font-variation-settings: "wdth" 125; letter-spacing: -.02em; }
+    .wrap { max-width: 680px; margin: 0 auto; padding: 0 16px; }
+    header { background: rgba(244,241,234,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 2px solid var(--ink); position: sticky; top: 0; z-index: 20; }
+    .bar { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 12px; }
+    .logo { display: inline-flex; text-decoration: none; border: 2px solid var(--ink); background: #fff; padding: 4px 8px; box-shadow: 3px 3px 0 var(--ink); }
+    .lock { display: flex; align-items: center; gap: .32em; font-size: 20px; color: var(--ink); }
+    .lock img { height: 1.25em; width: auto; display: block; }
+    .lock .words { display: flex; flex-direction: column; line-height: .86; }
+    .lock .w1 { font-family: 'Archivo', sans-serif; font-stretch: 125%; font-variation-settings: "wdth" 125; font-weight: 900; font-size: .68em; text-transform: uppercase; border-bottom: .05em solid var(--ink); padding-bottom: .12em; margin-bottom: .02em; }
+    .lock .w2 { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: .33em; letter-spacing: .42em; text-transform: uppercase; margin-top: .28em; color: var(--orange); }
+    .progress { flex: 1; max-width: 200px; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); }
+    .track { height: 6px; background: rgba(20,22,26,.1); border-radius: 99px; margin-top: 5px; overflow: hidden; }
+    .fill { height: 100%; width: 0; background: var(--orange); transition: width .3s var(--ease); }
+
+    .intro { background: var(--grid), var(--bg); border-bottom: 2px solid var(--ink); padding: 40px 0 32px; }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .eyebrow::before { content: "// "; color: var(--muted); }
+    h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); line-height: 1.08; font-weight: 800; margin-bottom: 12px; }
+    .intro p { color: #2b2e34; font-size: 1.02rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tagp { font-size: .82rem; font-weight: 600; background: #fff; border: 1.5px solid var(--ink); border-radius: 99px; padding: 5px 12px; }
+
+    form { padding: 24px 0 40px; }
+    .card { background: #fff; border: 2px solid var(--ink); border-radius: 10px; box-shadow: 4px 4px 0 var(--ink); padding: 22px 18px; margin-bottom: 22px; }
+    .card h2 { font-size: 1.15rem; font-weight: 800; display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+    .num { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--orange); font-stretch: normal; font-variation-settings: normal; }
+    .hint { color: var(--muted); font-size: .9rem; margin-bottom: 16px; }
+    .found { display: inline-block; font-size: .72rem; font-weight: 700; color: var(--green); background: #e5f4e4; border-radius: 4px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
+    .field { margin-bottom: 16px; }
+    .field:last-child { margin-bottom: 0; }
+    label.l, .l { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 6px; }
+    .opt { font-weight: 400; color: var(--muted); }
+    input[type=text], input[type=tel], input[type=email], input[type=number], textarea { width: 100%; font: inherit; font-size: 16px; padding: 12px 13px; border: 1.5px solid var(--line); border-radius: 8px; background: #fbfaf7; color: var(--ink); transition: border-color .15s; }
+    input:focus, textarea:focus { outline: none; border-color: var(--ink); background: #fff; }
+    textarea { min-height: 88px; resize: vertical; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { font: inherit; font-size: .92rem; font-weight: 600; padding: 9px 14px; border-radius: 99px; border: 1.5px solid var(--line); background: #fbfaf7; color: var(--ink); cursor: pointer; transition: all .12s; -webkit-tap-highlight-color: transparent; }
+    .chip[aria-pressed=true] { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .chip[aria-pressed=true]::before { content: "✓ "; color: var(--orange); }
+    .chip.radio[aria-pressed=true]::before { content: "● "; }
+    .addrow { display: flex; gap: 8px; margin-top: 10px; }
+    .addrow input { flex: 1; }
+    .addbtn { font: inherit; font-weight: 700; padding: 0 16px; border-radius: 8px; border: 1.5px solid var(--ink); background: #fff; cursor: pointer; }
+    .sub { margin-top: 12px; display: none; }
+    .sub.on { display: block; }
+    .note { font-size: .88rem; background: #fff6ef; border: 1.5px dashed var(--orange); border-radius: 8px; padding: 12px 14px; margin-top: 12px; }
+    .note a { color: var(--ink); font-weight: 700; }
+    .submit { display: flex; width: 100%; align-items: center; justify-content: center; font: inherit; font-weight: 800; font-size: 1.05rem; padding: 17px; border-radius: 8px; border: 2px solid var(--ink); background: var(--orange); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); cursor: pointer; }
+    .submit:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--ink); }
+    .submit:disabled { opacity: .6; }
+    .fine { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 12px; }
+    .fine a { color: inherit; }
+    .msg { display: none; padding: 16px; border-radius: 10px; border: 2px solid var(--ink); margin-bottom: 18px; font-weight: 500; }
+    .msg.err { display: block; background: #fbebeb; }
+    .done { display: none; text-align: center; padding: 48px 8px; }
+    .done.on { display: block; }
+    .done .big svg { display: inline-block; }
+    .done a { color: var(--ink); font-weight: 700; text-decoration-color: var(--orange); }
+    .done h2 { font-size: 1.6rem; margin: 10px 0; }
+    .done p { color: #2b2e34; max-width: 440px; margin: 0 auto 10px; }
+    .hp { position: absolute; left: -9999px; }
+    .pkg-business { display: none; }
+    body.business .pkg-business { display: block; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a href="/" class="logo" aria-label="Apex Build"><span class="lock"><img src="../Icons/apex-mark-orange.png" alt="" width="35" height="30"><span class="words"><span class="w1">Apex</span><span class="w2">Build</span></span></span></a>
+    <div class="progress"><span id="progTxt">0% done</span><div class="track"><div class="fill" id="progFill"></div></div></div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="eyebrow">Your new website</div>
+    <h1 id="hello">Let's get your site built.</h1>
+    <p>We've filled in what we could find online. Just check it, fix anything that's wrong, and tap your answers. It takes about <b>5 to 10 minutes</b>, and your answers save on this device as you go.</p>
+    <div class="meta" id="metaTags"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="done" id="done">
+    <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
+    <h2>Got it, thanks!</h2>
+    <p>Your answers are in. Next, send your <b>logo and job photos</b> by text or to <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a> if you haven't already.</p>
+    <p>We'll be in touch if anything's unclear, then get building.</p>
+  </div>
+
+  <form id="q" novalidate>
+    <div class="msg" id="msg" role="alert"></div>
+
+    <div class="card">
+      <h2><span class="num">01</span>Your business</h2>
+      <p class="hint">How it should appear on your website.</p>
+      <div class="field"><label class="l" for="biz">Business name</label><input type="text" id="biz" name="Business name" autocomplete="organization"></div>
+      <div class="field"><label class="l" for="owner">Your name</label><input type="text" id="owner" name="Owner name" autocomplete="name"></div>
+      <div class="field"><label class="l" for="phone">Phone number for the website</label><input type="tel" id="phone" name="Website phone" autocomplete="tel"></div>
+      <div class="field"><label class="l" for="email">Where should quote requests go?</label><input type="email" id="email" name="Quote request email" autocomplete="email" placeholder="you@email.com"></div>
+      <div class="field"><label class="l" for="hours">Business hours</label><input type="text" id="hours" name="Hours" placeholder="Mon to Fri, 8 a.m. to 5 p.m."></div>
+      <div class="field"><span class="l">Show your address on the site?</span>
+        <div class="chips" data-group="Show address" data-single>
+          <button type="button" class="chip radio" data-v="No, just my service area">No, just my service area</button>
+          <button type="button" class="chip radio" data-v="Yes">Yes, customers come to us</button>
+        </div>
+        <div class="sub" data-show="Show address=Yes"><input type="text" id="address" name="Address" placeholder="Street address, town" autocomplete="street-address"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">02</span>Your services</h2>
+      <p class="hint">Tap to keep or remove. Add anything we missed.</p>
+      <div class="chips" data-group="Services" id="svcChips"></div>
+      <div class="addrow"><input type="text" id="svcAdd" placeholder="Add a service"><button type="button" class="addbtn" data-add="svcChips">Add</button></div>
+      <div class="field" style="margin-top:20px"><span class="l">Which jobs do you want <u>more</u> of? <span class="opt">(pick any)</span></span>
+        <div class="chips" data-group="Want more of" id="moreChips"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">03</span>Where you work</h2>
+      <p class="hint">Towns and areas you serve. Tap to remove, or add more.</p>
+      <div class="chips" data-group="Service areas" id="areaChips"></div>
+      <div class="addrow"><input type="text" id="areaAdd" placeholder="Add a town or area"><button type="button" class="addbtn" data-add="areaChips">Add</button></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num">04</span>What's true about your business</h2>
+      <p class="hint">Only tap what's actually true. These go on your site, and customers trust them.</p>
+      <div class="chips" data-group="True claims">
+        <button type="button" class="chip" data-v="Licensed">Licensed</button>
+        <button type="button" class="chip" data-v="Insured">Insured</button>
+        <button type="button" class="chip" data-v="WCB covered">WCB covered</button>
+        <button type="button" class="chip" data-v="Free estimates">Free estimates</button>
+        <button type="button" class="chip" data-v="24/7 emergency service">24/7 emergency service</button>
+        <button type="button" class="chip" data-v="Warranty on work">Warranty on work</button>
+        <button type="button" class="chip" data-v="Financing available">Financing available</button>
+        <button type="button" class="chip" data-v="Family owned">Family owned</button>
+        <button type="button" class="chip" data-v="Locally owned">Locally owned</button>
+        <button type="button" class="chip" data-v="Seniors discount">Seniors discount</button>
+      </div>
+      <div class="sub" data-show="True claims=Warranty on work"><label class="l" for="warranty" style="margin-top:4px">What's the warranty?</label><input type="text" id="warranty" name="Warranty details" placeholder="e.g. 5 years on labour"></div>
+      <div class="field" style="margin-top:16px"><label class="l" for="years">Year you started <span class="opt">(optional)</span></label><input type="number" id="years" name="Year started" inputmode="numeric" placeholder="e.g. 2012"></div>
+      <div class="field"><label class="l" for="certs">Certifications, memberships or brands you're certified for <span class="opt">(optional)</span></label><input type="text" id="certs" name="Certifications" placeholder="e.g. Red Seal, BBB, GAF certified"></div>
+    </div>
+
+    <div class="card pkg-business">
+      <h2><span class="num">05</span>Reviews and past work</h2>
+      <p class="hint">Your Business package includes a reviews section and a photo gallery.</p>
+      <div class="field"><span class="l">Can we show your Google reviews on the site?</span>
+        <div class="chips" data-group="Use Google reviews" data-single>
+          <button type="button" class="chip radio" data-v="Yes">Yes</button>
+          <button type="button" class="chip radio" data-v="I'll send other reviews">I'll send other reviews</button>
+          <button type="button" class="chip radio" data-v="No reviews yet">No reviews yet</button>
+        </div>
+      </div>
+      <div class="field"><label class="l" for="jobs">Any jobs you're especially proud of? <span class="opt">(optional)</span></label><textarea id="jobs" name="Proud jobs" placeholder="e.g. full roof replacement in Okotoks last summer"></textarea></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num" id="n6">05</span>Look and feel</h2>
+      <div class="field"><span class="l">Do you have a logo?</span>
+        <div class="chips" data-group="Logo" data-single>
+          <button type="button" class="chip radio" data-v="Yes, I'll send it">Yes, I'll send it</button>
+          <button type="button" class="chip radio" data-v="No, keep it simple with my name">No, just use my name</button>
+          <button type="button" class="chip radio" data-v="I'd like a quote for a logo">I'd like a logo quote</button>
+        </div>
+      </div>
+      <div class="field"><span class="l">Colours</span>
+        <div class="chips" data-group="Colours" data-single>
+          <button type="button" class="chip radio" data-v="Match my logo or trucks">Match my logo or trucks</button>
+          <button type="button" class="chip radio" data-v="Same as the mockup">Same as the mockup</button>
+          <button type="button" class="chip radio" data-v="You pick">You pick</button>
+        </div>
+      </div>
+      <div class="field"><label class="l" for="likes">Anything you'd change from the mockup, or sites you like? <span class="opt">(optional)</span></label><textarea id="likes" name="Look and feel notes"></textarea></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num" id="n7">06</span>Your web address</h2>
+      <p class="hint">Your domain is registered in your name, so you always own it.</p>
+      <div class="chips" data-group="Domain" data-single>
+        <button type="button" class="chip radio" data-v="I already have one">I already have one</button>
+        <button type="button" class="chip radio" data-v="I need one">I need one</button>
+        <button type="button" class="chip radio" data-v="Not sure">Not sure</button>
+      </div>
+      <div class="sub" data-show="Domain=I already have one"><input type="text" id="domHave" name="Current domain" placeholder="e.g. smithroofing.ca"></div>
+      <div class="sub" data-show="Domain=I need one"><input type="text" id="domWant" name="Domain ideas" placeholder="Any names you like? e.g. smithroofing.ca"><p class="hint" style="margin:8px 0 0">We'll check what's available and walk you through it. It's usually $15 to $25 a year.</p></div>
+    </div>
+
+    <div class="card">
+      <h2><span class="num" id="n8">07</span>Photos and last details</h2>
+      <div class="note"><b>Send your logo and job photos</b> by text, or email them to <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a>. Phone photos are perfect. Before and afters, your crew and your trucks all work great.</div>
+      <div class="field" style="margin-top:16px"><span class="l">Best way to reach you with questions?</span>
+        <div class="chips" data-group="Contact by" data-single>
+          <button type="button" class="chip radio" data-v="Text">Text</button>
+          <button type="button" class="chip radio" data-v="Call">Call</button>
+          <button type="button" class="chip radio" data-v="Email">Email</button>
+        </div>
+      </div>
+      <div class="field"><label class="l" for="extra">Anything else we should know? <span class="opt">(optional)</span></label><textarea id="extra" name="Anything else"></textarea></div>
+    </div>
+
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+    <button type="submit" class="submit" id="send">Send my answers →</button>
+    <p class="fine">Your answers only go to Apex Build. <a href="/privacy.html">Privacy policy</a></p>
+  </form>
+</main>
+
+<script>
+(function () {
+  const KEY = 'apexQ:' + location.hash.slice(0, 40);
+  const form = document.getElementById('q');
+  const msg = document.getElementById('msg');
+  let pre = {};
+  try {
+    const m = location.hash.match(/d=([A-Za-z0-9_-]+)/);
+    if (m) {
+      let s = m[1].replace(/-/g, '+').replace(/_/g, '/');
+      while (s.length % 4) s += '=';
+      pre = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(s), c => c.charCodeAt(0))));
+    }
+  } catch (e) { pre = {}; }
+
+  const isBiz = pre.pkg === 'business';
+  if (isBiz) document.body.classList.add('business');
+  else { ['n6', 'n7', 'n8'].forEach((id, i) => document.getElementById(id).textContent = '0' + (5 + i)); }
+  if (isBiz) { ['n6', 'n7', 'n8'].forEach((id, i) => document.getElementById(id).textContent = '0' + (6 + i)); }
+
+  const first = (pre.owner || '').split(' ')[0];
+  if (first) document.getElementById('hello').textContent = `Hi ${first}, let's get your site built.`;
+  const tags = [];
+  if (pre.biz) tags.push(pre.biz);
+  if (pre.pkg) tags.push(isBiz ? 'Business package' : 'Starter package');
+  document.getElementById('metaTags').innerHTML = tags.map(t => `<span class="tagp">${t.replace(/</g, '&lt;')}</span>`).join('');
+
+  const foundBadge = el => { const l = form.querySelector(`label[for="${el.id}"]`); if (l && !l.querySelector('.found')) l.insertAdjacentHTML('beforeend', '<span class="found">found online</span>'); };
+  const map = { biz: 'biz', owner: 'owner', phone: 'phone', email: 'email', hours: 'hours', address: 'address', domain: 'domHave' };
+  Object.entries(map).forEach(([k, id]) => { if (pre[k]) { const el = document.getElementById(id); el.value = pre[k]; foundBadge(el); } });
+
+  const mkChip = (v, on, radio) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'chip' + (radio ? ' radio' : ''); b.dataset.v = v; b.textContent = v; b.setAttribute('aria-pressed', on ? 'true' : 'false'); return b; };
+  const svc = document.getElementById('svcChips'), more = document.getElementById('moreChips'), area = document.getElementById('areaChips');
+  (pre.services || []).forEach(s => svc.appendChild(mkChip(s, true)));
+  (pre.areas || []).forEach(s => area.appendChild(mkChip(s, true)));
+  const syncMore = () => {
+    const keep = new Set([...more.querySelectorAll('[aria-pressed=true]')].map(b => b.dataset.v));
+    more.innerHTML = '';
+    const opts = [...svc.querySelectorAll('[aria-pressed=true]')].map(b => b.dataset.v).concat(['Bigger jobs', 'Emergency calls', 'Commercial work']);
+    [...new Set(opts)].forEach(v => more.appendChild(mkChip(v, keep.has(v))));
+  };
+  syncMore();
+  if (pre.domain) setSingle('Domain', 'I already have one');
+
+  function groupEl(name) { return form.querySelector(`[data-group="${name}"]`); }
+  function setSingle(name, v) { const g = groupEl(name); g.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.v === v ? 'true' : 'false')); }
+  function picked(name) { const g = groupEl(name); return g ? [...g.querySelectorAll('[aria-pressed=true]')].map(b => b.dataset.v) : []; }
+
+  form.addEventListener('click', e => {
+    const c = e.target.closest('.chip'); if (c) {
+      const g = c.closest('[data-group]');
+      if (g.hasAttribute('data-single')) g.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c ? 'true' : 'false'));
+      else c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      if (g.id === 'svcChips') syncMore();
+      refresh(); return;
+    }
+    const a = e.target.closest('[data-add]'); if (a) addFrom(a.dataset.add);
+  });
+  function addFrom(target) {
+    const inp = a2i[target]; const v = inp.value.trim(); if (!v) return;
+    const box = document.getElementById(target);
+    if (![...box.children].some(b => b.dataset.v.toLowerCase() === v.toLowerCase())) box.appendChild(mkChip(v, true));
+    inp.value = ''; if (target === 'svcChips') syncMore(); refresh();
+  }
+  const a2i = { svcChips: document.getElementById('svcAdd'), areaChips: document.getElementById('areaAdd') };
+  Object.entries(a2i).forEach(([t, inp]) => inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); addFrom(t); } }));
+  form.addEventListener('input', refresh);
+
+  function refresh() {
+    form.querySelectorAll('[data-show]').forEach(s => { const [g, v] = s.dataset.show.split('='); s.classList.toggle('on', picked(g).includes(v)); });
+    const checks = [
+      () => document.getElementById('biz').value.trim(), () => document.getElementById('phone').value.trim(), () => document.getElementById('email').value.trim(),
+      () => picked('Show address').length, () => picked('Services').length, () => picked('Service areas').length, () => picked('True claims').length,
+      () => picked('Logo').length, () => picked('Colours').length, () => picked('Domain').length, () => picked('Contact by').length
+    ];
+    if (isBiz) checks.push(() => picked('Use Google reviews').length);
+    const pct = Math.round(checks.filter(f => f()).length / checks.length * 100);
+    document.getElementById('progTxt').textContent = pct + '% done';
+    document.getElementById('progFill').style.width = pct + '%';
+    save();
+  }
+
+  function collect() {
+    const out = {};
+    form.querySelectorAll('input[name]:not(.hp), textarea[name]').forEach(el => { if (el.closest('.sub') && !el.closest('.sub').classList.contains('on')) return; if (el.closest('.pkg-business') && !isBiz) return; out[el.name] = el.value.trim(); });
+    form.querySelectorAll('[data-group]').forEach(g => { if (g.closest('.pkg-business') && !isBiz) return; out[g.dataset.group] = picked(g.dataset.group).join(', '); });
+    return out;
+  }
+  function save() {
+    try {
+      const st = { v: {}, g: {} };
+      form.querySelectorAll('input[id], textarea[id]').forEach(el => st.v[el.id] = el.value);
+      form.querySelectorAll('[data-group]').forEach(g => st.g[g.dataset.group] = { all: [...g.querySelectorAll('.chip')].map(b => b.dataset.v), on: picked(g.dataset.group) });
+      localStorage.setItem(KEY, JSON.stringify(st));
+    } catch (e) {}
+  }
+  function restore() {
+    try {
+      const st = JSON.parse(localStorage.getItem(KEY) || 'null'); if (!st) return;
+      Object.entries(st.v).forEach(([id, v]) => { const el = document.getElementById(id); if (el && v) el.value = v; });
+      Object.entries(st.g).forEach(([name, s]) => {
+        const g = groupEl(name); if (!g) return;
+        if (['Services', 'Service areas', 'Want more of'].includes(name)) { g.innerHTML = ''; s.all.forEach(v => g.appendChild(mkChip(v, s.on.includes(v)))); }
+        else g.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', s.on.includes(c.dataset.v) ? 'true' : 'false'));
+      });
+    } catch (e) {}
+  }
+  restore(); refresh();
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault(); msg.className = 'msg';
+    if (form._honey.value) return;
+    const data = collect();
+    if (!data['Business name'] || !data['Website phone']) { msg.textContent = 'Please fill in your business name and phone number at the top.'; msg.className = 'msg err'; window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    const btn = document.getElementById('send'); btn.disabled = true; btn.textContent = 'Sending…';
+    const lines = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
+    const payload = Object.assign({ access_key: 'f11ff2ab-d675-40fd-8d70-16079bf77a93', subject: `Questionnaire: ${data['Business name']}`, from_name: 'Apex Build questionnaire', Package: isBiz ? 'Business' : (pre.pkg ? 'Starter' : 'Not set'), Summary: lines }, data);
+    if (data['Quote request email']) payload.replyto = data['Quote request email'];
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.success !== true) throw new Error(out.message || 'failed');
+      form.style.display = 'none'; document.querySelector('.intro').style.display = 'none';
+      document.getElementById('done').classList.add('on'); window.scrollTo({ top: 0 });
+      try { localStorage.removeItem(KEY); } catch (e) {}
+    } catch (err) {
+      msg.innerHTML = 'Something went wrong sending that. Your answers are saved here, so please try again in a minute, or email <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a>.';
+      msg.className = 'msg err'; btn.disabled = false; btn.textContent = 'Send my answers →';
+    }
+  });
+})();
+</script>
+</body>
+</html>
