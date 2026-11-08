@@ -67,6 +67,7 @@
     .submit:disabled { opacity: .6; }
     .fine { text-align: center; color: var(--muted); font-size: .82rem; margin-top: 12px; }
     .fine a { color: inherit; }
+    #warn { margin: 0 0 14px; }
     .msg { display: none; padding: 16px; border-radius: 10px; border: 2px solid var(--ink); margin-bottom: 18px; font-weight: 500; }
     .msg.err { display: block; background: #fbebeb; }
     .done { display: none; text-align: center; padding: 48px 8px; }
@@ -104,7 +105,7 @@
   <div class="done" id="done">
     <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#ff5a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
     <h2>Got it, thanks!</h2>
-    <p>Your answers are in. Next, send your <b>logo and job photos</b> by text or to <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a> if you haven't already.</p>
+    <p>Your answers are in. Next, send your <b>logo and job photos</b> by text to <a href="sms:+13689939020">(368) 993-9020</a> or email to <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a>, if you haven't already.</p>
     <p>We'll be in touch if anything's unclear, then get building.</p>
   </div>
 
@@ -171,7 +172,7 @@
       <div class="field"><span class="l">Can we show your Google reviews on the site?</span>
         <div class="chips" data-group="Use Google reviews" data-single>
           <button type="button" class="chip radio" data-v="Yes">Yes</button>
-          <button type="button" class="chip radio" data-v="I'll send other reviews">I'll send other reviews</button>
+          <button type="button" class="chip radio" data-v="I'll send reviews from elsewhere">I'll send reviews from elsewhere (Facebook, HomeStars, texts)</button>
           <button type="button" class="chip radio" data-v="No reviews yet">No reviews yet</button>
         </div>
       </div>
@@ -194,7 +195,7 @@
           <button type="button" class="chip radio" data-v="You pick">You pick</button>
         </div>
       </div>
-      <div class="field"><label class="l" for="likes">Anything you'd change from the mockup, or sites you like? <span class="opt">(optional)</span></label><textarea id="likes" name="Look and feel notes"></textarea></div>
+      <div class="field"><label class="l" for="likes">Anything you'd change from the mockup? <span class="opt">(optional)</span></label><textarea id="likes" name="Mockup changes" placeholder="e.g. darker colours, use our truck photo up top"></textarea></div>
     </div>
 
     <div class="card">
@@ -211,7 +212,7 @@
 
     <div class="card">
       <h2><span class="num" id="n8">07</span>Photos and last details</h2>
-      <div class="note"><b>Send your logo and job photos</b> by text, or email them to <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a>. Phone photos are perfect. Before and afters, your crew and your trucks all work great.</div>
+      <div class="note"><b>Send your logo and job photos</b> by text to <a href="sms:+13689939020">(368) 993-9020</a>, or email them to <a href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a>. Phone photos are perfect. Before and afters, your crew and your trucks all work great.</div>
       <div class="field" style="margin-top:16px"><span class="l">Best way to reach you with questions?</span>
         <div class="chips" data-group="Contact by" data-single>
           <button type="button" class="chip radio" data-v="Text">Text</button>
@@ -223,6 +224,7 @@
     </div>
 
     <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+    <div class="msg" id="warn" role="status"></div>
     <button type="submit" class="submit" id="send">Send my answers →</button>
     <p class="fine">Your answers only go to Apex Build. <a href="/privacy.html">Privacy policy</a></p>
   </form>
@@ -342,7 +344,7 @@
   restore(); refresh();
 
   form.addEventListener('submit', async e => {
-    e.preventDefault(); msg.className = 'msg';
+    e.preventDefault(); msg.className = 'msg'; const warnEl = document.getElementById('warn');
     if (form._honey.value) return;
     const data = collect();
     form.querySelectorAll('.card.miss').forEach(c => c.classList.remove('miss'));
@@ -364,9 +366,11 @@
     const names = { 'Show address': 'showing your address', 'True claims': "what's true about your business", 'Logo': 'logo', 'Colours': 'colours', 'Domain': 'web address', 'Contact by': 'best way to reach you', 'Use Google reviews': 'Google reviews' };
     if (skipped.length && !warned) {
       warned = true;
-      msg.innerHTML = '<b>Just checking:</b> you skipped ' + skipped.map(g => names[g]).join(', ') + '. These are optional, so it\'s fine to send now. If you know the answers, filling them in saves a back-and-forth later.';
-      msg.className = 'msg warn'; document.getElementById('send').textContent = 'Send anyway →';
-      msg.scrollIntoView({ behavior: 'smooth', block: 'start' }); return;
+      const one = skipped.length === 1;
+      const list = skipped.map(g => names[g]);
+      const joined = one ? list[0] : list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1];
+      warnEl.innerHTML = '<b>Just checking:</b> you skipped ' + joined + '. ' + (one ? 'It\'s' : 'They\'re') + ' optional, so it\'s fine to send now. If you know the ' + (one ? 'answer' : 'answers') + ', filling ' + (one ? 'it' : 'them') + ' in saves a back-and-forth later.';
+      warnEl.className = 'msg warn'; document.getElementById('send').textContent = 'Send anyway →'; return;
     }
     const btn = document.getElementById('send'); btn.disabled = true; btn.textContent = 'Sending…';
     const lines = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
