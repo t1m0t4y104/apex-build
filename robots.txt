@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /start/
+Disallow: /preview/
+Sitemap: https://apexbuildweb.ca/sitemap.xml

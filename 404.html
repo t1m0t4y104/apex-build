@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light only">
+  <meta name="robots" content="noindex">
+  <title>Page Not Found | Apex Build</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/Icons/favicon.png">
+  <link rel="apple-touch-icon" href="/Icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,600..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#f4f1ea; --ink:#14161a; --muted:#5c5f66; --orange:#ff5a1f; --ease:cubic-bezier(.2,.7,.2,1);
+      --grid: linear-gradient(rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px, linear-gradient(90deg, rgba(20,22,26,.055) 1px, transparent 1px) 0 0 / 32px 32px; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body { height:100%; }
+    body { font-family:'Inter',system-ui,sans-serif; background:var(--grid), var(--bg); color:var(--ink); display:flex; flex-direction:column; -webkit-font-smoothing:antialiased; }
+    .tape { height:34px; background:repeating-linear-gradient(-45deg, #ffc21a 0 22px, var(--ink) 22px 44px); border-block:2px solid var(--ink); }
+    .tape span { display:block; }
+    main { flex:1; display:grid; place-items:center; padding:40px 16px; text-align:center; }
+    .code { font-family:'JetBrains Mono',monospace; color:var(--orange); letter-spacing:.1em; font-size:.85rem; margin-bottom:14px; }
+    .code::before { content:"// "; color:var(--muted); }
+    h1 { font-family:'Archivo',sans-serif; font-stretch:125%; font-variation-settings:"wdth" 125; font-weight:800; font-size:clamp(2rem,7vw,3.4rem); line-height:1.02; letter-spacing:-.02em; margin-bottom:14px; }
+    p { color:var(--muted); font-size:1.08rem; max-width:440px; margin:0 auto 28px; }
+    .hat { width:120px; height:auto; margin:0 auto 18px; display:block; transform-origin:50% 90%; animation:drop .9s var(--ease) both; }
+    .hat:hover { animation:wobble .6s ease; }
+    @keyframes drop { 0% { transform:translateY(-60px) rotate(-12deg); opacity:0; } 60% { transform:translateY(6px) rotate(4deg); opacity:1; } 100% { transform:none; } }
+    @keyframes wobble { 25% { transform:rotate(-8deg); } 50% { transform:rotate(6deg); } 75% { transform:rotate(-3deg); } }
+    .btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; padding:14px 22px; border-radius:8px; font-weight:700; text-decoration:none; border:2px solid var(--ink); color:var(--ink); transition:transform .15s var(--ease), box-shadow .15s var(--ease); }
+    .btn-primary { background:var(--orange); box-shadow:4px 4px 0 var(--ink); }
+    .btn-primary:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink); }
+    .btn-ghost:hover { background:var(--ink); color:var(--bg); }
+    @media (prefers-reduced-motion: reduce) { .hat { animation:none; } }
+  </style>
+</head>
+<body>
+  <div class="tape" aria-hidden="true"></div>
+  <main>
+    <div>
+      <svg class="hat" viewBox="0 0 120 80" aria-hidden="true">
+        <path d="M14 62 Q14 22 60 18 Q106 22 106 62 Z" fill="#ff5a1f" stroke="#14161a" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M52 19 Q60 14 68 19 L66 60 L54 60 Z" fill="#ff7a45" stroke="#14161a" stroke-width="3" stroke-linejoin="round"/>
+        <rect x="4" y="60" width="112" height="12" rx="6" fill="#ff5a1f" stroke="#14161a" stroke-width="4"/>
+      </svg>
+      <div class="code">ERROR 404</div>
+      <h1>This page is still under construction.</h1>
+      <p>Or it never existed. Either way, there's nothing to see here yet. Let's get you back on solid ground.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="/">Back to the homepage</a>
+        <a class="btn btn-ghost" href="/#contact">Get a free mockup</a>
+      </div>
+    </div>
+  </main>
+  <div class="tape" aria-hidden="true"></div>
+</body>
+</html>
