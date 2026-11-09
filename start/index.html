@@ -358,6 +358,9 @@
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data['Quote request email'] || '')) flag(document.getElementById('email'), 'an email for quote requests');
     if (!data['Services']) flag(svc, 'at least one service');
     if (!data['Service areas']) flag(area, 'at least one town or area');
+    if (picked('True claims').includes('Warranty on work') && !data['Warranty details']) flag(document.getElementById('warranty'), 'what your warranty covers');
+    if (picked('Show address').includes('Yes') && !data['Address']) flag(document.getElementById('address'), 'your address');
+    if (picked('Domain').includes('I already have one') && !data['Current domain']) flag(document.getElementById('domHave'), 'your current web address');
     if (need.length) {
       msg.textContent = 'Almost there. Please add ' + need.join(', ') + '. The boxes outlined in red need a look.';
       msg.className = 'msg err';
@@ -377,7 +380,7 @@
     }
     const btn = document.getElementById('send'); btn.disabled = true; btn.textContent = 'Sending…';
     const lines = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
-    const payload = Object.assign({ access_key: 'f11ff2ab-d675-40fd-8d70-16079bf77a93', subject: `Questionnaire: ${data['Business name']}`, from_name: 'Apex Build questionnaire', Package: isBiz ? 'Business' : (pre.pkg ? 'Starter' : 'Not set'), Summary: lines }, data);
+    const payload = Object.assign({ access_key: 'f11ff2ab-d675-40fd-8d70-16079bf77a93', subject: `Questionnaire: ${data['Business name']}`, from_name: 'Apex Build questionnaire', Package: isBiz ? 'Business' : (pre.pkg ? 'Starter' : 'Not set'), Answers: lines });
     if (data['Quote request email']) payload.replyto = data['Quote request email'];
     try {
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) });
