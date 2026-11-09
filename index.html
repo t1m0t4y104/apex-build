@@ -134,6 +134,39 @@
     .sp-verdict small { color: var(--muted); }
     .sp-go { display: inline-flex; margin-top: 16px; text-decoration: none; }
     .sp-note { font-size: .75rem; color: var(--muted); margin-top: 12px; }
+    .swipe-dots { display: none; }
+    @media (max-width: 640px) {
+      .swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 -20px; padding: 6px 20px 16px; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+      .swipe::-webkit-scrollbar { display: none; }
+      .swipe > * { flex: 0 0 84%; scroll-snap-align: center; }
+      .swipe .reveal { opacity: 1; transform: none; }
+      .why.swipe { border: 0; }
+      .why.swipe > .why-item { border: 2px solid var(--ink); border-radius: var(--radius); }
+      .swipe-dots { display: flex; justify-content: center; gap: 7px; margin-top: 6px; }
+      .swipe-dots i { width: 7px; height: 7px; border-radius: 99px; background: var(--line-2); transition: width .25s var(--ease), background .25s; }
+      .swipe-dots i.on { width: 20px; background: var(--ink); }
+    }
+    .pb { margin: 30px auto 0; max-width: 900px; background: #fff; border: 2px solid var(--ink); border-radius: 12px; box-shadow: 5px 5px 0 var(--ink); padding: 16px 18px; display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 18px; }
+    .pb-title { grid-column: 1 / -1; font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--orange); text-transform: uppercase; margin-bottom: -6px; }
+    .pb-title::before { content: "// "; color: var(--muted); }
+    .seg { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden; }
+    .seg button { font: inherit; font-weight: 700; font-size: .9rem; padding: 9px 14px; border: 0; background: #fff; color: var(--ink); cursor: pointer; transition: background .15s, color .15s; }
+    .seg button + button { border-left: 1.5px solid var(--ink); }
+    .seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+    .pb-care { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: .92rem; cursor: pointer; white-space: nowrap; }
+    .pb-care input { width: 18px; height: 18px; accent-color: var(--orange); }
+    .pb-total { justify-self: end; font-size: .92rem; color: var(--muted); white-space: nowrap; }
+    .pb-total b { font-family: 'Archivo', sans-serif; font-stretch: 125%; font-size: 1.45rem; color: var(--ink); }
+    .pb .btn { white-space: nowrap; }
+    @media (max-width: 900px) { .pb { grid-template-columns: 1fr 1fr; } .pb-total { justify-self: start; } .pb .btn { justify-self: end; } }
+    @media (max-width: 640px) { .pb { grid-template-columns: 1fr; gap: 14px; } .pb .btn { justify-self: stretch; } .seg { display: flex; } .seg button { flex: 1; } }
+    .ck-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 4px; }
+    .ck { text-align: center; font-size: .72rem; font-weight: 600; color: var(--muted); }
+    .ck .sp-ring { width: 64px; height: 64px; margin: 0 auto 6px; }
+    .ck .sp-ring span { width: 50px; height: 50px; font-size: 1.1rem; }
+    .ck-issues { margin: 14px 0 0 18px; font-size: .9rem; }
+    .ck-issues li { margin-bottom: 5px; }
+    .ck-issues li::marker { color: var(--orange); }
     .sp-err { display: none; margin-top: 14px; font-size: .9rem; background: #fbebeb; border-radius: 8px; padding: 10px 12px; }
     .sp-err.on { display: block; }
     @media (prefers-reduced-motion: reduce) { .sp-bar i { animation: none; width: 100%; opacity: .5; } }
@@ -351,6 +384,7 @@
       .plan.featured { order: -1; margin-bottom: 8px; }
     }
     @media (max-width: 640px) {
+      section { padding: 56px 0; }
       .why { grid-template-columns: 1fr; }
       .ba { aspect-ratio: 4 / 3; box-shadow: 6px 6px 0 var(--ink); }
       .n-bar .n-links { display: none; }
@@ -521,7 +555,7 @@
         <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
       </div>
       <p class="ba-caption">Example business. Your redesign is built around your real services, photos and reviews.</p>
-      <div class="speed-cta"><button type="button" id="spOpen">How fast is your current site? Test it free &rarr;</button></div>
+      <div class="speed-cta"><button type="button" id="spOpen">How does your current site score? Free checkup &rarr;</button></div>
     </div>
   </section>
 
@@ -533,7 +567,7 @@
         <h2>Click around a finished site.</h2>
         <p>These are full demo sites for example businesses, built the same way I'd build yours. Open them on your phone too.</p>
       </div>
-      <div class="demo-grid">
+      <div class="demo-grid swipe">
         <a class="demo reveal" href="demos/roofing.html">
           <div class="demo-thumb t-roof"><span class="chip">LIVE DEMO</span><small>Roofing · Rugged</small><strong>Ridgeline Roofing</strong><em>Storm alerts, hail-claim steps, material compare</em></div>
           <div class="demo-body"><p>Dark and bold for an emergency trade. Big tap-to-call, a storm-alert banner, and a tool to compare roofing materials.</p><span class="go">Open demo →</span></div>
@@ -559,7 +593,7 @@
         <h2>From first call to live site in about a week.</h2>
         <p>No long meetings and no tech homework. You run your business; I handle the website.</p>
       </div>
-      <div class="steps">
+      <div class="steps swipe">
         <div class="step reveal"><h3>Free homepage mockup</h3><p>Tell me about your business. Within a couple of days you'll see a real mockup of your new homepage. No cost, no obligation.</p></div>
         <div class="step reveal"><h3>Approve and send details</h3><p>Like it? Send your logo, a few job photos and your services. Two rounds of changes are included.</p></div>
         <div class="step reveal"><h3>Go live</h3><p>I launch it on your domain, connect your contact form, set up Google basics, and hand you full ownership.</p></div>
@@ -574,7 +608,7 @@
         <div class="eyebrow">Why Apex Build</div>
         <h2>Built for people who'd rather be on the job site.</h2>
       </div>
-      <div class="why">
+      <div class="why swipe">
         <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-smartphone"/></svg></div><div><h3>Phone-first design</h3><p>Big tap-to-call buttons, fast loading on job-site data, and quote forms that are easy to fill out with one thumb.</p></div></div>
         <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-zap"/></svg></div><div><h3>Seriously fast</h3><p>Hand-built code, no bloated page builder. Fast sites keep visitors around, and Google rewards them.</p></div></div>
         <div class="why-item reveal"><div class="ic"><svg class="i" aria-hidden="true"><use href="#i-key"/></svg></div><div><h3>You own it</h3><p>Your domain, your code, your site. No contracts that hold your website hostage.</p></div></div>
@@ -637,6 +671,13 @@
           </ul>
           <a href="#contact" class="btn btn-ghost" data-plan="Care Plan ($39/mo)">Ask about the Care Plan</a>
         </div>
+      </div>
+      <div class="pb" id="pb">
+        <div class="pb-title">Build your price</div>
+        <div class="seg" role="group" aria-label="Choose a package"><button type="button" data-pkg="Starter" data-price="299" aria-pressed="true">Starter</button><button type="button" data-pkg="Business" data-price="599" aria-pressed="false">Business</button></div>
+        <label class="pb-care"><input type="checkbox" id="pbCare"> Add the Care Plan</label>
+        <div class="pb-total" id="pbTotal" aria-live="polite"><b>$299</b> one-time</div>
+        <a href="#contact" class="btn btn-primary btn-sm" id="pbGo">Start with a free mockup &rarr;</a>
       </div>
       <p class="price-note">Your domain name is about $15–25/year, paid directly to the registrar so it's always in your name.</p>
     </div>
@@ -713,16 +754,18 @@
 <dialog class="speed" id="spDlg" aria-labelledby="spTitle">
   <div class="sp-in">
     <button type="button" class="sp-x" id="spClose" aria-label="Close">&times;</button>
-    <h3 id="spTitle">How fast is your website?</h3>
-    <p>Enter your current site and Google will test it on a simulated phone, the way your customers see it.</p>
+    <h3 id="spTitle">Free website checkup</h3>
+    <p>Enter your current site and Google will check it on a simulated phone, the way your customers see it: speed, Google basics, ease of use and security.</p>
     <form class="sp-form" id="spForm" novalidate><input id="spUrl" type="text" inputmode="url" placeholder="yourbusiness.ca" autocomplete="url" aria-label="Your website address"><button type="submit">Test it</button></form>
     <div class="sp-err" id="spErr" role="alert"></div>
-    <div class="sp-wait" id="spWait"><p>Testing on a simulated phone. This usually takes 20 to 40 seconds.</p><div class="sp-bar"><i></i></div></div>
+    <div class="sp-wait" id="spWait"><p>Checking your site on a simulated phone. This usually takes 30 to 60 seconds.</p><div class="sp-bar"><i></i></div></div>
     <div class="sp-res" id="spRes" aria-live="polite">
-      <div class="sp-score"><div class="sp-ring" id="spRing"><span id="spNum">0</span></div><div class="sp-verdict"><b id="spHead"></b><small id="spSub"></small></div></div>
-      <p id="spMsg" style="margin-top:14px"></p>
-      <a href="#contact" class="sp-go" id="spGo">Get a free mockup of a faster site &rarr;</a>
-      <p class="sp-note">Score out of 100 from Google PageSpeed Insights, for phones. Scores can vary a little each time you test.</p>
+      <div class="sp-verdict" style="margin-bottom:14px"><b id="spHead"></b><small id="spSub"></small></div>
+      <div class="ck-grid" id="ckGrid"></div>
+      <ul class="ck-issues" id="ckIssues"></ul>
+      <p id="spMsg" style="margin-top:12px"></p>
+      <a href="#contact" class="sp-go" id="spGo">Get a free mockup &rarr;</a>
+      <p class="sp-note">Scores out of 100 from Google PageSpeed Insights, tested as a phone. They can vary a little each time.</p>
     </div>
   </div>
 </dialog>
@@ -897,47 +940,114 @@
     tick(); setInterval(tick, 30000);
   })();
 
-  // Website speed test (Google PageSpeed Insights)
+  // Website checkup (Google PageSpeed Insights)
   (function () {
     const PSI_KEY = ''; // optional free Google API key, restricted to apexbuildweb.ca
     const dlg = document.getElementById('spDlg'), open = document.getElementById('spOpen');
     if (!dlg || !open || typeof dlg.showModal !== 'function') { if (open) open.style.display = 'none'; return; }
     const $ = id => document.getElementById(id);
     const err = $('spErr'), wait = $('spWait'), res = $('spRes'), form = $('spForm'), url = $('spUrl');
+    const CATS = [['performance', 'Speed'], ['seo', 'Google basics'], ['accessibility', 'Easy to use'], ['best-practices', 'Security']];
+    const PLAIN = {
+      'largest-contentful-paint': 'The main content takes a while to show up on phones',
+      'total-blocking-time': 'The page freezes up for a moment while it loads',
+      'cumulative-layout-shift': 'Things jump around while the page loads',
+      'speed-index': 'The page fills in slowly on phones',
+      'render-blocking-resources': 'Some files hold the page back from showing',
+      'uses-optimized-images': 'Photos are bigger files than they need to be',
+      'uses-responsive-images': 'Phones download full-size photos',
+      'modern-image-formats': 'Photos use older, heavier file formats',
+      'unused-javascript': 'The site loads code it never uses',
+      'viewport': "It isn't set up properly for phone screens",
+      'font-size': 'Some text is too small to read on a phone',
+      'tap-targets': 'Buttons or links are too small or close together to tap',
+      'meta-description': "It's missing a description for Google search results",
+      'document-title': "It's missing a proper page title for Google",
+      'link-text': 'Some links have vague text like "click here"',
+      'crawlable-anchors': 'Google may not be able to follow some links',
+      'is-crawlable': 'Google may be blocked from listing the page',
+      'image-alt': 'Images are missing descriptions for Google and screen readers',
+      'color-contrast': 'Some text is hard to read against its background',
+      'button-name': 'Some buttons have no readable label',
+      'is-on-https': "It isn't fully secure (no padlock on every part)",
+      'errors-in-console': 'The page has errors behind the scenes',
+      'inspector-issues': 'The browser flagged problems with the page'
+    };
     let lastUrl = '';
     open.addEventListener('click', () => { dlg.showModal(); setTimeout(() => url.focus(), 50); });
     $('spClose').addEventListener('click', () => dlg.close());
     dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-    function fail(msg) { wait.classList.remove('on'); err.innerHTML = msg; err.classList.add('on'); form.querySelector('button').disabled = false; }
+    const btn = form.querySelector('button');
+    function fail(msg) { wait.classList.remove('on'); err.innerHTML = msg; err.classList.add('on'); btn.disabled = false; }
+    const color = n => n >= 90 ? '#16a34a' : n >= 50 ? '#d97706' : '#dc2626';
     form.addEventListener('submit', async e => {
       e.preventDefault(); err.classList.remove('on'); res.classList.remove('on');
       let v = url.value.trim(); if (!v) { url.focus(); return; }
       if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
       let u; try { u = new URL(v); if (!u.hostname.includes('.')) throw 0; } catch (x) { return fail("That doesn't look like a web address. Try something like <b>yourbusiness.ca</b>."); }
-      lastUrl = u.href; form.querySelector('button').disabled = true; wait.classList.add('on');
-      const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 80000);
+      lastUrl = u.href; btn.disabled = true; wait.classList.add('on');
+      const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 90000);
       try {
-        const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?category=performance&strategy=mobile&url=' + encodeURIComponent(u.href) + (PSI_KEY ? '&key=' + PSI_KEY : '');
+        const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&url=' + encodeURIComponent(u.href) + CATS.map(c => '&category=' + c[0]).join('') + (PSI_KEY ? '&key=' + PSI_KEY : '');
         const r = await fetch(api, { signal: ctl.signal }); clearTimeout(t);
         const j = await r.json().catch(() => ({}));
         if (!r.ok) {
-          if (r.status === 429) return fail("Google's speed test is busy right now. Try again in a minute, or test it yourself at <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener\">pagespeed.web.dev</a>.");
+          if (r.status === 429) return fail("Google's checkup is busy right now. Try again in a minute, or check it yourself at <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener\">pagespeed.web.dev</a>.");
           return fail("Google couldn't load that site. Check the address is right and the site is online, then try again.");
         }
-        const lh = j.lighthouseResult, score = Math.round(((lh && lh.categories.performance.score) || 0) * 100);
-        const lcp = lh && lh.audits['largest-contentful-paint'] ? lh.audits['largest-contentful-paint'].displayValue : '';
-        const ring = $('spRing'); const c = score >= 90 ? '#16a34a' : score >= 50 ? '#d97706' : '#dc2626';
-        ring.style.setProperty('--c', c); ring.style.setProperty('--v', score); $('spNum').textContent = score;
-        $('spHead').textContent = score >= 90 ? 'Fast' : score >= 50 ? 'Could be faster' : 'Slow on phones';
-        $('spSub').textContent = u.hostname.replace(/^www\./, '') + (lcp ? ' · main content loads in ' + lcp.replace(/ /g, ' ') : '');
-        $('spMsg').textContent = score >= 90 ? "That's a fast site. If it's the look or the calls you're not happy with, I can still mock up something fresh." : score >= 50 ? 'Not bad, but every second counts. People on phones leave quickly when a page drags.' : 'Phone visitors often give up on slow pages before they ever see your number. A faster site can mean more calls.';
-        wait.classList.remove('on'); res.classList.add('on'); form.querySelector('button').disabled = false;
-      } catch (x) { clearTimeout(t); fail("The test took too long or couldn't connect. Try again, or test it yourself at <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener\">pagespeed.web.dev</a>."); }
+        const lh = j.lighthouseResult || {}; const cats = lh.categories || {}; const audits = lh.audits || {};
+        const scores = CATS.map(c => [c[1], cats[c[0]] ? Math.round(cats[c[0]].score * 100) : null]);
+        $('ckGrid').innerHTML = scores.filter(x => x[1] !== null).map(x => '<div class="ck"><div class="sp-ring" style="--c:' + color(x[1]) + ';--v:' + x[1] + '"><span>' + x[1] + '</span></div>' + x[0] + '</div>').join('');
+        const issues = Object.keys(PLAIN).filter(id => audits[id] && audits[id].score !== null && audits[id].score < 0.9).slice(0, 4);
+        $('ckIssues').innerHTML = issues.map(id => '<li>' + PLAIN[id] + '</li>').join('');
+        const vals = scores.map(x => x[1]).filter(x => x !== null); const low = Math.min.apply(null, vals);
+        $('spHead').textContent = low >= 90 ? 'This site is in good shape' : issues.length ? 'Here’s what’s holding it back' : 'Some room to improve';
+        $('spSub').textContent = u.hostname.replace(/^www\./, '');
+        $('spMsg').textContent = low >= 90
+          ? "Nice, it passes Google's checks. If you're still not getting the calls you want, the design and message might be the issue, and I can mock up something fresh for free."
+          : 'These are the kinds of things I fix in every site I build. Want to see what yours could look like?';
+        wait.classList.remove('on'); res.classList.add('on'); btn.disabled = false;
+      } catch (x) { clearTimeout(t); fail("The checkup took too long or couldn't connect. Try again, or check it yourself at <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener\">pagespeed.web.dev</a>."); }
     });
     $('spGo').addEventListener('click', e => {
       e.preventDefault(); dlg.close();
       const site = document.getElementById('f-site'); if (site && lastUrl) site.value = lastUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
       document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  })();
+
+  // Price builder
+  (function () {
+    const pb = document.getElementById('pb'); if (!pb) return;
+    const care = document.getElementById('pbCare'), total = document.getElementById('pbTotal');
+    const cur = () => pb.querySelector('.seg [aria-pressed="true"]');
+    function update() {
+      const price = cur().dataset.price;
+      total.innerHTML = '<b>$' + price + '</b> one-time' + (care.checked ? ', then <b>$39</b>/month' : '');
+    }
+    pb.querySelector('.seg').addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      pb.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); update();
+    });
+    care.addEventListener('change', update);
+    document.getElementById('pbGo').addEventListener('click', () => {
+      const plan = document.getElementById('f-plan'), notes = document.getElementById('f-notes'), c = cur();
+      if (plan) plan.value = c.dataset.pkg + ' ($' + c.dataset.price + ')';
+      if (notes && care.checked && !/Care Plan/.test(notes.value)) notes.value = (notes.value ? notes.value + '\n' : '') + 'Interested in the Care Plan too.';
+    });
+  })();
+
+  // Swipe rows on phones: little dots that follow along
+  (function () {
+    document.querySelectorAll('.swipe').forEach(row => {
+      const n = row.children.length; const dots = document.createElement('div'); dots.className = 'swipe-dots'; dots.setAttribute('aria-hidden', 'true');
+      dots.innerHTML = '<i></i>'.repeat(n); row.after(dots);
+      const set = () => {
+        const w = row.children[0].getBoundingClientRect().width + 14;
+        const i = Math.max(0, Math.min(n - 1, Math.round(row.scrollLeft / w)));
+        dots.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === i));
+      };
+      row.addEventListener('scroll', () => requestAnimationFrame(set), { passive: true }); set();
     });
   })();
 
