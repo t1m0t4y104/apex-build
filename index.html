@@ -97,6 +97,46 @@
     .trade-pick button:hover { border-color: var(--ink); }
     .trade-pick button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
     ::selection { background: var(--orange-soft); color: var(--ink); }
+    .name-try { display: flex; align-items: center; gap: 8px; margin-top: 12px; font-size: .82rem; }
+    .name-try label { color: var(--muted); font-weight: 600; white-space: nowrap; }
+    .name-try input { font: inherit; font-size: 16px; width: 200px; padding: 7px 12px; border-radius: 99px; border: 1.5px solid var(--line-2); background: #fff; color: var(--ink); }
+    .name-try input:focus { outline: none; border-color: var(--ink); }
+    .scan { display: flex; align-items: center; gap: 12px; margin-top: 18px; font-size: .8rem; color: var(--muted); max-width: 290px; }
+    .scan .qr { flex-shrink: 0; background: #fff; border: 1.5px solid var(--ink); border-radius: 8px; padding: 6px; line-height: 0; }
+    .scan b { color: var(--ink); display: block; }
+    @media (max-width: 900px), (hover: none) { .scan { display: none; } }
+    .local-time { margin-top: 14px; font-size: .88rem; color: #a9acb3; }
+    .local-time b { color: var(--bg); font-weight: 600; }
+    .speed-cta { display: flex; justify-content: center; margin-top: 18px; }
+    .speed-cta button { font: inherit; font-weight: 700; font-size: .95rem; background: none; border: 0; padding: 6px 2px; color: var(--ink); cursor: pointer; border-bottom: 2px solid var(--orange); }
+    .speed-cta button:hover { color: var(--orange); }
+    dialog.speed { border: 2px solid var(--ink); border-radius: 14px; box-shadow: 6px 6px 0 var(--ink); padding: 0; width: min(460px, calc(100% - 24px)); background: #fff; color: var(--ink); }
+    dialog.speed::backdrop { background: rgba(20,22,26,.55); }
+    .sp-in { padding: 24px 22px 22px; position: relative; }
+    .sp-x { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 8px; border: 1.5px solid var(--line-2); background: #fff; cursor: pointer; font: inherit; font-size: 1.1rem; line-height: 1; }
+    .sp-in h3 { font-size: 1.35rem; margin: 0 40px 6px 0; }
+    .sp-in p { color: var(--muted); font-size: .93rem; }
+    form.sp-form { display: flex; gap: 8px; margin-top: 16px; padding: 0; }
+    .sp-form input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 12px; border-radius: 8px; border: 1.5px solid var(--line-2); background: var(--bg); }
+    .sp-form input:focus { outline: none; border-color: var(--ink); background: #fff; }
+    .sp-form button, .sp-go { font: inherit; font-weight: 700; padding: 12px 16px; border-radius: 8px; border: 2px solid var(--ink); background: var(--orange); color: var(--ink); cursor: pointer; white-space: nowrap; }
+    .sp-wait { margin-top: 18px; display: none; }
+    .sp-wait.on { display: block; }
+    .sp-bar { height: 6px; border-radius: 99px; background: var(--bg-2); overflow: hidden; margin-top: 10px; }
+    .sp-bar i { display: block; height: 100%; width: 35%; background: var(--orange); border-radius: 99px; animation: spbar 1.4s ease-in-out infinite; }
+    @keyframes spbar { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+    .sp-res { display: none; margin-top: 18px; }
+    .sp-res.on { display: block; }
+    .sp-score { display: flex; align-items: center; gap: 16px; }
+    .sp-ring { --c: #16a34a; --v: 0; width: 84px; height: 84px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; background: conic-gradient(var(--c) calc(var(--v) * 1%), var(--bg-2) 0); }
+    .sp-ring span { width: 66px; height: 66px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--c); }
+    .sp-verdict b { display: block; font-size: 1.05rem; }
+    .sp-verdict small { color: var(--muted); }
+    .sp-go { display: inline-flex; margin-top: 16px; text-decoration: none; }
+    .sp-note { font-size: .75rem; color: var(--muted); margin-top: 12px; }
+    .sp-err { display: none; margin-top: 14px; font-size: .9rem; background: #fbebeb; border-radius: 8px; padding: 10px 12px; }
+    .sp-err.on { display: block; }
+    @media (prefers-reduced-motion: reduce) { .sp-bar i { animation: none; width: 100%; opacity: .5; } }
     .mailrow { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .copy-btn { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: .8rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; border: 1.5px solid rgba(244,241,234,.3); background: transparent; color: var(--bg); cursor: pointer; transition: border-color .15s, background .15s, color .15s; }
     .copy-btn { position: relative; }
@@ -409,6 +449,8 @@
           <button type="button" data-t="land" aria-pressed="false">Landscaper</button>
           <button type="button" data-t="elec" aria-pressed="false">Electrician</button>
         </div>
+        <div class="name-try"><label for="tryName">Your business name:</label><input id="tryName" maxlength="26" placeholder="e.g. Dave's Roofing" autocomplete="off"></div>
+        <div class="scan"><span class="qr"><svg width="76" height="76" viewBox="0 0 25 25" shape-rendering="crispEdges" aria-hidden="true"><path stroke="#14161a" stroke-width="1" d="M0 0.5h7m2 0h1m1 0h1m1 0h1m4 0h7m-25 1h1m5 0h1m1 0h1m1 0h1m1 0h3m3 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m1 0h5m1 0h3m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h2m3 0h1m2 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h2m3 0h1m1 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m2 0h1m2 0h1m1 0h1m3 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h1m1 0h3m1 0h1m1 0h1m-17 1h1m5 0h1m1 0h1m2 0h1m1 0h2m2 0h2m2 0h3m-24 1h2m2 0h2m1 0h4m3 0h2m1 0h1m1 0h5m-23 1h1m1 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m-25 1h1m7 0h1m3 0h1m5 0h1m2 0h1m2 0h1m-25 1h1m2 0h2m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m1 0h2m4 0h1m-25 1h1m2 0h3m3 0h2m1 0h2m1 0h2m2 0h1m3 0h1m-24 1h1m2 0h1m2 0h2m1 0h1m3 0h9m1 0h2m-25 1h1m3 0h2m2 0h1m1 0h1m1 0h1m1 0h1m2 0h3m1 0h2m1 0h1m-25 1h1m3 0h4m2 0h1m1 0h9m1 0h1m-15 1h2m5 0h2m3 0h1m-21 1h7m3 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m4 0h1m2 0h3m3 0h1m2 0h1m-24 1h1m1 0h3m1 0h1m2 0h1m1 0h10m1 0h3m-25 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m2 0h2m4 0h2m-25 1h1m1 0h3m1 0h1m5 0h1m2 0h1m1 0h1m3 0h2m1 0h1m-25 1h1m5 0h1m3 0h1m1 0h1m1 0h1m1 0h1m2 0h2m3 0h1m-25 1h7m1 0h2m1 0h4m1 0h3m2 0h1m2 0h1"/></svg></span><span><b>On a computer?</b>Scan to see this site on your phone, where your customers will see yours.</span></div>
       </div>
     </div>
   </section>
@@ -479,6 +521,7 @@
         <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
       </div>
       <p class="ba-caption">Example business. Your redesign is built around your real services, photos and reviews.</p>
+      <div class="speed-cta"><button type="button" id="spOpen">How fast is your current site? Test it free &rarr;</button></div>
     </div>
   </section>
 
@@ -632,6 +675,7 @@
           </ul>
           <span style="color:var(--muted);font-size:.9rem">Prefer email?</span><br>
           <span class="mailrow"><a class="mail" href="mailto:tim@apexbuildweb.ca">tim@apexbuildweb.ca</a><button type="button" class="copy-btn" data-copy="tim@apexbuildweb.ca" aria-label="Copy email address"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span><span class="copy-pop" aria-hidden="true">Copied!</span></button></span>
+          <p class="local-time" id="okTime"></p>
         </div>
         <form id="leadForm" novalidate>
           <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
@@ -665,6 +709,23 @@
     </div>
   </section>
 </main>
+
+<dialog class="speed" id="spDlg" aria-labelledby="spTitle">
+  <div class="sp-in">
+    <button type="button" class="sp-x" id="spClose" aria-label="Close">&times;</button>
+    <h3 id="spTitle">How fast is your website?</h3>
+    <p>Enter your current site and Google will test it on a simulated phone, the way your customers see it.</p>
+    <form class="sp-form" id="spForm" novalidate><input id="spUrl" type="text" inputmode="url" placeholder="yourbusiness.ca" autocomplete="url" aria-label="Your website address"><button type="submit">Test it</button></form>
+    <div class="sp-err" id="spErr" role="alert"></div>
+    <div class="sp-wait" id="spWait"><p>Testing on a simulated phone. This usually takes 20 to 40 seconds.</p><div class="sp-bar"><i></i></div></div>
+    <div class="sp-res" id="spRes" aria-live="polite">
+      <div class="sp-score"><div class="sp-ring" id="spRing"><span id="spNum">0</span></div><div class="sp-verdict"><b id="spHead"></b><small id="spSub"></small></div></div>
+      <p id="spMsg" style="margin-top:14px"></p>
+      <a href="#contact" class="sp-go" id="spGo">Get a free mockup of a faster site &rarr;</a>
+      <p class="sp-note">Score out of 100 from Google PageSpeed Insights, for phones. Scores can vary a little each time you test.</p>
+    </div>
+  </div>
+</dialog>
 
 <footer>
   <div class="wrap foot">
@@ -809,6 +870,74 @@
       const k = e.key.length === 1 ? e.key.toLowerCase() : e.key;
       i = (k === code[i]) ? i + 1 : (k === code[0] ? 1 : 0);
       if (i === code.length) { i = 0; showToast('Built by Tim in Okotoks. Nice moves.'); }
+    });
+  })();
+
+  // Hero phone: type your business name
+  (function () {
+    const inp = document.getElementById('tryName'), brand = document.getElementById('mBrand');
+    if (!inp || !brand) return;
+    const esc = t => t.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    function setName() {
+      const v = inp.value.trim().replace(/\s+/g, ' ').toUpperCase();
+      if (!v) { if (brand.dataset.orig) { brand.innerHTML = brand.dataset.orig; delete brand.dataset.orig; } return; }
+      if (!brand.dataset.orig) brand.dataset.orig = brand.innerHTML;
+      const w = v.split(' ');
+      brand.innerHTML = w.length > 1 ? esc(w.slice(0, -1).join(' ')) + ' <span>' + esc(w[w.length - 1]) + '</span>' : esc(v);
+    }
+    inp.addEventListener('input', setName);
+    document.querySelector('.trade-pick').addEventListener('click', () => setTimeout(() => { if (inp.value.trim()) { delete brand.dataset.orig; setName(); } }, 220));
+  })();
+
+  // Local time in Okotoks
+  (function () {
+    const el = document.getElementById('okTime'); if (!el) return;
+    const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', hour: 'numeric', minute: '2-digit', hour12: true });
+    const tick = () => { el.innerHTML = "It's <b>" + fmt.format(new Date()) + '</b> in Okotoks. I usually reply within a day.'; };
+    tick(); setInterval(tick, 30000);
+  })();
+
+  // Website speed test (Google PageSpeed Insights)
+  (function () {
+    const PSI_KEY = ''; // optional free Google API key, restricted to apexbuildweb.ca
+    const dlg = document.getElementById('spDlg'), open = document.getElementById('spOpen');
+    if (!dlg || !open || typeof dlg.showModal !== 'function') { if (open) open.style.display = 'none'; return; }
+    const $ = id => document.getElementById(id);
+    const err = $('spErr'), wait = $('spWait'), res = $('spRes'), form = $('spForm'), url = $('spUrl');
+    let lastUrl = '';
+    open.addEventListener('click', () => { dlg.showModal(); setTimeout(() => url.focus(), 50); });
+    $('spClose').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    function fail(msg) { wait.classList.remove('on'); err.innerHTML = msg; err.classList.add('on'); form.querySelector('button').disabled = false; }
+    form.addEventListener('submit', async e => {
+      e.preventDefault(); err.classList.remove('on'); res.classList.remove('on');
+      let v = url.value.trim(); if (!v) { url.focus(); return; }
+      if (!/^https?:\/\//i.test(v)) v = 'https://' + v;
+      let u; try { u = new URL(v); if (!u.hostname.includes('.')) throw 0; } catch (x) { return fail("That doesn't look like a web address. Try something like <b>yourbusiness.ca</b>."); }
+      lastUrl = u.href; form.querySelector('button').disabled = true; wait.classList.add('on');
+      const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 80000);
+      try {
+        const api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?category=performance&strategy=mobile&url=' + encodeURIComponent(u.href) + (PSI_KEY ? '&key=' + PSI_KEY : '');
+        const r = await fetch(api, { signal: ctl.signal }); clearTimeout(t);
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok) {
+          if (r.status === 429) return fail("Google's speed test is busy right now. Try again in a minute, or test it yourself at <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener\">pagespeed.web.dev</a>.");
+          return fail("Google couldn't load that site. Check the address is right and the site is online, then try again.");
+        }
+        const lh = j.lighthouseResult, score = Math.round(((lh && lh.categories.performance.score) || 0) * 100);
+        const lcp = lh && lh.audits['largest-contentful-paint'] ? lh.audits['largest-contentful-paint'].displayValue : '';
+        const ring = $('spRing'); const c = score >= 90 ? '#16a34a' : score >= 50 ? '#d97706' : '#dc2626';
+        ring.style.setProperty('--c', c); ring.style.setProperty('--v', score); $('spNum').textContent = score;
+        $('spHead').textContent = score >= 90 ? 'Fast' : score >= 50 ? 'Could be faster' : 'Slow on phones';
+        $('spSub').textContent = u.hostname.replace(/^www\./, '') + (lcp ? ' · main content loads in ' + lcp.replace(/ /g, ' ') : '');
+        $('spMsg').textContent = score >= 90 ? "That's a fast site. If it's the look or the calls you're not happy with, I can still mock up something fresh." : score >= 50 ? 'Not bad, but every second counts. People on phones leave quickly when a page drags.' : 'Phone visitors often give up on slow pages before they ever see your number. A faster site can mean more calls.';
+        wait.classList.remove('on'); res.classList.add('on'); form.querySelector('button').disabled = false;
+      } catch (x) { clearTimeout(t); fail("The test took too long or couldn't connect. Try again, or test it yourself at <a href=\"https://pagespeed.web.dev\" target=\"_blank\" rel=\"noopener\">pagespeed.web.dev</a>."); }
+    });
+    $('spGo').addEventListener('click', e => {
+      e.preventDefault(); dlg.close();
+      const site = document.getElementById('f-site'); if (site && lastUrl) site.value = lastUrl.replace(/^https?:\/\//, '').replace(/\/$/, '');
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
   })();
 
