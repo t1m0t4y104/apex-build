@@ -136,12 +136,12 @@
     .sp-note { font-size: .75rem; color: var(--muted); margin-top: 12px; }
     .swipe-dots { display: none; }
     @media (max-width: 640px) {
-      .swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 14px; margin: 0 -20px; padding: 6px 20px 16px; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+      .swipe { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; margin: 0 -20px; padding: 6px 20px 16px; scrollbar-width: none; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
       .swipe::-webkit-scrollbar { display: none; }
-      .swipe > * { flex: 0 0 84%; scroll-snap-align: center; }
+      .swipe > * { flex: 0 0 82%; scroll-snap-align: center; }
       .swipe .reveal { opacity: 1; transform: none; }
       .why.swipe { border: 0; }
-      .why.swipe > .why-item { border: 2px solid var(--ink); border-radius: var(--radius); }
+      .why.swipe > .why-item { border: 0; border-radius: 12px; background: #fff; box-shadow: 0 8px 22px -14px rgba(20,22,26,.35); }
       .swipe-dots { display: flex; justify-content: center; gap: 7px; margin-top: 6px; }
       .swipe-dots i { width: 7px; height: 7px; border-radius: 99px; background: var(--line-2); transition: width .25s var(--ease), background .25s; }
       .swipe-dots i.on { width: 20px; background: var(--ink); }
@@ -319,6 +319,24 @@
     .plan li { padding: 6px 0 6px 26px; position: relative; font-size: .95rem; }
     .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--orange); font-weight: 900; }
     .plan .btn { width: 100%; }
+    .plan .incl { flex: 1; display: flex; flex-direction: column; }
+    .plan .incl ul { flex: 1; }
+    .incl summary { list-style: none; }
+    .incl summary::-webkit-details-marker { display: none; }
+    @media (min-width: 641px) { .incl summary { display: none; } }
+    @media (max-width: 640px) {
+      .pricing { gap: 16px; }
+      .plan { padding: 22px 20px; }
+      .plan .desc { min-height: 0; margin-bottom: 4px; }
+      .plan .price { font-size: 2.2rem; }
+      .plan .once { margin-bottom: 4px; }
+      .incl { margin-bottom: 16px; }
+      .incl summary { display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Inter', sans-serif; font-stretch: normal; font-variation-settings: normal; font-size: .9rem; font-weight: 600; padding: 12px 0; border-top: 1px dashed var(--line-2); }
+      .plan.featured .incl summary { border-top-color: rgba(255,255,255,.2); }
+      .incl summary::after { content: ""; position: static; transform: none; width: 22px; height: 22px; border: 1.5px solid currentColor; border-radius: 6px; background-image: linear-gradient(currentColor, currentColor), linear-gradient(currentColor, currentColor); background-size: 10px 2px, 2px 10px; background-position: center; background-repeat: no-repeat; transition: transform .2s; }
+      .incl[open] summary::after { transform: rotate(45deg); background-color: transparent; }
+      .incl ul { border-top: 0; padding-top: 0; margin-bottom: 4px; }
+    }
     .plan.featured .btn-primary { box-shadow: 4px 4px 0 var(--bg); border-color: var(--bg); }
     .price-note { text-align: center; color: var(--muted); font-size: .93rem; margin-top: 30px; }
 
@@ -633,13 +651,13 @@
           <p class="desc">One sharp page that gets the phone ringing.</p>
           <div class="price">$299 <small>CAD</small></div>
           <p class="once">One-time</p>
-          <ul>
+          <details class="incl" open><summary>What's included</summary><ul>
             <li>1-page website</li>
             <li>Tap-to-call &amp; quote form</li>
             <li>Mobile-first design</li>
             <li>Basic Google setup</li>
             <li>Launch on your domain</li>
-          </ul>
+          </ul></details>
           <a href="#contact" class="btn btn-ghost" data-plan="Starter ($299)">Start with a free mockup</a>
         </div>
         <div class="plan featured reveal">
@@ -648,13 +666,13 @@
           <p class="desc">A full site that shows off your work and your services.</p>
           <div class="price">$599 <small>CAD</small></div>
           <p class="once">One-time</p>
-          <ul>
+          <details class="incl" open><summary>What's included</summary><ul>
             <li>Up to 5 pages</li>
             <li>Service &amp; service-area pages</li>
             <li>Project photo gallery</li>
             <li>Reviews section</li>
             <li>Everything in Starter</li>
-          </ul>
+          </ul></details>
           <a href="#contact" class="btn btn-primary" data-plan="Business ($599)">Start with a free mockup</a>
         </div>
         <div class="plan reveal">
@@ -662,13 +680,13 @@
           <p class="desc">Optional. I keep it running so you never have to think about it.</p>
           <div class="price">$39 <small>/month</small></div>
           <p class="once">Cancel anytime</p>
-          <ul>
+          <details class="incl" open><summary>What's included</summary><ul>
             <li>Hosting &amp; SSL handled</li>
             <li>Unlimited small changes</li>
             <li>New photos, prices, hours</li>
             <li>Uptime &amp; form monitoring</li>
             <li>Priority support</li>
-          </ul>
+          </ul></details>
           <a href="#contact" class="btn btn-ghost" data-plan="Care Plan ($39/mo)">Ask about the Care Plan</a>
         </div>
       </div>
@@ -1043,12 +1061,19 @@
       const n = row.children.length; const dots = document.createElement('div'); dots.className = 'swipe-dots'; dots.setAttribute('aria-hidden', 'true');
       dots.innerHTML = '<i></i>'.repeat(n); row.after(dots);
       const set = () => {
-        const w = row.children[0].getBoundingClientRect().width + 14;
+        const w = row.children[0].getBoundingClientRect().width + 18;
         const i = Math.max(0, Math.min(n - 1, Math.round(row.scrollLeft / w)));
         dots.querySelectorAll('i').forEach((d, k) => d.classList.toggle('on', k === i));
       };
       row.addEventListener('scroll', () => requestAnimationFrame(set), { passive: true }); set();
     });
+  })();
+
+  // Pricing on phones: collapse "What's included"
+  (function () {
+    const mq = window.matchMedia('(max-width: 640px)');
+    const set = () => document.querySelectorAll('.incl').forEach(d => { if (mq.matches) d.removeAttribute('open'); else d.setAttribute('open', ''); });
+    set(); mq.addEventListener ? mq.addEventListener('change', set) : mq.addListener(set);
   })();
 
   // For anyone peeking under the hood
