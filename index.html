@@ -228,8 +228,8 @@
     details { border-bottom: 1px solid var(--line-2); }
     summary { list-style: none; cursor: pointer; padding: 22px 44px 22px 0; font-weight: 700; font-size: 1.1rem; position: relative; letter-spacing: -.01em; }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border: 1.5px solid var(--ink); border-radius: 6px; display: grid; place-items: center; font-family: 'Inter'; font-size: 1.1rem; transition: transform .25s, background .2s; }
-    details[open] summary::after { transform: translateY(-50%) rotate(45deg); background: var(--orange); }
+    summary::after { content: ""; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; box-sizing: border-box; border: 1.5px solid var(--ink); border-radius: 6px; background-image: linear-gradient(var(--ink), var(--ink)), linear-gradient(var(--ink), var(--ink)); background-size: 12px 2px, 2px 12px; background-position: center; background-repeat: no-repeat; transition: transform .25s, background-color .2s; }
+    details[open] summary::after { transform: translateY(-50%) rotate(45deg); background-color: var(--orange); }
     details p { color: var(--muted); padding: 0 0 22px; max-width: 690px; }
 
     .contact-card { display: grid; grid-template-columns: .9fr 1.1fr; background: var(--card); border: 2px solid var(--ink); border-radius: 14px; overflow: hidden; box-shadow: 10px 10px 0 var(--ink); }
