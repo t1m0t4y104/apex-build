@@ -275,6 +275,7 @@
   };
   syncMore();
   if (pre.domain) setSingle('Domain', 'I already have one');
+  if (pre.claims) { const g = groupEl('True claims'); g.querySelectorAll('.chip').forEach(c => { if (pre.claims.includes(c.dataset.v)) c.setAttribute('aria-pressed', 'true'); }); }
 
   function groupEl(name) { return form.querySelector(`[data-group="${name}"]`); }
   function setSingle(name, v) { const g = groupEl(name); g.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.v === v ? 'true' : 'false')); }
