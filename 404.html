@@ -31,7 +31,10 @@
     .hat { display:block; width:120px; height:auto; cursor:pointer; transform-origin:50% 90%; -webkit-tap-highlight-color:transparent; }
     .hat.wobble { animation:wobble .6s ease; }
     .santa { display:none; position:absolute; width:62px; left:44px; top:-34px; transform:rotate(16deg); pointer-events:none; }
-    html.xmas .santa { display:block; }
+    html.christmas .santa { display:block; }
+    main { -webkit-user-select:none; user-select:none; }
+    main p, main h1 { -webkit-user-select:text; user-select:text; }
+    .gust { -webkit-user-select:none !important; user-select:none !important; }
     .gust { height:20px; margin:-10px 0 8px; font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--muted); opacity:0; transition:opacity .3s; }
     .gust.on { opacity:1; }
     @keyframes fly { 0% { transform:none; } 25% { transform:translate(-10px,8px) rotate(-10deg); } 100% { transform:translate(70vw,-80vh) rotate(540deg); opacity:.6; } }
@@ -55,7 +58,7 @@
         <path d="M52 19 Q60 14 68 19 L66 60 L54 60 Z" fill="#ff7a45" stroke="#14161a" stroke-width="3" stroke-linejoin="round"/>
         <rect x="4" y="60" width="112" height="12" rx="6" fill="#ff5a1f" stroke="#14161a" stroke-width="4"/>
       </svg>
-      <svg class="santa" viewBox="0 0 44 36" aria-hidden="true"><path d="M5 27 C8 13 18 4 31 6 C38 7 41 13 39 21 C36 16 33 15 30 16 C30 20 32 23 34 27 Z" fill="#e0312b" stroke="#14161a" stroke-width="2.2" stroke-linejoin="round"/><rect x="2" y="24" width="35" height="9" rx="4.5" fill="#fff" stroke="#14161a" stroke-width="2.2"/><circle cx="39" cy="22" r="4.6" fill="#fff" stroke="#14161a" stroke-width="2.2"/></svg>
+      <svg class="santa" viewBox="0 0 46 37" style="overflow:visible" aria-hidden="true"><path d="M5 27 C8 13 18 4 31 6 C38 7 41 13 39 21 C36 16 33 15 30 16 C30 20 32 23 34 27 Z" fill="#e0312b" stroke="#14161a" stroke-width="2.2" stroke-linejoin="round"/><rect x="2" y="24" width="35" height="9" rx="4.5" fill="#fff" stroke="#14161a" stroke-width="2.2"/><circle cx="39" cy="22" r="4.6" fill="#fff" stroke="#14161a" stroke-width="2.2"/></svg>
       </div></div>
       <div class="gust" id="gust" aria-live="polite"></div>
       <div class="code">ERROR 404</div>
@@ -69,10 +72,10 @@
   </main>
   <div class="tape" aria-hidden="true"></div>
   <script>
-    // Seasonal: Santa hat Dec 1 to 26 (preview with ?preview=xmas)
+    // Seasonal: Santa hat Dec 1 to 26 (preview with ?preview=christmas)
     (function () {
       const o = {}; new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', month: 'numeric', day: 'numeric' }).formatToParts(new Date()).forEach(p => o[p.type] = +p.value);
-      if (new URLSearchParams(location.search).get('preview') === 'xmas' || (o.month === 12 && o.day <= 26)) document.documentElement.classList.add('xmas');
+      if (new URLSearchParams(location.search).get('preview') === 'christmas' || (o.month === 12 && o.day <= 26)) document.documentElement.classList.add('christmas');
     })();
     // The hat wobbles once when you hover or tap it. Tap it 3 times and it blows away.
     (function () {
