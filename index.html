@@ -1101,7 +1101,7 @@
       if (!(mq.matches || PREVIEW === 'sideways') || shown) return;
       shown = true;
       el = document.createElement('div'); el.className = 'sideways'; el.setAttribute('role', 'status');
-      el.innerHTML = '<span>Sideways, huh? The site still works. If that was an accident, just turn your phone back.</span><button type="button">Got it</button>';
+      el.innerHTML = '<span>Sideways, huh? The site still works.</span><button type="button">Got it</button>';
       document.body.appendChild(el);
       requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('on')));
       const hide = () => el.classList.remove('on');
