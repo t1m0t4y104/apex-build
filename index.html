@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!--
+     _    ____  _______  __  ____  _   _ ___ _     ____
+    / \  |  _ \| ____\ \/ / | __ )| | | |_ _| |   |  _ \
+   / _ \ | |_) |  _|  \  /  |  _ \| | | || || |   | | | |
+  / ___ \|  __/| |___ /  \  | |_) | |_| || || |___| |_| |
+ /_/   \_\_|   |_____/_/\_\ |____/ \___/|___|_____|____/
+
+  Hey, you're reading the source. Respect.
+  Every line here is hand-written. No page builder, no bloat.
+  Want a site like this for your business? tim@apexbuildweb.ca
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -222,7 +233,7 @@
     .ba { position: relative; border-radius: 12px; overflow: hidden; border: 2px solid var(--ink); aspect-ratio: 16 / 9; background: #fff; user-select: none; box-shadow: 10px 10px 0 var(--ink); }
     .ba-pane { position: absolute; inset: 0; }
     .ba-new { clip-path: inset(0 0 0 var(--pos, 50%)); }
-    .ba-label { position: absolute; top: 14px; padding: 5px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 500; letter-spacing: .06em; z-index: 3; border: 1.5px solid var(--ink); }
+    .ba-label { position: absolute; bottom: 14px; padding: 5px 12px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 500; letter-spacing: .06em; z-index: 3; border: 1.5px solid var(--ink); }
     .ba-label.old { left: 14px; background: #fff; color: var(--ink); }
     .ba-label.new { right: 14px; background: var(--orange); color: var(--ink); }
     .ba-handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--ink); transform: translateX(-50%); z-index: 2; pointer-events: none; }
@@ -241,23 +252,54 @@
     .old-site .o-main h4 { font-size: 1.3em; margin-bottom: 1.5%; }
     .old-site .o-main p { margin-bottom: 2%; line-height: 1.35; }
     .old-site .o-foot { margin-top: 2%; text-align: center; font-size: .85em; color: #333; }
-    .new-site { height: 100%; background: #f7f5f0; color: #1b1b1b; display: flex; flex-direction: column; font-size: clamp(8px, 1.3vw, 14px); font-family: 'Inter', sans-serif; }
-    .n-bar { display: flex; justify-content: space-between; align-items: center; padding: 2% 4%; background: #1d2633; color: #fff; }
-    .n-bar b span { color: #f59e0b; }
-    .n-bar .n-links { display: flex; gap: 2.4em; font-size: .9em; color: #cbd5e1; }
-    .n-bar .n-cta { background: #f59e0b; color: #111; font-weight: 800; padding: .6em 1.2em; border-radius: .5em; font-size: .9em; }
-    .n-hero { flex: 1; display: grid; grid-template-columns: 1.2fr 1fr; gap: 4%; padding: 5% 4%; background: linear-gradient(120deg, #1d2633 0%, #2d3b4f 100%); color: #fff; align-items: center; }
-    .n-hero h4 { font-size: 2.6em; line-height: 1.05; letter-spacing: -.02em; margin-bottom: .4em; }
-    .n-hero p { color: #cbd5e1; margin-bottom: 1.2em; }
+    .new-site { height: 100%; background: #12161c; color: #e8ebef; display: flex; flex-direction: column; font-size: clamp(7px, 1.2vw, 13.5px); font-family: 'Inter', sans-serif; line-height: 1.5; }
+    .new-site .i { width: 1em; height: 1em; }
+    .new-site .cond, .n-brand b, .n-kick, .n-hero h4, .n-badge span, .n-stats b, .n-alert b { font-family: 'Archivo', 'Arial Narrow', sans-serif; font-stretch: 62%; font-variation-settings: "wdth" 62; text-transform: uppercase; }
+    .n-alert { display: flex; align-items: center; gap: .8em; background: #f5a524; color: #12161c; padding: .55em 4%; font-size: .9em; white-space: nowrap; overflow: hidden; }
+    .n-alert b { font-weight: 900; letter-spacing: .08em; font-size: 1.1em; }
+    .n-alert span { overflow: hidden; text-overflow: ellipsis; }
+    .n-alert em { margin-left: auto; font-style: normal; font-weight: 700; border-bottom: .15em solid #12161c; }
+    .n-pulse { flex: none; width: .7em; height: .7em; border-radius: 50%; background: #c2410c; box-shadow: 0 0 0 0 rgba(194,65,12,.6); animation: npulse 1.6s infinite; }
+    @keyframes npulse { 70% { box-shadow: 0 0 0 .7em rgba(194,65,12,0); } 100% { box-shadow: 0 0 0 0 rgba(194,65,12,0); } }
+    .n-bar { display: flex; justify-content: space-between; align-items: center; gap: 1em; padding: 1.1em 4%; border-bottom: 1px solid #323c48; }
+    .n-brand { display: flex; align-items: center; gap: .7em; }
+    .n-brand svg { width: 2.6em; fill: none; stroke: #f5a524; stroke-width: 4; }
+    .n-brand b { font-size: 1.7em; font-weight: 900; line-height: .85; letter-spacing: .02em; color: #fff; }
+    .n-brand small { display: block; font-size: .38em; letter-spacing: .32em; color: #9aa4b0; font-weight: 700; margin-top: .3em; }
+    .n-links { display: flex; gap: 2.2em; font-size: .92em; color: #9aa4b0; font-weight: 600; }
+    .n-cta { display: inline-flex; align-items: center; gap: .5em; background: #f5a524; color: #12161c; font-weight: 700; padding: .65em 1.1em; font-size: .92em; clip-path: polygon(0 0,100% 0,100% calc(100% - .6em),calc(100% - .6em) 100%,0 100%); }
+    .n-hero { flex: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 4%; padding: 3.2% 4% 0; background: radial-gradient(ellipse at 75% 30%, #243040 0%, #12161c 62%); align-items: center; }
+    .n-kick { color: #f5a524; font-weight: 800; letter-spacing: .12em; font-size: 1.05em; margin-bottom: .6em; }
+    .n-hero h4 { font-size: 4.3em; line-height: .86; font-weight: 900; letter-spacing: .005em; margin-bottom: .3em; color: #fff; }
+    .n-hero h4 span { color: #f5a524; }
+    .n-hero p { color: #c4cbd4; font-size: 1.05em; max-width: 30em; margin-bottom: 1.3em; }
     .n-btns { display: flex; gap: .8em; }
-    .n-btns span { padding: .8em 1.3em; border-radius: .5em; font-weight: 800; font-size: .95em; }
-    .n-btns .a { background: #f59e0b; color: #111; }
-    .n-btns .b { border: 1px solid rgba(255,255,255,.35); }
-    .n-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 1em; padding: 1.4em; }
-    .n-card .s { color: #f59e0b; letter-spacing: 2px; margin-bottom: .4em; }
-    .n-card p { font-size: .9em; margin-bottom: .6em; }
-    .n-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2%; padding: 2.5% 4%; }
-    .n-row div { background: #fff; border: 1px solid #e7e2d8; border-radius: .7em; padding: .9em; font-weight: 700; font-size: .9em; }
+    .n-btns span { display: inline-flex; align-items: center; gap: .5em; padding: .85em 1.4em; font-weight: 700; font-size: .98em; clip-path: polygon(0 0,100% 0,100% calc(100% - .65em),calc(100% - .65em) 100%,0 100%); }
+    .n-btns .a { background: #f5a524; color: #12161c; }
+    .n-btns .b { box-shadow: inset 0 0 0 2px #56616e; color: #e8ebef; }
+    .n-art { position: relative; align-self: end; max-width: 30em; justify-self: end; width: 100%; }
+    .n-art svg { width: 100%; display: block; }
+    .n-badge { position: absolute; right: 4%; bottom: 16%; background: #f6f4f0; color: #12161c; padding: .7em 1em; box-shadow: .4em .4em 0 #f5a524; }
+    .n-badge b { display: block; font-size: .72em; text-transform: uppercase; letter-spacing: .1em; color: #5a6470; }
+    .n-badge span { font-size: 1.7em; font-weight: 900; line-height: 1; }
+    .n-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2%; padding: 1.6em 4% 1.8em; border-top: 1px solid #323c48; }
+    .n-stats div { border-left: .22em solid #f5a524; padding-left: .9em; }
+    .n-stats b { display: block; font-size: 2em; font-weight: 900; line-height: 1; color: #fff; }
+    .n-stats span { color: #9aa4b0; font-size: .85em; }
+    /* Easter egg: visitor counter prize */
+    .o-count { color: #666; }
+    .o-count b { font-family: "Courier New", monospace; background: #000; color: #3f3; padding: 0 .3em; letter-spacing: .1em; font-weight: normal; }
+    .prize { position: absolute; z-index: 6; left: 50%; top: 50%; width: min(380px, 80%); transform: translate(-50%, -50%) scale(.85); opacity: 0; pointer-events: none; transition: opacity .15s, transform .2s var(--ease); background: #c0c0c0; border: 2px outset #fff; box-shadow: 3px 3px 0 #000; font-family: Tahoma, Verdana, sans-serif; font-size: 13px; color: #000; }
+    .prize.on { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+    .prize-top { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(90deg, #000080, #1084d0); color: #fff; font-weight: bold; padding: 3px 4px 3px 7px; }
+    .prize-top button { width: 18px; height: 16px; font: bold 11px/1 Tahoma, sans-serif; background: #c0c0c0; border: 2px outset #fff; cursor: pointer; padding: 0; color: #000; }
+    .prize-body { padding: 14px 16px 16px; text-align: center; }
+    .prize-body .big { font: bold 20px/1.15 "Comic Sans MS", "Comic Neue", cursive; color: #e00; margin-bottom: 6px; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { color: #00e; } }
+    .prize-body p { margin-bottom: 12px; }
+    .prize-body a { display: inline-block; padding: 5px 16px; background: #c0c0c0; border: 2px outset #fff; color: #000; text-decoration: none; font-weight: bold; }
+    .prize-body a:active { border-style: inset; }
+    .prize-body small { display: block; margin-top: 12px; font-size: 11px; color: #333; }
     .ba-caption { text-align: center; color: var(--muted); font-size: .9rem; margin-top: 26px; }
 
     .demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -419,6 +461,48 @@
       nav .btn-sm { padding: 9px 13px; font-size: .85rem; }
       footer { margin-top: 72px; }
     }
+    /* Before/after: desktop only. On phones the checkup link moves under the examples */
+    .m-only { display: none; }
+    @media (max-width: 640px) {
+      #before-after { display: none; }
+      .speed-cta.m-only { display: flex; margin: 4px 0 18px; }
+    }
+
+    /* Logo easter eggs: draws itself (double-tap), blueprint mode (press and hold) */
+    .logo { position: relative; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+    .logo .draw { position: absolute; left: 9px; top: 50%; height: 27.5px; width: auto; transform: translateY(-50%); overflow: visible; fill: none; stroke: var(--orange); stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+    .logo .draw path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .7s var(--ease) forwards; }
+    .logo .draw path:nth-child(2) { animation-delay: .55s; }
+    .logo .draw path:nth-child(3) { animation-delay: 1.05s; }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    .logo.drawing img { visibility: hidden; }
+    .logo.holding { box-shadow: 4px 4px 0 #2f6fd6; transition: box-shadow 1.8s linear; }
+
+    /* Seasonal: Santa hat on the logo corner (Dec 1 to 26) */
+    .santa { display: none; position: absolute; left: -15px; top: -19px; width: 36px; transform: rotate(-24deg); pointer-events: none; z-index: 2; }
+    html.xmas .santa { display: block; }
+
+    /* Seasonal: April Fools */
+    html.april body, html.april h1, html.april h2, html.april h3, html.april .btn, html.april .lock .w1 { font-family: 'Comic Neue', 'Comic Sans MS', cursive !important; font-stretch: normal !important; font-variation-settings: normal !important; }
+    .fools { display: none; position: sticky; top: 72px; z-index: 49; background: #ffe14d; border-bottom: 2px solid var(--ink); font-weight: 700; font-size: .92rem; text-align: center; padding: 9px 16px; }
+    html.april .fools { display: block; }
+    .fools button { font: inherit; margin-left: 8px; background: none; border: 0; border-bottom: 2px solid var(--ink); cursor: pointer; padding: 0; color: var(--ink); }
+
+    /* Tiny screens (smartwatch and friends) */
+    .tiny-note { display: none; background: var(--ink); color: var(--bg); font-size: .8rem; line-height: 1.4; padding: 10px 12px; text-align: center; }
+    .tiny-note b { color: var(--orange); }
+    @media (max-width: 300px) { .tiny-note { display: block; } }
+
+    /* Night-time note in the contact panel */
+    .local-time .moon { display: inline-block; width: 1em; height: 1em; vertical-align: -.15em; margin-right: 4px; fill: none; stroke: #ffb38f; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Printing */
+    .print-note { display: none; }
+    @media print {
+      .print-note { display: block; border: 2px solid #000; padding: 10px 14px; margin: 0 0 18px; font: 600 13px/1.4 Inter, Arial, sans-serif; text-align: center; }
+      header { position: static; }
+      .toast, .bp-bar, .fools, .tiny-note, dialog { display: none !important; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -440,10 +524,12 @@
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.6-2.4 1.5a12 12 0 0 0 5.5 5.5l1.5-2.4 4.6 1.8V18a2.5 2.5 0 0 1-2.5 2.5C10.2 20.5 3.5 13.8 3.5 6A2.5 2.5 0 0 1 5 3.5z"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3.5 21 11"/><path d="M5.5 9v11.5h13V9"/><path d="M10 20.5V15h4v5.5"/></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 5.5a4.5 4.5 0 0 0-5.8 5.8L3.5 16.5l4 4 5.2-5.2a4.5 4.5 0 0 0 5.8-5.8l-2.8 2.8-2.8-.7-.7-2.8z"/></symbol><symbol id="i-hail" viewBox="0 0 24 24"><path d="M7 15.5a4 4 0 1 1 1-7.9A6 6 0 0 1 19.5 10a3 3 0 0 1-.5 5.5z"/><circle cx="8.5" cy="19.5" r=".9"/><circle cx="12.5" cy="20.5" r=".9"/><circle cx="16.5" cy="19.5" r=".9"/></symbol><symbol id="i-droplet" viewBox="0 0 24 24"><path d="M12 3s6.5 6.6 6.5 11.2a6.5 6.5 0 0 1-13 0C5.5 9.6 12 3 12 3z"/></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8.5h11a3 3 0 1 0-3-3"/><path d="M3 12.5h15a3 3 0 1 1-3 3"/><path d="M3 16.5h7"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20.5 20.5-4.8-4.8"/></symbol><symbol id="i-smartphone" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2.5 4.5 13.5h6.5l-1 8 8.5-11H12z"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4.5"/><path d="m11.2 12.3 9.3-9.3"/><path d="m17 6.5 3 3"/><path d="m14.5 9 2 2"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.1-7-11.2a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.6"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5 10-11"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 19.5 6v5.5c0 4.8-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.7-7.5-9.5V6z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21a6 6 0 0 0 6-6c0-4.5-3.5-6.5-4.5-11-2 2.5-2.5 4.5-2.5 6-1-.8-1.8-1.8-2-3-1.5 2-3 4.2-3 8a6 6 0 0 0 6 6z"/></symbol><symbol id="i-thermo" viewBox="0 0 24 24"><path d="M10 13.5V5a2 2 0 0 1 4 0v8.5a4 4 0 1 1-4 0z"/><path d="M12 17v-4"/></symbol><symbol id="i-bath" viewBox="0 0 24 24"><path d="M3.5 12h17v2.5a5 5 0 0 1-5 5h-7a5 5 0 0 1-5-5z"/><path d="M6 12V6a2.5 2.5 0 0 1 4.5-1.5"/><path d="M7 19.5 6 21M17 19.5l1 1.5"/></symbol><symbol id="i-hammer" viewBox="0 0 24 24"><path d="M13.5 6.5 16 4l4 4-2.5 2.5"/><path d="m11 9 4 4"/><path d="M13 7 4 16a2.1 2.1 0 0 0 3 3l9-9"/></symbol><symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3.5 16.5 16.5 3.5l4 4-13 13z"/><path d="m7.5 12.5 1.8 1.8M10.5 9.5l1.8 1.8M13.5 6.5l1.8 1.8"/></symbol><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19.5C5 10.5 10.5 5 20 4c-.8 9.5-6.5 15.5-15 15.5z"/><path d="m5 19.5 8-8"/></symbol><symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="m8.5 7 1.5-3h4l1.5 3"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol><symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol><symbol id="i-pipe" viewBox="0 0 24 24"><path d="M3 8h8a3 3 0 0 1 3 3v9.5"/><path d="M3 12h7v8.5"/><path d="M1.5 6.5v7M8.5 18.5h7"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol><symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></symbol><symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 7.5C6.5 8.5 5 10.5 5 13.5V17h4.5v-4.5H7c0-2 .9-3.2 2.5-3.8zM19 7.5c-3 1-4.5 3-4.5 6V17H19v-4.5h-2.5c0-2 .9-3.2 2.5-3.8z"/></symbol><symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 21.5 20h-19z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V6A2.5 2.5 0 0 0 13 3.5H6A2.5 2.5 0 0 0 3.5 6v7A2.5 2.5 0 0 0 6 15.5h2.5"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z"/><path d="M14 2.5V7h4.5M9 12h6M9 16h6"/></symbol></defs></svg>
 
+<div class="print-note">Printing a website? Old school. I respect it. &mdash; Tim, apexbuildweb.ca</div>
+<div class="tiny-note"><b>Whoa, tiny screen.</b> Is this a watch? Most sites fall apart this small. A good one still works.</div>
 <header>
   <div class="wrap">
     <nav>
-      <a href="#" class="logo" aria-label="Apex Build home"><span class="lock"><img src="Icons/apex-mark-orange.png" alt="" width="35" height="30"><span class="words"><span class="w1">Apex</span><span class="w2">Build</span></span></span></a>
+      <a href="#" class="logo" aria-label="Apex Build home"><svg class="santa" viewBox="0 0 44 36" aria-hidden="true"><path d="M5 27 C8 13 18 4 31 6 C38 7 41 13 39 21 C36 16 33 15 30 16 C30 20 32 23 34 27 Z" fill="#e0312b" stroke="#14161a" stroke-width="2.2" stroke-linejoin="round"/><rect x="2" y="24" width="35" height="9" rx="4.5" fill="#fff" stroke="#14161a" stroke-width="2.2"/><circle cx="39" cy="22" r="4.6" fill="#fff" stroke="#14161a" stroke-width="2.2"/></svg><span class="lock"><img src="Icons/apex-mark-orange.png" alt="" width="35" height="30"><span class="words"><span class="w1">Apex</span><span class="w2">Build</span></span></span></a>
       <ul class="nav-links">
         <li><a href="#work">Examples</a></li>
         <li><a href="#how">How it works</a></li>
@@ -454,6 +540,7 @@
     </nav>
   </div>
 </header>
+<div class="fools" role="status">Happy April Fools'. Every font on the site is Comic Sans today. <button type="button" id="foolsOff">Make it stop</button></div>
 
 <main>
   <!-- HERO -->
@@ -547,7 +634,7 @@
                 <h4>Welcome!!</h4>
                 <p>Ridgeline Roofing has been serving the area for many years. We do all types of roofing. Shingles, repairs, and more. Please call us for more information about our services and prices.</p>
                 <p>Office hours are Monday to Friday. Please leave a message. Page under construction, check back soon!</p>
-                <p style="color:#666">You are visitor #000417</p>
+                <p class="o-count">You are visitor <b id="hitCount">000417</b></p>
               </div>
             </div>
             <div class="o-foot">Copyright 2009. All Rights Reserved. Webmaster</div>
@@ -555,25 +642,34 @@
         </div>
         <div class="ba-pane ba-new">
           <div class="new-site">
-            <div class="n-bar"><b>RIDGELINE <span>ROOFING</span></b><div class="n-links"><span>Services</span><span>Our work</span><span>Reviews</span><span>Areas</span></div><span class="n-cta"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Call now</span></div>
+            <div class="n-alert"><i class="n-pulse"></i><b>STORM ALERT</b><span>Hail reported in south Calgary. Free roof inspections this week.</span><em>Book now &rarr;</em></div>
+            <div class="n-bar"><span class="n-brand"><svg viewBox="0 0 40 28" aria-hidden="true"><path d="M2 24 20 6l18 18"/><path d="M10 24 20 14l10 10"/></svg><b>RIDGELINE<small>ROOFING CO.</small></b></span><span class="n-links"><span>Hail claims</span><span>Services</span><span>Materials</span><span>Recent jobs</span></span><span class="n-cta"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> (403) 555-0142</span></div>
             <div class="n-hero">
               <div>
-                <h4>Roof leaking? We'll be there today.</h4>
-                <p>Re-roofs, leak repair and hail claims across Calgary and area. Licensed, insured, and warrantied.</p>
-                <div class="n-btns"><span class="a">Get a free quote</span><span class="b">See our work</span></div>
+                <div class="n-kick">24/7 emergency leak repair &middot; Calgary</div>
+                <h4>Roof leaking?<br><span>We'll be there today.</span></h4>
+                <p>Re-roofs, leak repairs and hail claims, done by a local crew that answers the phone.</p>
+                <div class="n-btns"><span class="a"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg> Call now</span><span class="b">Free inspection</span></div>
               </div>
-              <div class="n-card"><div class="s">★★★★★</div><p>Your best Google reviews, front and centre, where customers see them first.</p><p style="opacity:.7">Real reviews pulled from your profile</p></div>
+              <div class="n-art">
+                <svg viewBox="0 0 420 330" aria-hidden="true"><defs><pattern id="nsh" width="24" height="12" patternUnits="userSpaceOnUse"><path d="M0 12h24M12 0v12" stroke="#3a4552" stroke-width="1.5"/></pattern></defs><polygon points="40,170 210,40 380,170" fill="url(#nsh)" stroke="#f5a524" stroke-width="5" stroke-linejoin="round"/><polygon points="40,170 210,40 380,170" fill="#232c37" opacity=".55"/><rect x="80" y="170" width="260" height="140" fill="#1a2028" stroke="#3a4552" stroke-width="3"/><rect x="120" y="205" width="56" height="48" fill="#f5a524" opacity=".85"/><path d="M148 205v48M120 229h56" stroke="#1a2028" stroke-width="3"/><rect x="236" y="215" width="50" height="95" fill="#2b3440" stroke="#3a4552" stroke-width="3"/><rect x="290" y="70" width="26" height="60" fill="#232c37" stroke="#3a4552" stroke-width="3"/><path d="M20 310h380" stroke="#3a4552" stroke-width="3"/></svg>
+                <div class="n-badge"><b>Avg. response</b><span>UNDER 3 HRS</span></div>
+              </div>
             </div>
-            <div class="n-row"><div><svg class="i" aria-hidden="true"><use href="#i-home"/></svg> Re-roofing</div><div><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg> Leak repair</div><div><svg class="i" aria-hidden="true"><use href="#i-hail"/></svg> Hail damage</div><div><svg class="i" aria-hidden="true"><use href="#i-droplet"/></svg> Eavestroughs</div></div>
+            <div class="n-stats"><div><b>24/7</b><span>Emergency line</span></div><div><b>10-YR</b><span>Warranty</span></div><div><b>FREE</b><span>Hail inspections</span></div><div><b>5.0 &starf;</b><span>Google reviews</span></div></div>
           </div>
         </div>
         <span class="ba-label old">BEFORE</span>
         <span class="ba-label new">AFTER</span>
         <div class="ba-handle"><span class="ba-knob"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7 4 12l5 5"/><path d="m15 7 5 5-5 5"/></svg></span></div>
         <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+        <div class="prize" id="prize" role="dialog" aria-label="You won">
+          <div class="prize-top"><span>Congratulations!!!</span><button type="button" aria-label="Close">x</button></div>
+          <div class="prize-body"><div class="big">YOU ARE VISITOR #1,000,000!!!</div><p>You have been selected to receive a FREE prize!!!</p><a href="#contact">CLAIM PRIZE</a><small>Okay, this one is actually real. The prize is a free homepage mockup.</small></div>
+        </div>
       </div>
       <p class="ba-caption">Example business. Your redesign is built around your real services, photos and reviews.</p>
-      <div class="speed-cta"><button type="button" id="spOpen">How does your current site score? Free checkup &rarr;</button></div>
+      <div class="speed-cta"><button type="button" id="spOpen" class="sp-open">How does your current site score? Free checkup &rarr;</button></div>
     </div>
   </section>
 
@@ -599,6 +695,7 @@
           <div class="demo-body"><p>Calm and high-end for big-ticket work. Project case studies, a clear process, and a step-by-step project planner.</p><span class="go">Open demo →</span></div>
         </a>
       </div>
+      <div class="speed-cta m-only"><button type="button" class="sp-open">Free checkup for your current site &rarr;</button></div>
       <a class="yours reveal" href="#contact"><span><b>Your trade isn't here?</b> Electricians, HVAC, landscaping, concrete, auto, cleaning. I'll mock up your homepage for free.</span><span class="go">Get my free mockup →</span></a>
     </div>
   </section>
@@ -807,6 +904,27 @@
   range.addEventListener('input', e => setPos(e.target.value));
   setPos(range.value);
 
+  // Easter egg: click the before/after 3 times fast to become visitor #1,000,000
+  (function () {
+    const prize = document.getElementById('prize'), count = document.getElementById('hitCount');
+    if (!prize) return;
+    let clicks = [], downX = 0, spun = false;
+    range.addEventListener('pointerdown', e => { downX = e.clientX; });
+    range.addEventListener('click', e => {
+      if (Math.abs(e.clientX - downX) > 6) { clicks = []; return; }
+      const now = Date.now(); clicks = clicks.filter(t => now - t < 1200); clicks.push(now);
+      if (clicks.length >= 3) { clicks = []; win(); }
+    });
+    function win() {
+      prize.classList.add('on');
+      if (spun) return; spun = true;
+      let n = 417; const end = 1000000, t0 = performance.now();
+      (function tick(t) { const k = Math.min(1, (t - t0) / 900); n = Math.round(417 + (end - 417) * k * k); count.textContent = String(n).padStart(7, '0'); if (k < 1) requestAnimationFrame(tick); })(t0);
+    }
+    prize.querySelector('button').addEventListener('click', () => prize.classList.remove('on'));
+    prize.querySelector('a').addEventListener('click', () => prize.classList.remove('on'));
+  })();
+
   // Scroll reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
@@ -907,7 +1025,7 @@
     setTimeout(() => btn.setAttribute('aria-label', 'Copy email address'), 1800);
   }));
 
-  // Easter egg: blueprint mode (tap the logo 5 times quickly)
+  // Easter egg: blueprint mode (press and hold the logo)
   (function () {
     const bar = document.createElement('div'); bar.className = 'bp-bar'; bar.setAttribute('role', 'status');
     bar.innerHTML = '<span>You found blueprint mode, a hidden easter egg.</span><button type="button">Back to normal</button>';
@@ -917,11 +1035,41 @@
     const on = () => { root.classList.add('blueprint'); bar.classList.add('on'); };
     bar.querySelector('button').addEventListener('click', off);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') off(); });
-    let taps = [];
-    document.querySelectorAll('.logo').forEach(l => l.addEventListener('click', () => {
-      const now = Date.now(); taps = taps.filter(t => now - t < 2500); taps.push(now);
-      if (taps.length >= 5) { taps = []; root.classList.contains('blueprint') ? off() : on(); }
-    }));
+    // Press and hold the logo for 2 seconds
+    document.querySelectorAll('.logo').forEach(l => {
+      let t = null, fired = false;
+      const stop = () => { clearTimeout(t); t = null; l.classList.remove('holding'); };
+      l.addEventListener('pointerdown', e => {
+        if (e.button && e.button !== 0) return;
+        fired = false; l.classList.add('holding');
+        t = setTimeout(() => { fired = true; stop(); root.classList.contains('blueprint') ? off() : on(); }, 2000);
+      });
+      ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => l.addEventListener(ev, stop));
+      l.addEventListener('contextmenu', e => e.preventDefault());
+      l.addEventListener('click', e => { if (fired) { e.preventDefault(); e.stopImmediatePropagation(); fired = false; } });
+    });
+  })();
+
+  // Easter egg: double-tap the logo and it draws itself
+  (function () {
+    const paths = ['M11 229 L97 15 L180 190', 'M100 118 V228 H222 C252 228 270 206 270 176 C270 146 250 123 220 123 H190', 'M142 12 H222 C250 12 270 34 270 62 C270 92 250 114 225 121'];
+    document.querySelectorAll('header .logo').forEach(l => {
+      let last = 0;
+      l.addEventListener('click', () => {
+        const now = Date.now();
+        if (now - last < 350 && !l.classList.contains('drawing')) { last = 0; draw(l); } else last = now;
+      });
+    });
+    function draw(l) {
+      const img = l.querySelector('img'); if (!img) return;
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 279 240'); svg.setAttribute('class', 'draw'); svg.setAttribute('aria-hidden', 'true');
+      svg.innerHTML = paths.map(d => '<path pathLength="1" d="' + d + '"/>').join('');
+      svg.style.left = (img.offsetLeft) + 'px'; svg.style.height = img.offsetHeight + 'px';
+      svg.style.top = (img.offsetTop + img.offsetHeight / 2) + 'px';
+      l.appendChild(svg); l.classList.add('drawing');
+      setTimeout(() => { l.classList.remove('drawing'); svg.remove(); }, 2100);
+    }
   })();
 
   // Easter egg: Konami code
@@ -950,19 +1098,40 @@
     document.querySelector('.trade-pick').addEventListener('click', () => setTimeout(() => { if (inp.value.trim()) { delete brand.dataset.orig; setName(); } }, 220));
   })();
 
-  // Local time in Okotoks
+  // Seasonal and time-based easter eggs. Preview any of them with ?preview=night, xmas or april
+  const PREVIEW = new URLSearchParams(location.search).get('preview') || '';
+  const edm = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', month: 'numeric', day: 'numeric', hour: 'numeric', hourCycle: 'h23' });
+  const edmNow = () => { const o = {}; edm.formatToParts(new Date()).forEach(p => o[p.type] = +p.value); return o; };
+  (function () {
+    const d = edmNow(), root = document.documentElement;
+    if (PREVIEW === 'xmas' || (d.month === 12 && d.day <= 26)) root.classList.add('xmas');
+    if (PREVIEW === 'april' || (d.month === 4 && d.day === 1)) {
+      root.classList.add('april');
+      const f = document.createElement('link'); f.rel = 'stylesheet'; f.href = 'https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap'; document.head.appendChild(f);
+      const b = document.getElementById('foolsOff'); if (b) b.addEventListener('click', () => root.classList.remove('april'));
+    }
+  })();
+
+  // Local time in Okotoks (with a note when it's the middle of the night)
   (function () {
     const el = document.getElementById('okTime'); if (!el) return;
     const fmt = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Edmonton', hour: 'numeric', minute: '2-digit', hour12: true });
-    const tick = () => { el.innerHTML = "It's <b>" + fmt.format(new Date()) + '</b> in Okotoks. I usually reply within a day.'; };
+    const moon = '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>';
+    const tick = () => {
+      const night = PREVIEW === 'night' || (h => h >= 22 || h < 6)(edmNow().hour);
+      const time = PREVIEW === 'night' ? '11:24 p.m.' : fmt.format(new Date());
+      el.innerHTML = night
+        ? moon + "It's <b>" + time + "</b> in Okotoks, so I'm probably asleep. Send it anyway. I'll reply in the morning."
+        : "It's <b>" + time + '</b> in Okotoks. I usually reply within a day.';
+    };
     tick(); setInterval(tick, 30000);
   })();
 
   // Website checkup (Google PageSpeed Insights)
   (function () {
     const PSI_KEY = ''; // optional free Google API key, restricted to apexbuildweb.ca
-    const dlg = document.getElementById('spDlg'), open = document.getElementById('spOpen');
-    if (!dlg || !open || typeof dlg.showModal !== 'function') { if (open) open.style.display = 'none'; return; }
+    const dlg = document.getElementById('spDlg'), opens = document.querySelectorAll('.sp-open');
+    if (!dlg || !opens.length || typeof dlg.showModal !== 'function') { opens.forEach(o => o.style.display = 'none'); return; }
     const $ = id => document.getElementById(id);
     const err = $('spErr'), wait = $('spWait'), res = $('spRes'), form = $('spForm'), url = $('spUrl');
     const CATS = [['performance', 'Speed'], ['seo', 'Google basics'], ['accessibility', 'Easy to use'], ['best-practices', 'Security']];
@@ -992,7 +1161,7 @@
       'inspector-issues': 'The browser flagged problems with the page'
     };
     let lastUrl = '';
-    open.addEventListener('click', () => { dlg.showModal(); setTimeout(() => url.focus(), 50); });
+    opens.forEach(o => o.addEventListener('click', () => { dlg.showModal(); setTimeout(() => url.focus(), 50); }));
     $('spClose').addEventListener('click', () => dlg.close());
     dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
     const btn = form.querySelector('button');
