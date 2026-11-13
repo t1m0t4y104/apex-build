@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Your Website Questionnaire | Apex Build</title>
   <link rel="icon" type="image/png" sizes="64x64" href="../Icons/favicon.png">
-  <link rel="apple-touch-icon" href="../Icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../Icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="theme-color" content="#FF5A1F">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -349,6 +349,23 @@
   }
   restore(); refresh();
 
+  // ---- Automatic site build (Apex Build Generator) ----------------------
+  // After the answers email is sent, a copy goes to a small Cloudflare Worker
+  // that starts the site build. It runs in the background and never shows an
+  // error: the email is what counts, and a build can always be started by hand.
+  // Leave BUILD_HOOK empty ('') to switch this off.
+  const BUILD_HOOK = 'https://apex-questionnaire.apexbuild.workers.dev';
+  function startBuild(data) {
+    if (!BUILD_HOOK) return;
+    try {
+      const body = JSON.stringify({
+        v: 1, pkg: isBiz ? 'business' : (pre.pkg ? 'starter' : ''), trade: pre.trade || '', answers: data,
+        lists: { services: picked('Services'), areas: picked('Service areas'), claims: picked('True claims'), more: picked('Want more of') }
+      });
+      fetch(BUILD_HOOK, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain' }, body }).catch(() => {});
+    } catch (e) {}
+  }
+
   form.addEventListener('submit', async e => {
     e.preventDefault(); msg.className = 'msg'; const warnEl = document.getElementById('warn');
     if (form._honey.value) return;
@@ -389,6 +406,7 @@
       const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) });
       const out = await res.json().catch(() => ({}));
       if (!res.ok || out.success !== true) throw new Error(out.message || 'failed');
+      startBuild(data);
       form.style.display = 'none'; document.querySelector('.intro').style.display = 'none';
       document.getElementById('done').classList.add('on'); window.scrollTo({ top: 0 });
       try { localStorage.removeItem(KEY); } catch (e) {}
