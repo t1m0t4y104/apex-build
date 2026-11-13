@@ -1,2 +1,5 @@
 .DS_Store
 **/.DS_Store
+.sync-message.txt
+# Kept on the Mac only (not published on the website)
+Sync with GitHub.command
